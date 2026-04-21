@@ -9,6 +9,7 @@ export default defineNuxtConfig({
   ],
 
   // GitHub Pages deployment
+  base: '/ai-programming-site/',
   ssr: true,
   nitro: {
     preset: 'static'
