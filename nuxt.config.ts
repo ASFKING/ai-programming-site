@@ -8,14 +8,22 @@ export default defineNuxtConfig({
     '@nuxtjs/tailwindcss'
   ],
 
-  // GitHub Pages deployment
-  base: '/ai-programming-site/',
-  ssr: true,
+  // GitHub Pages deployment - 关键修改
+  ssr: false,                      // 静态站点建议关闭 SSR
   nitro: {
-    preset: 'static'
+    preset: 'github-pages',
+    prerender: {
+      failOnError: false,
+      ignore: [
+        '/methodology/**',
+        '/api/**'
+      ]
+    }
   },
 
   app: {
+    baseURL: '/ai-programming-site/',   // 正确设置子路径
+    buildAssetsDir: 'assets',           // 避免 _ 开头的文件夹（GitHub Pages 忽略）
     head: {
       title: 'AI编程介绍网站',
       meta: [
