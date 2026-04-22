@@ -45,7 +45,7 @@
         <div v-for="(era, index) in eras" :key="index" class="flex gap-4">
           <div class="flex flex-col items-center">
             <div class="w-4 h-4 rounded-full bg-blue-500"></div>
-            <div v-if="index < eras.length - 1" class="w-0.5 h-16 bg-gray-800"></div>
+            <div v-if="index < eras.length - 1" class="w-0.5 h-16 bg-[#334155]"></div>
           </div>
           <div class="flex-1 pb-8">
             <span class="text-sm text-blue-400 font-medium">{{ era.period }}</span>
@@ -69,7 +69,7 @@
           v-for="paradigm in paradigms"
           :key="paradigm.path"
           :to="paradigm.path"
-          class="p-6 rounded-xl border border-[#27272a] hover:border-blue-500/50 transition-colors"
+          class="p-6 rounded-xl border border-[#334155] hover:border-blue-400/50 bg-[#1e2a3a] transition-colors"
         >
           <div class="flex items-center gap-3 mb-2">
             <span class="text-2xl">{{ paradigm.icon }}</span>

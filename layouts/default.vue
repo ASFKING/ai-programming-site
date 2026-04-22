@@ -1,14 +1,14 @@
 <template>
-  <div class="min-h-screen bg-[#0a0a0f] text-gray-100">
+  <div class="min-h-screen bg-[#111827] text-gray-100">
     <!-- 顶部导航 -->
-    <header class="fixed top-0 left-0 right-0 z-50 bg-[#12121a]/95 backdrop-blur-sm border-b border-[#27272a]">
+    <header class="fixed top-0 left-0 right-0 z-50 bg-[#1f2937]/95 backdrop-blur-sm border-b border-[#334155]">
       <NavBar />
     </header>
 
     <!-- 主内容区 -->
     <div class="flex pt-16 min-h-screen">
       <!-- 侧边导航 -->
-      <aside v-if="showSidebar" class="fixed left-0 top-16 bottom-0 w-64 bg-[#12121a] border-r border-[#27272a] overflow-y-auto">
+      <aside v-if="showSidebar" class="fixed left-0 top-16 bottom-0 w-64 bg-[#1f2937] border-r border-[#334155] overflow-y-auto">
         <SideNav />
       </aside>
 

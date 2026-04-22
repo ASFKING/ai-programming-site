@@ -24,7 +24,7 @@
     </div>
 
     <!-- 时间线预测 -->
-    <section class="mt-12 p-6 rounded-xl bg-[#12121a] border border-[#27272a]">
+    <section class="mt-12 p-6 rounded-xl bg-[#1f2937] border border-[#334155]">
       <h2 class="text-xl font-semibold mb-6">2026-2030 年发展趋势</h2>
       <div class="space-y-6">
         <div class="flex gap-6">

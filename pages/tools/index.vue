@@ -35,7 +35,7 @@
     </div>
 
     <!-- 对比说明 -->
-    <section class="mt-12 p-6 rounded-xl bg-[#12121a] border border-[#27272a]">
+    <section class="mt-12 p-6 rounded-xl bg-[#1f2937] border border-[#334155]">
       <h2 class="text-xl font-semibold mb-4">如何选择合适的工具？</h2>
       <div class="grid md:grid-cols-2 gap-6">
         <div>

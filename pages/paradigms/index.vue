@@ -6,7 +6,7 @@
     </div>
 
     <!-- 演进路线图 -->
-    <section class="p-6 rounded-xl bg-[#12121a] border border-[#27272a]">
+    <section class="p-6 rounded-xl bg-[#1f2937] border border-[#334155]">
       <h2 class="text-xl font-semibold mb-6">演进路线</h2>
       <div class="flex items-center justify-between gap-2 overflow-x-auto pb-2">
         <div v-for="(step, index) in evolutionSteps" :key="step.id" class="flex items-center gap-2 shrink-0">
@@ -45,12 +45,12 @@
     </div>
 
     <!-- 范式对比 -->
-    <section class="mt-12 p-6 rounded-xl bg-[#12121a] border border-[#27272a]">
+    <section class="mt-12 p-6 rounded-xl bg-[#1f2937] border border-[#334155]">
       <h2 class="text-xl font-semibold mb-6">范式对比</h2>
       <div class="overflow-x-auto">
         <table class="w-full">
           <thead>
-            <tr class="border-b border-[#27272a]">
+            <tr class="border-b border-[#334155]">
               <th class="text-left py-3 px-4 text-gray-400 font-medium">维度</th>
               <th class="text-left py-3 px-4 text-cyan-400 font-medium">Code Completion</th>
               <th class="text-left py-3 px-4 text-blue-400 font-medium">Vibe Coding</th>
@@ -59,35 +59,35 @@
             </tr>
           </thead>
           <tbody>
-            <tr class="border-b border-[#27272a]/50">
+            <tr class="border-b border-[#334155]/50">
               <td class="py-3 px-4 text-gray-400">人类角色</td>
               <td class="py-3 px-4">打字员</td>
               <td class="py-3 px-4">导演</td>
               <td class="py-3 px-4">架构师</td>
               <td class="py-3 px-4">指挥官</td>
             </tr>
-            <tr class="border-b border-[#27272a]/50">
+            <tr class="border-b border-[#334155]/50">
               <td class="py-3 px-4 text-gray-400">AI角色</td>
               <td class="py-3 px-4">智能输入法</td>
               <td class="py-3 px-4">代码生成器</td>
               <td class="py-3 px-4">严格执行者</td>
               <td class="py-3 px-4">自主智能体</td>
             </tr>
-            <tr class="border-b border-[#27272a]/50">
+            <tr class="border-b border-[#334155]/50">
               <td class="py-3 px-4 text-gray-400">上下文范围</td>
               <td class="py-3 px-4">当前文件</td>
               <td class="py-3 px-4">单模块</td>
               <td class="py-3 px-4">全仓库</td>
               <td class="py-3 px-4">全仓库 + 工具</td>
             </tr>
-            <tr class="border-b border-[#27272a]/50">
+            <tr class="border-b border-[#334155]/50">
               <td class="py-3 px-4 text-gray-400">核心优势</td>
               <td class="py-3 px-4">减少重复劳动</td>
               <td class="py-3 px-4">快速、灵活、低门槛</td>
               <td class="py-3 px-4">可追溯、可验证</td>
               <td class="py-3 px-4">自主、端到端</td>
             </tr>
-            <tr class="border-b border-[#27272a]/50">
+            <tr class="border-b border-[#334155]/50">
               <td class="py-3 px-4 text-gray-400">适用场景</td>
               <td class="py-3 px-4">日常编码</td>
               <td class="py-3 px-4">原型验证</td>

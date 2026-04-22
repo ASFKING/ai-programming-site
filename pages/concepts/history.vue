@@ -211,7 +211,7 @@
         <!-- 2018 TabNine -->
         <div class="relative pl-8 border-l-2 border-blue-500/30">
           <div
-            class="absolute left-0 top-0 w-4 h-4 -translate-x-[9px] rounded-full bg-blue-500 border-4 border-[#0a0a0f]">
+            class="absolute left-0 top-0 w-4 h-4 -translate-x-[9px] rounded-full bg-blue-500 border-4 border-[#111827]">
           </div>
           <div class="card">
             <div class="flex items-center gap-3 mb-3">
@@ -229,7 +229,7 @@
         <!-- 2021 Copilot -->
         <div class="relative pl-8 border-l-2 border-blue-500/30">
           <div
-            class="absolute left-0 top-0 w-4 h-4 -translate-x-[9px] rounded-full bg-blue-500 border-4 border-[#0a0a0f]">
+            class="absolute left-0 top-0 w-4 h-4 -translate-x-[9px] rounded-full bg-blue-500 border-4 border-[#111827]">
           </div>
           <div class="card border-blue-500/30">
             <div class="flex items-center gap-3 mb-3">
@@ -259,7 +259,7 @@
         <!-- 2022 Copilot商业化 -->
         <div class="relative pl-8 border-l-2 border-blue-500/30">
           <div
-            class="absolute left-0 top-0 w-4 h-4 -translate-x-[9px] rounded-full bg-blue-500/50 border-4 border-[#0a0a0f]">
+            class="absolute left-0 top-0 w-4 h-4 -translate-x-[9px] rounded-full bg-blue-500/50 border-4 border-[#111827]">
           </div>
           <div class="card">
             <div class="flex items-center gap-3 mb-3">
@@ -347,7 +347,7 @@
         <!-- 2023 GPT-4 -->
         <div class="relative pl-8 border-l-2 border-purple-500/30">
           <div
-            class="absolute left-0 top-0 w-4 h-4 -translate-x-[9px] rounded-full bg-purple-500 border-4 border-[#0a0a0f]">
+            class="absolute left-0 top-0 w-4 h-4 -translate-x-[9px] rounded-full bg-purple-500 border-4 border-[#111827]">
           </div>
           <div class="card">
             <div class="flex items-center gap-3 mb-3">
@@ -371,7 +371,7 @@
         <!-- 2024 Cursor -->
         <div class="relative pl-8 border-l-2 border-purple-500/30">
           <div
-            class="absolute left-0 top-0 w-4 h-4 -translate-x-[9px] rounded-full bg-purple-500 border-4 border-[#0a0a0f]">
+            class="absolute left-0 top-0 w-4 h-4 -translate-x-[9px] rounded-full bg-purple-500 border-4 border-[#111827]">
           </div>
           <div class="card border-purple-500/30">
             <div class="flex items-center gap-3 mb-3">
@@ -396,7 +396,7 @@
         <!-- 2024 Claude 3 -->
         <div class="relative pl-8 border-l-2 border-purple-500/30">
           <div
-            class="absolute left-0 top-0 w-4 h-4 -translate-x-[9px] rounded-full bg-purple-500 border-4 border-[#0a0a0f]">
+            class="absolute left-0 top-0 w-4 h-4 -translate-x-[9px] rounded-full bg-purple-500 border-4 border-[#111827]">
           </div>
           <div class="card">
             <div class="flex items-center gap-3 mb-3">
@@ -416,7 +416,7 @@
         <!-- 2024 Vibe Coding -->
         <div class="relative pl-8 border-l-2 border-purple-500/30">
           <div
-            class="absolute left-0 top-0 w-4 h-4 -translate-x-[9px] rounded-full bg-purple-500 border-4 border-[#0a0a0f]">
+            class="absolute left-0 top-0 w-4 h-4 -translate-x-[9px] rounded-full bg-purple-500 border-4 border-[#111827]">
           </div>
           <div class="card">
             <div class="flex items-center gap-3 mb-3">
@@ -433,7 +433,7 @@
         <!-- 2025 多模型竞争 -->
         <div class="relative pl-8 border-l-2 border-purple-500/30">
           <div
-            class="absolute left-0 top-0 w-4 h-4 -translate-x-[9px] rounded-full bg-purple-500/50 border-4 border-[#0a0a0f]">
+            class="absolute left-0 top-0 w-4 h-4 -translate-x-[9px] rounded-full bg-purple-500/50 border-4 border-[#111827]">
           </div>
           <div class="card">
             <div class="flex items-center gap-3 mb-3">
@@ -551,7 +551,7 @@
         <!-- 2026 Claude Code -->
         <div class="relative pl-8 border-l-2 border-cyan-500/30">
           <div
-            class="absolute left-0 top-0 w-4 h-4 -translate-x-[9px] rounded-full bg-cyan-500 border-4 border-[#0a0a0f]">
+            class="absolute left-0 top-0 w-4 h-4 -translate-x-[9px] rounded-full bg-cyan-500 border-4 border-[#111827]">
           </div>
           <div class="card border-cyan-500/30">
             <div class="flex items-center gap-3 mb-3">
@@ -582,7 +582,7 @@
         <!-- 2026 多智能体协作 -->
         <div class="relative pl-8 border-l-2 border-cyan-500/30">
           <div
-            class="absolute left-0 top-0 w-4 h-4 -translate-x-[9px] rounded-full bg-cyan-500 border-4 border-[#0a0a0f]">
+            class="absolute left-0 top-0 w-4 h-4 -translate-x-[9px] rounded-full bg-cyan-500 border-4 border-[#111827]">
           </div>
           <div class="card">
             <div class="flex items-center gap-3 mb-3">
@@ -618,7 +618,7 @@
         <!-- L4-L5级自动化 -->
         <div class="relative pl-8 border-l-2 border-cyan-500/30">
           <div
-            class="absolute left-0 top-0 w-4 h-4 -translate-x-[9px] rounded-full bg-cyan-500/50 border-4 border-[#0a0a0f]">
+            class="absolute left-0 top-0 w-4 h-4 -translate-x-[9px] rounded-full bg-cyan-500/50 border-4 border-[#111827]">
           </div>
           <div class="card">
             <div class="flex items-center gap-3 mb-3">
