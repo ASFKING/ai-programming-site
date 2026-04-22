@@ -61,9 +61,9 @@
       </div>
     </section>
 
-    <!-- 编程范式对比 -->
+    <!-- 编程范式 -->
     <section>
-      <h2 class="text-2xl font-bold mb-6">两大编程范式</h2>
+      <h2 class="text-2xl font-bold mb-6">四大编程范式</h2>
       <div class="grid md:grid-cols-2 gap-6">
         <NuxtLink
           v-for="paradigm in paradigms"
@@ -71,13 +71,21 @@
           :to="paradigm.path"
           class="p-6 rounded-xl border border-[#27272a] hover:border-blue-500/50 transition-colors"
         >
-          <h3 class="text-xl font-semibold mb-2">{{ paradigm.name }}</h3>
+          <div class="flex items-center gap-3 mb-2">
+            <span class="text-2xl">{{ paradigm.icon }}</span>
+            <h3 class="text-xl font-semibold">{{ paradigm.name }}</h3>
+          </div>
           <p class="text-gray-400 text-sm mb-4">{{ paradigm.description }}</p>
           <div class="flex flex-wrap gap-2">
             <span v-for="tag in paradigm.tags" :key="tag" class="px-2 py-1 bg-white/5 rounded text-xs text-gray-400">
               {{ tag }}
             </span>
           </div>
+        </NuxtLink>
+      </div>
+      <div class="mt-4">
+        <NuxtLink to="/paradigms" class="text-blue-400 hover:text-blue-300 text-sm">
+          查看范式对比 →
         </NuxtLink>
       </div>
     </section>
@@ -135,14 +143,30 @@ const eras = [
 
 const paradigms = [
   {
+    name: 'Code Completion',
+    icon: '⌨️',
+    description: '代码补全 - AI预测下一步代码，按Tab接受，最基础的AI编程形态',
+    tags: ['被动响应', '低门槛', '日常编码'],
+    path: '/paradigms/code-completion'
+  },
+  {
     name: 'Vibe Coding',
+    icon: '🎵',
     description: '氛围编程 - 意图驱动，AI生成代码，人只需描述"做什么"',
     tags: ['快速验证', '创意优先', '适合原型'],
     path: '/paradigms/vibe-coding'
   },
   {
+    name: 'Spec Coding',
+    icon: '📋',
+    description: '规格编程 - 先写规格再实现，契约驱动的工程化开发',
+    tags: ['规格先行', '可追溯', '团队协作'],
+    path: '/paradigms/spec-coding'
+  },
+  {
     name: 'Agentic Coding',
-    description: '智能体编程 - AI自主规划、执行、迭代，人作为"监督者"',
+    icon: '🧠',
+    description: '智能体编程 - AI自主规划、执行、迭代，端到端交付',
     tags: ['工程化', '可靠可扩展', '适合生产'],
     path: '/paradigms/agentic-coding'
   }

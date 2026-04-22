@@ -46,7 +46,9 @@ const navItems = computed(() => {
 
   if (path.startsWith('/paradigms')) {
     return [
+      { name: 'Code Completion', path: '/paradigms/code-completion', icon: '⌨️' },
       { name: 'Vibe Coding', path: '/paradigms/vibe-coding', icon: '🎵' },
+      { name: 'Spec Coding', path: '/paradigms/spec-coding', icon: '📋' },
       { name: 'Agentic Coding', path: '/paradigms/agentic-coding', icon: '🧠' }
     ]
   }
