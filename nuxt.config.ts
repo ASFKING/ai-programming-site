@@ -58,7 +58,6 @@ export default defineNuxtConfig({
   },
 
   tailwindcss: {
-    cssPath: '~/assets/css/main.css',
-    plugins: ['@tailwindcss/typography']
+    cssPath: '~/assets/css/main.css'
   }
 })
