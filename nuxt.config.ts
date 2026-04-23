@@ -14,7 +14,9 @@ export default defineNuxtConfig({
     preset: 'github-pages',
     prerender: {
       failOnError: false,
-      ignore: ['/api/**']
+      ignore: [
+        '/api/**'
+      ]
     }
   },
 
