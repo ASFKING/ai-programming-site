@@ -1,10 +1,7 @@
 <template>
   <div class="space-y-8">
-    <div class="flex items-center gap-4">
-      <NuxtLink to="/methodology" class="text-gray-400 hover:text-white">
-        ← 返回方法论
-      </NuxtLink>
-    </div>
+    <!-- 面包屑导航 -->
+    <Breadcrumb :items="breadcrumbItems" />
 
     <ContentDoc :path="`/methodology/${slug}`" v-slot="{ doc }">
       <div v-if="doc" class="flex gap-8">
@@ -24,6 +21,19 @@
           ← 返回方法论列表
         </NuxtLink>
       </div>
+
+      <!-- Prompt 工坊（仅 Spec 驱动开发页面显示） -->
+      <div v-if="slug === 'spec-driven'" class="mt-12">
+        <InteractivePromptTool />
+      </div>
+
+      <!-- 社区入口 -->
+      <div class="mt-8">
+        <CommunityLinks />
+      </div>
+
+      <!-- 反馈组件 -->
+      <FeedbackWidget :page-path="`/methodology/${slug}`" />
     </ContentDoc>
   </div>
 </template>
@@ -31,4 +41,20 @@
 <script setup lang="ts">
 const route = useRoute()
 const slug = route.params.slug as string
+
+const nameMap: Record<string, string> = {
+  'chat-mode': 'Chat 模式',
+  'plan-mode': 'Plan 模式',
+  'personal-rules': '个人规则',
+  'project-rules': '项目规则',
+  'agents-claude-md': 'AGENTS.md',
+  'skills': 'Skills',
+  'spec-driven': 'Spec 驱动开发'
+}
+
+const breadcrumbItems = computed(() => [
+  { label: '首页', path: '/' },
+  { label: '方法论', path: '/methodology' },
+  { label: nameMap[slug] || slug }
+])
 </script>

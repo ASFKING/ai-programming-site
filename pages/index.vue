@@ -1,7 +1,25 @@
 <template>
   <div class="space-y-12">
+    <!-- 锚点导航 -->
+    <nav class="sticky top-16 z-40 -mx-4 md:-mx-8 px-4 md:px-8 py-3 bg-[#111827]/80 backdrop-blur-xl border-b border-white/[0.08]">
+      <div class="flex items-center gap-1 overflow-x-auto scrollbar-hide">
+        <a
+          v-for="anchor in anchors"
+          :key="anchor.id"
+          :href="`#${anchor.id}`"
+          @click.prevent="scrollToSection(anchor.id)"
+          class="px-3 py-1.5 rounded-lg text-xs font-medium whitespace-nowrap transition-all"
+          :class="activeAnchor === anchor.id
+            ? 'bg-blue-500/20 text-blue-400'
+            : 'text-gray-500 hover:text-gray-300 hover:bg-white/5'"
+        >
+          {{ anchor.icon }} {{ anchor.label }}
+        </a>
+      </div>
+    </nav>
+
     <!-- Hero Section -->
-    <section class="text-center py-16">
+    <section id="hero" class="text-center py-16">
       <h1 class="text-5xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-purple-400 to-cyan-400">
         AI编程：智能开发的未来
       </h1>
@@ -20,7 +38,7 @@
     </section>
 
     <!-- 用户分流 -->
-    <section class="p-6 rounded-xl glass border border-white/[0.08]">
+    <section id="audience" class="p-6 rounded-xl glass border border-white/[0.08]">
       <h2 class="text-xl font-semibold mb-6 text-center">你是哪种开发者？</h2>
       <div class="grid md:grid-cols-3 gap-4">
         <NuxtLink
@@ -51,7 +69,7 @@
     </section>
 
     <!-- 核心概念卡片 -->
-    <section>
+    <section id="content">
       <h2 class="text-2xl font-bold mb-6">核心内容</h2>
       <div class="grid md:grid-cols-3 gap-6">
         <NuxtLink
@@ -70,7 +88,7 @@
     </section>
 
     <!-- AI编程发展时间线 -->
-    <section>
+    <section id="timeline">
       <h2 class="text-2xl font-bold mb-6">发展历程</h2>
       <div class="space-y-4">
         <div v-for="(era, index) in eras" :key="index" class="flex gap-4">
@@ -93,7 +111,7 @@
     </section>
 
     <!-- 编程范式 -->
-    <section>
+    <section id="paradigms">
       <h2 class="text-2xl font-bold mb-6">四大编程范式</h2>
       <div class="grid md:grid-cols-2 gap-6">
         <NuxtLink
@@ -139,6 +157,43 @@
 </template>
 
 <script setup lang="ts">
+// 锚点导航
+const activeAnchor = ref('hero')
+const anchors = [
+  { id: 'hero', label: '首页', icon: '🏠' },
+  { id: 'audience', label: '选择路径', icon: '🎯' },
+  { id: 'content', label: '核心内容', icon: '📚' },
+  { id: 'timeline', label: '发展历程', icon: '📅' },
+  { id: 'paradigms', label: '编程范式', icon: '🧩' }
+]
+
+function scrollToSection(id: string) {
+  const el = document.getElementById(id)
+  if (el) {
+    el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    activeAnchor.value = id
+  }
+}
+
+// 滚动监听，自动高亮当前锚点
+onMounted(() => {
+  const observer = new IntersectionObserver(
+    (entries) => {
+      for (const entry of entries) {
+        if (entry.isIntersecting) {
+          activeAnchor.value = entry.target.id
+        }
+      }
+    },
+    { rootMargin: '-80px 0px -60% 0px', threshold: 0 }
+  )
+  anchors.forEach(({ id }) => {
+    const el = document.getElementById(id)
+    if (el) observer.observe(el)
+  })
+  onUnmounted(() => observer.disconnect())
+})
+
 const cards = [
   {
     icon: '📚',

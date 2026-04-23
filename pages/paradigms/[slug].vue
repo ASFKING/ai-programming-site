@@ -1,10 +1,7 @@
 <template>
   <div class="space-y-8">
-    <div class="flex items-center gap-4">
-      <NuxtLink to="/paradigms" class="text-gray-400 hover:text-white">
-        ← 返回编程范式
-      </NuxtLink>
-    </div>
+    <!-- 面包屑导航 -->
+    <Breadcrumb :items="breadcrumbItems" />
 
     <ContentDoc :path="`/paradigms/${slug}`" v-slot="{ doc }">
       <div class="flex gap-8">
@@ -16,6 +13,19 @@
           <PageToc :toc="doc.body?.toc?.links || []" />
         </aside>
       </div>
+
+      <!-- Prompt 工坊 -->
+      <div class="mt-12">
+        <InteractivePromptTool />
+      </div>
+
+      <!-- 社区入口 -->
+      <div class="mt-8">
+        <CommunityLinks />
+      </div>
+
+      <!-- 反馈组件 -->
+      <FeedbackWidget :page-path="`/paradigms/${slug}`" />
     </ContentDoc>
 
     <div v-if="!hasContent" class="space-y-8">
@@ -258,6 +268,15 @@ $ # ... 逐个文件创建，逐个命令执行`,
 }
 
 const currentParadigm = computed(() => paradigmsData[slug])
+
+const breadcrumbItems = computed(() => {
+  const name = currentParadigm.value?.name || slug
+  return [
+    { label: '首页', path: '/' },
+    { label: '编程范式', path: '/paradigms' },
+    { label: name }
+  ]
+})
 
 const titleColorClass = computed(() => {
   const map: Record<string, string> = {

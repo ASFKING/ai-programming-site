@@ -1,10 +1,7 @@
 <template>
   <div class="space-y-8">
-    <div class="flex items-center gap-4">
-      <NuxtLink to="/tools" class="text-gray-400 hover:text-white">
-        ← 返回工具列表
-      </NuxtLink>
-    </div>
+    <!-- 面包屑导航 -->
+    <Breadcrumb :items="breadcrumbItems" />
 
     <ContentDoc :path="`/tools/${slug}`" v-slot="{ doc }">
       <div class="flex gap-8">
@@ -16,6 +13,14 @@
           <PageToc :toc="doc.body?.toc?.links || []" />
         </aside>
       </div>
+
+      <!-- 社区入口 -->
+      <div class="mt-8">
+        <CommunityLinks />
+      </div>
+
+      <!-- 反馈组件 -->
+      <FeedbackWidget :page-path="`/tools/${slug}`" />
     </ContentDoc>
 
     <!-- 如果没有内容，显示静态内容 -->
@@ -138,4 +143,13 @@ const toolsData: Record<string, any> = {
 }
 
 const currentTool = computed(() => toolsData[slug])
+
+const breadcrumbItems = computed(() => {
+  const name = currentTool.value?.name || slug
+  return [
+    { label: '首页', path: '/' },
+    { label: 'AI工具', path: '/tools' },
+    { label: name }
+  ]
+})
 </script>

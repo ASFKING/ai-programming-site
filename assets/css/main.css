@@ -480,3 +480,27 @@ pre code {
   color: white;
   transform: translateY(-2px);
 }
+
+/* ═══════════════════════════════════════════
+   Scrollbar Hide — 隐藏滚动条但保留功能
+   ═══════════════════════════════════════════ */
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* ═══════════════════════════════════════════
+   Anchor Nav — 锚点导航粘性条
+   ═══════════════════════════════════════════ */
+
+.anchor-nav {
+  position: sticky;
+  top: 4rem;
+  z-index: 40;
+  backdrop-filter: blur(12px);
+}
