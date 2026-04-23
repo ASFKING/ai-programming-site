@@ -5,7 +5,7 @@
 
     <ContentDoc :path="`/methodology/${slug}`" v-slot="{ doc }">
       <div v-if="doc" class="flex gap-8">
-        <article class="prose prose-invert max-w-none flex-1 min-w-0">
+        <article :class="[proseClass, 'max-w-none flex-1 min-w-0']">
           <h1>{{ doc.title }}</h1>
           <ContentRenderer :value="doc" />
         </article>
@@ -41,6 +41,7 @@
 <script setup lang="ts">
 const route = useRoute()
 const slug = route.params.slug as string
+const { proseClass } = useTheme()
 
 const nameMap: Record<string, string> = {
   'chat-mode': 'Chat 模式',

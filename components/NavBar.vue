@@ -19,27 +19,33 @@
         class="px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200"
         :class="isActive(item.path)
           ? 'bg-blue-500/20 text-blue-400'
-          : 'text-gray-400 hover:text-gray-100 hover:bg-white/5'"
+          : 'hover:bg-black/5'"
+        :style="isActive(item.path) ? '' : { color: 'var(--color-text-muted)' }"
       >
         {{ item.name }}
       </NuxtLink>
+      <ThemeToggle />
     </div>
 
     <!-- 移动端菜单按钮 -->
-    <button
-      @click="mobileMenuOpen = !mobileMenuOpen"
-      class="md:hidden p-2 rounded-lg hover:bg-white/5"
-    >
-      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path v-if="!mobileMenuOpen" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-        <path v-else stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-      </svg>
-    </button>
+    <div class="flex items-center gap-2 md:hidden">
+      <ThemeToggle />
+      <button
+        @click="mobileMenuOpen = !mobileMenuOpen"
+        class="p-2 rounded-lg hover:bg-black/5"
+      >
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: var(--color-text-secondary)">
+          <path v-if="!mobileMenuOpen" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          <path v-else stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
 
     <!-- 移动端菜单 -->
     <div
       v-if="mobileMenuOpen"
-      class="absolute top-16 left-0 right-0 border-b border-white/[0.08] bg-[#111827]/95 backdrop-blur-xl p-4 md:hidden"
+      class="absolute top-16 left-0 right-0 p-4 md:hidden"
+      style="border-bottom: 1px solid var(--color-border); background: var(--color-bg-nav); backdrop-filter: blur(12px)"
     >
       <NuxtLink
         v-for="item in navItems"
@@ -49,7 +55,8 @@
         class="block px-4 py-3 rounded-lg text-sm font-medium"
         :class="isActive(item.path)
           ? 'bg-blue-500/20 text-blue-400'
-          : 'text-gray-400 hover:text-gray-100'"
+          : ''"
+        :style="isActive(item.path) ? '' : { color: 'var(--color-text-muted)' }"
       >
         {{ item.name }}
       </NuxtLink>

@@ -2,8 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  /* ─── Color Palette: 深色通透主题（提亮版） ─── */
+/* ═══════════════════════════════════════════
+   主题变量：深色（默认）+ 浅色
+   ═══════════════════════════════════════════ */
+
+:root,
+:root.dark {
   --color-bg-base: #111827;
   --color-bg-surface: rgba(255, 255, 255, 0.05);
   --color-bg-card: rgba(255, 255, 255, 0.08);
@@ -28,6 +32,59 @@
 
   --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.08);
   --shadow-card-hover: 0 8px 25px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.12), 0 0 20px rgba(96, 165, 250, 0.06);
+
+  --body-bg: linear-gradient(180deg, #111827 0%, #1e293b 50%, #111827 100%);
+  --code-bg: rgba(255, 255, 255, 0.05);
+  --table-head-bg: rgba(255, 255, 255, 0.06);
+  --table-border: rgba(255, 255, 255, 0.1);
+  --table-row-hover: rgba(255, 255, 255, 0.04);
+  --table-row-even: rgba(255, 255, 255, 0.015);
+  --blockquote-bg: rgba(96, 165, 250, 0.06);
+  --scrollbar-thumb: rgba(255, 255, 255, 0.15);
+  --scrollbar-thumb-hover: rgba(255, 255, 255, 0.25);
+  --glass-bg: rgba(255, 255, 255, 0.06);
+  --glass-border: rgba(255, 255, 255, 0.12);
+  --hr-gradient: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+}
+
+:root.light {
+  --color-bg-base: #f8fafc;
+  --color-bg-surface: rgba(0, 0, 0, 0.02);
+  --color-bg-card: #ffffff;
+  --color-bg-elevated: #ffffff;
+  --color-bg-nav: rgba(255, 255, 255, 0.85);
+
+  --color-text-primary: #0f172a;
+  --color-text-secondary: #334155;
+  --color-text-muted: #64748b;
+
+  --color-accent-primary: #2563eb;
+  --color-accent-secondary: #7c3aed;
+  --color-accent-tertiary: #0891b2;
+
+  --color-border: rgba(0, 0, 0, 0.08);
+  --color-border-hover: rgba(0, 0, 0, 0.15);
+  --color-border-subtle: rgba(0, 0, 0, 0.04);
+
+  --color-success: #059669;
+  --color-warning: #d97706;
+  --color-error: #dc2626;
+
+  --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.06), 0 0 0 1px rgba(0, 0, 0, 0.04);
+  --shadow-card-hover: 0 8px 25px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(0, 0, 0, 0.06), 0 0 20px rgba(37, 99, 235, 0.04);
+
+  --body-bg: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 50%, #f8fafc 100%);
+  --code-bg: #f1f5f9;
+  --table-head-bg: #f1f5f9;
+  --table-border: rgba(0, 0, 0, 0.08);
+  --table-row-hover: rgba(37, 99, 235, 0.03);
+  --table-row-even: rgba(0, 0, 0, 0.015);
+  --blockquote-bg: rgba(37, 99, 235, 0.04);
+  --scrollbar-thumb: rgba(0, 0, 0, 0.12);
+  --scrollbar-thumb-hover: rgba(0, 0, 0, 0.2);
+  --glass-bg: rgba(255, 255, 255, 0.7);
+  --glass-border: rgba(0, 0, 0, 0.06);
+  --hr-gradient: linear-gradient(90deg, transparent, rgba(0,0,0,0.1), transparent);
 }
 
 html {
@@ -39,7 +96,7 @@ html {
 body {
   min-height: 100vh;
   line-height: 1.6;
-  background: linear-gradient(180deg, #111827 0%, #1e293b 50%, #111827 100%);
+  background: var(--body-bg);
   background-attachment: fixed;
 }
 
@@ -74,15 +131,15 @@ pre, code {
 code {
   padding: 0.15rem 0.4rem;
   font-size: 0.85em;
-  background-color: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background-color: var(--code-bg);
+  border: 1px solid var(--color-border-subtle);
 }
 
 pre {
   padding: 1.25rem;
   overflow-x: auto;
-  background-color: rgba(255, 255, 255, 0.05) !important;
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  background-color: var(--code-bg) !important;
+  border: 1px solid var(--color-border);
 }
 
 pre code {
@@ -103,12 +160,12 @@ pre code {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.15);
+  background: var(--scrollbar-thumb);
   border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.25);
+  background: var(--scrollbar-thumb-hover);
 }
 
 /* ═══════════════════════════════════════════
@@ -120,7 +177,6 @@ pre code {
   max-width: 72ch;
 }
 
-/* 标题 */
 .prose h1, .prose h2, .prose h3, .prose h4, .prose h5, .prose h6 {
   color: var(--color-text-primary);
   margin-top: 2em;
@@ -133,13 +189,11 @@ pre code {
 .prose h3 { font-size: 1.25rem; }
 .prose h4 { font-size: 1.1rem; }
 
-/* 段落和行高 */
 .prose p {
   margin-bottom: 1.25em;
   line-height: 1.8;
 }
 
-/* 链接 */
 .prose a {
   color: var(--color-accent-primary);
   text-decoration: underline;
@@ -149,11 +203,9 @@ pre code {
 }
 
 .prose a:hover {
-  color: #93c5fd;
-  text-decoration-color: rgba(96, 165, 250, 0.8);
+  text-decoration-color: var(--color-accent-primary);
 }
 
-/* 列表 */
 .prose ul, .prose ol {
   padding-left: 1.75em;
   margin-bottom: 1.25em;
@@ -164,25 +216,12 @@ pre code {
   line-height: 1.7;
 }
 
-.prose ul > li {
-  list-style-type: disc;
-}
+.prose ul > li { list-style-type: disc; }
+.prose ol > li { list-style-type: decimal; }
+.prose li::marker { color: var(--color-text-muted); }
+.prose li > ul, .prose li > ol { margin-top: 0.5em; margin-bottom: 0; }
 
-.prose ol > li {
-  list-style-type: decimal;
-}
-
-.prose li::marker {
-  color: var(--color-text-muted);
-}
-
-/* 嵌套列表 */
-.prose li > ul, .prose li > ol {
-  margin-top: 0.5em;
-  margin-bottom: 0;
-}
-
-/* ─── 表格（重点美化） ─── */
+/* ─── 表格 ─── */
 .prose table {
   width: 100%;
   border-collapse: separate;
@@ -191,70 +230,52 @@ pre code {
   font-size: 0.9em;
   border-radius: 0.75rem;
   overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--table-border);
+  background: var(--color-bg-card);
 }
 
-.prose thead {
-  background: rgba(255, 255, 255, 0.06);
-}
+.prose thead { background: var(--table-head-bg); }
 
 .prose thead th {
   padding: 0.75rem 1rem;
   text-align: left;
   font-weight: 600;
   color: var(--color-text-primary);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid var(--table-border);
   white-space: nowrap;
 }
 
 .prose tbody td {
   padding: 0.75rem 1rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid var(--color-border-subtle);
   color: var(--color-text-secondary);
 }
 
-.prose tbody tr:last-child td {
-  border-bottom: none;
-}
-
-.prose tbody tr:hover {
-  background: rgba(255, 255, 255, 0.04);
-}
-
-.prose tbody tr:nth-child(even) {
-  background: rgba(255, 255, 255, 0.015);
-}
-
-.prose tbody tr:nth-child(even):hover {
-  background: rgba(255, 255, 255, 0.04);
-}
+.prose tbody tr:last-child td { border-bottom: none; }
+.prose tbody tr:hover { background: var(--table-row-hover); }
+.prose tbody tr:nth-child(even) { background: var(--table-row-even); }
+.prose tbody tr:nth-child(even):hover { background: var(--table-row-hover); }
 
 /* ─── 引用块 ─── */
 .prose blockquote {
   margin: 1.5em 0;
   padding: 1em 1.25em;
   border-left: 4px solid var(--color-accent-primary);
-  background: rgba(96, 165, 250, 0.06);
+  background: var(--blockquote-bg);
   border-radius: 0 0.5rem 0.5rem 0;
   color: var(--color-text-secondary);
   font-style: normal;
 }
 
-.prose blockquote p:last-child {
-  margin-bottom: 0;
-}
-
-.prose blockquote strong {
-  color: var(--color-accent-primary);
-}
+.prose blockquote p:last-child { margin-bottom: 0; }
+.prose blockquote strong { color: var(--color-accent-primary); }
 
 /* ─── 水平线 ─── */
 .prose hr {
   margin: 2em 0;
   border: none;
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+  background: var(--hr-gradient);
 }
 
 /* ─── 图片 ─── */
@@ -264,35 +285,20 @@ pre code {
   border: 1px solid var(--color-border);
 }
 
-/* ─── 强调 ─── */
-.prose strong {
-  color: var(--color-text-primary);
-  font-weight: 600;
-}
-
-.prose em {
-  color: var(--color-accent-secondary);
-  font-style: italic;
-}
-
-/* ─── 删除线 ─── */
-.prose del {
-  color: var(--color-text-muted);
-  text-decoration: line-through;
-}
+.prose strong { color: var(--color-text-primary); font-weight: 600; }
+.prose em { color: var(--color-accent-secondary); font-style: italic; }
+.prose del { color: var(--color-text-muted); text-decoration: line-through; }
 
 /* ═══════════════════════════════════════════
    组件样式
    ═══════════════════════════════════════════ */
 
-/* ─── Card ─── */
 .card {
   background: var(--color-bg-card);
   border: 1px solid var(--color-border);
   border-radius: 0.75rem;
   padding: 1.5rem;
   box-shadow: var(--shadow-card);
-  backdrop-filter: blur(8px);
   transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
 }
 
@@ -302,7 +308,6 @@ pre code {
   box-shadow: var(--shadow-card-hover);
 }
 
-/* ─── Buttons ─── */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -315,14 +320,8 @@ pre code {
   border: none;
 }
 
-.btn-primary {
-  background-color: var(--color-accent-primary);
-  color: white;
-}
-
-.btn-primary:hover {
-  background-color: #3b82f6;
-}
+.btn-primary { background-color: var(--color-accent-primary); color: white; }
+.btn-primary:hover { filter: brightness(0.9); }
 
 .btn-secondary {
   background: var(--color-bg-elevated);
@@ -332,24 +331,13 @@ pre code {
 
 .btn-secondary:hover {
   border-color: var(--color-border-hover);
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--color-bg-surface);
 }
 
 /* ─── Page transition ─── */
-.page-enter-active,
-.page-leave-active {
-  transition: opacity 0.25s ease, transform 0.25s ease;
-}
-
-.page-enter-from {
-  opacity: 0;
-  transform: translateY(8px);
-}
-
-.page-leave-to {
-  opacity: 0;
-  transform: translateY(-8px);
-}
+.page-enter-active, .page-leave-active { transition: opacity 0.25s ease, transform 0.25s ease; }
+.page-enter-from { opacity: 0; transform: translateY(8px); }
+.page-leave-to { opacity: 0; transform: translateY(-8px); }
 
 /* ─── Paradigm color accents ─── */
 .paradigm-code-completion { --accent: #22d3ee; --accent-bg: rgba(34, 211, 238, 0.08); --accent-border: rgba(34, 211, 238, 0.25); }
@@ -357,64 +345,33 @@ pre code {
 .paradigm-spec-coding { --accent: #fbbf24; --accent-bg: rgba(251, 191, 36, 0.08); --accent-border: rgba(251, 191, 36, 0.25); }
 .paradigm-agentic-coding { --accent: #f87171; --accent-bg: rgba(248, 113, 113, 0.08); --accent-border: rgba(248, 113, 113, 0.25); }
 
-.paradigm-card {
-  background-color: var(--accent-bg, var(--color-bg-card));
-  border-color: var(--accent-border, var(--color-border));
-}
-
-.paradigm-card:hover {
-  border-color: var(--accent, var(--color-border-hover));
-  box-shadow: 0 0 25px var(--accent-bg, transparent);
-}
-
+.paradigm-card { background-color: var(--accent-bg, var(--color-bg-card)); border-color: var(--accent-border, var(--color-border)); }
+.paradigm-card:hover { border-color: var(--accent, var(--color-border-hover)); box-shadow: 0 0 25px var(--accent-bg, transparent); }
 .paradigm-card .paradigm-title { color: var(--accent, var(--color-text-primary)); }
 .paradigm-card .paradigm-tag { background-color: var(--accent-bg, rgba(255,255,255,0.05)); color: var(--accent, var(--color-text-secondary)); }
 
 /* ─── Code Compare ─── */
-.code-compare {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem;
-}
-
-@media (max-width: 768px) {
-  .code-compare { grid-template-columns: 1fr; }
-}
-
-.code-compare-bad, .code-compare-good {
-  border-radius: 0.75rem;
-  overflow: hidden;
-}
-
+.code-compare { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+@media (max-width: 768px) { .code-compare { grid-template-columns: 1fr; } }
+.code-compare-bad, .code-compare-good { border-radius: 0.75rem; overflow: hidden; }
 .code-compare-bad { border: 1px solid rgba(248, 113, 113, 0.3); }
 .code-compare-good { border: 1px solid rgba(52, 211, 153, 0.3); }
-
-.code-compare-label {
-  padding: 0.5rem 1rem;
-  font-size: 0.875rem;
-  font-weight: 600;
-}
-
+.code-compare-label { padding: 0.5rem 1rem; font-size: 0.875rem; font-weight: 600; }
 .code-compare-bad .code-compare-label { background: rgba(248, 113, 113, 0.1); color: #f87171; }
 .code-compare-good .code-compare-label { background: rgba(52, 211, 153, 0.1); color: #34d399; }
 
 /* ─── Utility: glass effect ─── */
 .glass {
-  background: rgba(255, 255, 255, 0.06);
+  background: var(--glass-bg);
   backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  border: 1px solid var(--glass-border);
 }
 
 /* ═══════════════════════════════════════════
    TOC — 页面目录导航
    ═══════════════════════════════════════════ */
 
-.toc-container {
-  position: sticky;
-  top: 5rem;
-  max-height: calc(100vh - 6rem);
-  overflow-y: auto;
-}
+.toc-container { position: sticky; top: 5rem; max-height: calc(100vh - 6rem); overflow-y: auto; }
 
 .toc-link {
   display: block;
@@ -426,21 +383,9 @@ pre code {
   line-height: 1.4;
 }
 
-.toc-link:hover {
-  color: var(--color-text-secondary);
-  border-left-color: var(--color-text-muted);
-}
-
-.toc-link.active {
-  color: var(--color-accent-primary);
-  border-left-color: var(--color-accent-primary);
-  background: rgba(96, 165, 250, 0.06);
-}
-
-.toc-link.depth-3 {
-  padding-left: 1.5rem;
-  font-size: 0.75rem;
-}
+.toc-link:hover { color: var(--color-text-secondary); border-left-color: var(--color-text-muted); }
+.toc-link.active { color: var(--color-accent-primary); border-left-color: var(--color-accent-primary); background: rgba(96, 165, 250, 0.06); }
+.toc-link.depth-3 { padding-left: 1.5rem; font-size: 0.75rem; }
 
 /* ═══════════════════════════════════════════
    Back to Top — 回到顶部按钮
@@ -468,39 +413,18 @@ pre code {
   font-size: 1rem;
 }
 
-.back-to-top.visible {
-  opacity: 1;
-  transform: translateY(0);
-  pointer-events: auto;
-}
-
-.back-to-top:hover {
-  background: var(--color-accent-primary);
-  border-color: var(--color-accent-primary);
-  color: white;
-  transform: translateY(-2px);
-}
+.back-to-top.visible { opacity: 1; transform: translateY(0); pointer-events: auto; }
+.back-to-top:hover { background: var(--color-accent-primary); border-color: var(--color-accent-primary); color: white; transform: translateY(-2px); }
 
 /* ═══════════════════════════════════════════
-   Scrollbar Hide — 隐藏滚动条但保留功能
+   Scrollbar Hide
    ═══════════════════════════════════════════ */
 
-.scrollbar-hide {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-
-.scrollbar-hide::-webkit-scrollbar {
-  display: none;
-}
+.scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+.scrollbar-hide::-webkit-scrollbar { display: none; }
 
 /* ═══════════════════════════════════════════
-   Anchor Nav — 锚点导航粘性条
+   Anchor Nav
    ═══════════════════════════════════════════ */
 
-.anchor-nav {
-  position: sticky;
-  top: 4rem;
-  z-index: 40;
-  backdrop-filter: blur(12px);
-}
+.anchor-nav { position: sticky; top: 4rem; z-index: 40; backdrop-filter: blur(12px); }

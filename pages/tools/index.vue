@@ -2,7 +2,7 @@
   <div class="space-y-8">
     <div>
       <h1 class="text-3xl font-bold mb-4">AI编程工具</h1>
-      <p class="text-gray-400">了解国内外主流AI编程工具的特性和适用场景</p>
+      <p style="color: var(--color-text-muted)">了解国内外主流AI编程工具的特性和适用场景</p>
     </div>
 
     <!-- 工具卡片网格 -->
@@ -26,9 +26,9 @@
         <h3 class="text-lg font-semibold mb-2 group-hover:text-blue-400 transition-colors">
           {{ tool.name }}
         </h3>
-        <p class="text-gray-400 text-sm mb-4">{{ tool.description }}</p>
+        <p class="text-sm mb-4">{{ tool.description }}</p>
         <div class="flex flex-wrap gap-2">
-          <span v-for="feature in tool.features.slice(0, 3)" :key="feature" class="px-2 py-1 bg-white/5 rounded text-xs text-gray-400">
+          <span v-for="feature in tool.features.slice(0, 3)" :key="feature" class="px-2 py-1 rounded text-xs" style="background: var(--color-bg-surface); color: var(--color-text-muted)">
             {{ feature }}
           </span>
         </div>
@@ -36,12 +36,12 @@
     </div>
 
     <!-- 工具对比矩阵 -->
-    <section class="mt-8 p-6 rounded-xl glass border border-white/[0.08]">
+    <section class="mt-8 p-6 rounded-xl glass" style="border: 1px solid var(--color-border)">
       <h2 class="text-xl font-semibold mb-6">工具对比矩阵</h2>
       <div class="overflow-x-auto">
         <table class="w-full text-sm">
           <thead>
-            <tr class="border-b border-white/[0.08]">
+            <tr class="border-b" style="border-color: var(--color-border)">
               <th class="text-left py-3 px-3 text-gray-400 font-medium whitespace-nowrap">工具</th>
               <th class="text-left py-3 px-3 text-gray-400 font-medium whitespace-nowrap">开发商</th>
               <th class="text-left py-3 px-3 text-gray-400 font-medium whitespace-nowrap">定价</th>
@@ -54,7 +54,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for="tool in comparisonData" :key="tool.id" class="border-b border-white/[0.04] hover:bg-white/[0.03] transition-colors">
+            <tr v-for="tool in comparisonData" :key="tool.id" class="border-b border-white/[0.04] hover:bg-black/5 transition-colors">
               <td class="py-3 px-3">
                 <NuxtLink :to="`/tools/${tool.id}`" class="flex items-center gap-2 hover:text-blue-400 transition-colors">
                   <span>{{ tool.icon }}</span>
@@ -68,36 +68,36 @@
               <td class="py-3 px-3 text-center">{{ tool.multiFile }}</td>
               <td class="py-3 px-3 text-center">{{ tool.agent }}</td>
               <td class="py-3 px-3 text-center">{{ tool.chinese }}</td>
-              <td class="py-3 px-3 text-gray-400 text-xs">{{ tool.bestFor }}</td>
+              <td class="py-3 px-3 text-xs">{{ tool.bestFor }}</td>
             </tr>
           </tbody>
         </table>
       </div>
-      <p class="text-gray-500 text-xs mt-4">⭐ 评级为编辑评估，非严格 benchmark。数据基于各工具官方文档和公开信息，如有偏差欢迎反馈。定价和功能可能已更新，请以官网为准。</p>
+      <p class="text-xs mt-4">⭐ 评级为编辑评估，非严格 benchmark。数据基于各工具官方文档和公开信息，如有偏差欢迎反馈。定价和功能可能已更新，请以官网为准。</p>
     </section>
 
     <!-- 如何选择 -->
-    <section class="mt-8 p-6 rounded-xl glass border border-white/[0.08]">
+    <section class="mt-8 p-6 rounded-xl glass" style="border: 1px solid var(--color-border)">
       <h2 class="text-xl font-semibold mb-4">如何选择合适的工具？</h2>
-      <p class="text-gray-400 text-sm mb-6">根据你的实际需求做决策，而非按身份标签选择</p>
+      <p class="text-sm mb-6">根据你的实际需求做决策，而非按身份标签选择</p>
 
       <!-- 决策维度 -->
       <div class="space-y-4 mb-8">
-        <div class="p-4 rounded-lg bg-white/[0.03] border border-white/[0.06]">
+        <div class="p-4 rounded-lg" style="background: var(--color-bg-surface); border: 1px solid var(--color-border)">
           <h3 class="font-medium mb-2 text-blue-400">💰 预算有限？</h3>
-          <p class="text-gray-400 text-sm">优先考虑免费工具：Trae、CodeBuddy、Qoder 均提供免费版本。Cursor 和 Copilot 有免费额度但功能受限。</p>
+          <p class="text-sm">优先考虑免费工具：Trae、CodeBuddy、Qoder 均提供免费版本。Cursor 和 Copilot 有免费额度但功能受限。</p>
         </div>
-        <div class="p-4 rounded-lg bg-white/[0.03] border border-white/[0.06]">
+        <div class="p-4 rounded-lg" style="background: var(--color-bg-surface); border: 1px solid var(--color-border)">
           <h3 class="font-medium mb-2 text-green-400">🌐 网络环境受限？</h3>
-          <p class="text-gray-400 text-sm">国内直连：Trae、CodeBuddy、Qoder 无需科学上网。Cursor、Copilot、Claude Code 需要稳定的国际网络。</p>
+          <p class="text-sm">国内直连：Trae、CodeBuddy、Qoder 无需科学上网。Cursor、Copilot、Claude Code 需要稳定的国际网络。</p>
         </div>
-        <div class="p-4 rounded-lg bg-white/[0.03] border border-white/[0.06]">
+        <div class="p-4 rounded-lg" style="background: var(--color-bg-surface); border: 1px solid var(--color-border)">
           <h3 class="font-medium mb-2 text-purple-400">🎯 需要深度推理？</h3>
-          <p class="text-gray-400 text-sm">处理复杂架构、大型代码库理解：Claude Code 的 200K 上下文和深度推理能力是当前最强。Cursor 的多 Agent 并行也适合复杂项目。</p>
+          <p class="text-sm">处理复杂架构、大型代码库理解：Claude Code 的 200K 上下文和深度推理能力是当前最强。Cursor 的多 Agent 并行也适合复杂项目。</p>
         </div>
-        <div class="p-4 rounded-lg bg-white/[0.03] border border-white/[0.06]">
+        <div class="p-4 rounded-lg" style="background: var(--color-bg-surface); border: 1px solid var(--color-border)">
           <h3 class="font-medium mb-2 text-amber-400">👥 团队协作？</h3>
-          <p class="text-gray-400 text-sm">需要统一配置和管理：GitHub Copilot Business 和 Cursor Business 提供团队管理功能。也可通过项目规则文件（.cursorrules / CLAUDE.md）统一 AI 行为。</p>
+          <p class="text-sm">需要统一配置和管理：GitHub Copilot Business 和 Cursor Business 提供团队管理功能。也可通过项目规则文件（.cursorrules / CLAUDE.md）统一 AI 行为。</p>
         </div>
       </div>
 

@@ -1,15 +1,15 @@
 <template>
-  <div class="rounded-xl border border-white/[0.08] bg-white/5 overflow-hidden">
-    <div class="px-6 py-4 border-b border-white/[0.08] bg-white/5">
-      <h3 class="font-semibold flex items-center gap-2">
+  <div class="rounded-xl overflow-hidden" style="background: var(--color-bg-card); border: 1px solid var(--color-border)">
+    <div class="px-6 py-4" style="border-bottom: 1px solid var(--color-border); background: var(--color-bg-surface)">
+      <h3 class="font-semibold flex items-center gap-2" style="color: var(--color-text-primary)">
         <span>🧪</span> Prompt 工坊 — 动手试试
       </h3>
-      <p class="text-sm text-gray-500 mt-1">选择一个场景，调整 Prompt 策略，观察输出质量的变化</p>
+      <p class="text-sm mt-1" style="color: var(--color-text-muted)">选择一个场景，调整 Prompt 策略，观察输出质量的变化</p>
     </div>
 
     <!-- 场景选择 -->
-    <div class="px-6 py-4 border-b border-white/[0.08]">
-      <label class="text-sm text-gray-400 mb-2 block">选择场景</label>
+    <div class="px-6 py-4" style="border-bottom: 1px solid var(--color-border)">
+      <label class="text-sm mb-2 block" style="color: var(--color-text-muted)">选择场景</label>
       <div class="flex flex-wrap gap-2">
         <button
           v-for="scene in scenes"
@@ -18,7 +18,8 @@
           class="px-3 py-1.5 rounded-lg text-sm transition-all"
           :class="activeScene === scene.id
             ? 'bg-blue-500/20 text-blue-400 border border-blue-500/30'
-            : 'bg-white/5 text-gray-400 border border-white/[0.08] hover:border-white/20'"
+            : 'border'"
+          :style="activeScene === scene.id ? '' : { borderColor: 'var(--color-border)', background: 'var(--color-bg-surface)', color: 'var(--color-text-muted)' }"
         >
           {{ scene.icon }} {{ scene.name }}
         </button>
@@ -26,8 +27,8 @@
     </div>
 
     <!-- 策略选择 -->
-    <div class="px-6 py-4 border-b border-white/[0.08]">
-      <label class="text-sm text-gray-400 mb-2 block">Prompt 策略</label>
+    <div class="px-6 py-4" style="border-bottom: 1px solid var(--color-border)">
+      <label class="text-sm mb-2 block" style="color: var(--color-text-muted)">Prompt 策略</label>
       <div class="flex flex-wrap gap-2">
         <button
           v-for="strategy in strategies"
@@ -36,7 +37,8 @@
           class="px-3 py-1.5 rounded-lg text-sm transition-all"
           :class="activeStrategy === strategy.id
             ? 'bg-purple-500/20 text-purple-400 border border-purple-500/30'
-            : 'bg-white/5 text-gray-400 border border-white/[0.08] hover:border-white/20'"
+            : 'border'"
+          :style="activeStrategy === strategy.id ? '' : { borderColor: 'var(--color-border)', background: 'var(--color-bg-surface)', color: 'var(--color-text-muted)' }"
         >
           {{ strategy.label }}
         </button>
@@ -44,29 +46,30 @@
     </div>
 
     <!-- Prompt 展示 -->
-    <div class="px-6 py-4 border-b border-white/[0.08]">
+    <div class="px-6 py-4" style="border-bottom: 1px solid var(--color-border)">
       <div class="flex items-center justify-between mb-2">
-        <label class="text-sm text-gray-400">生成的 Prompt</label>
+        <label class="text-sm" style="color: var(--color-text-muted)">生成的 Prompt</label>
         <button
           @click="copyPrompt"
-          class="text-xs px-2 py-1 rounded bg-white/5 text-gray-400 hover:text-white transition-colors"
+          class="text-xs px-2 py-1 rounded transition-colors hover:text-white"
+          style="background: var(--color-bg-surface); color: var(--color-text-muted)"
         >
           {{ copied ? '✅ 已复制' : '📋 复制' }}
         </button>
       </div>
-      <pre class="bg-black/30 rounded-lg p-4 text-sm text-gray-200 overflow-x-auto whitespace-pre-wrap font-mono leading-relaxed">{{ currentPrompt }}</pre>
+      <pre class="rounded-lg p-4 text-sm overflow-x-auto whitespace-pre-wrap font-mono leading-relaxed" style="background: var(--code-bg); color: var(--color-text-secondary)">{{ currentPrompt }}</pre>
     </div>
 
     <!-- 对比说明 -->
     <div class="px-6 py-4">
       <div class="grid md:grid-cols-2 gap-4">
-        <div class="p-3 rounded-lg bg-red-500/5 border border-red-500/10">
+        <div class="p-3 rounded-lg" style="background: rgba(220, 38, 38, 0.04); border: 1px solid rgba(220, 38, 38, 0.12)">
           <p class="text-xs text-red-400 font-medium mb-1">❌ 为什么基础版不够好</p>
-          <p class="text-xs text-gray-400">{{ currentScene?.badReason }}</p>
+          <p class="text-xs" style="color: var(--color-text-muted)">{{ currentScene?.badReason }}</p>
         </div>
-        <div class="p-3 rounded-lg bg-green-500/5 border border-green-500/10">
+        <div class="p-3 rounded-lg" style="background: rgba(5, 150, 105, 0.04); border: 1px solid rgba(5, 150, 105, 0.12)">
           <p class="text-xs text-green-400 font-medium mb-1">✅ 优化版的改进点</p>
-          <p class="text-xs text-gray-400">{{ currentScene?.goodReason }}</p>
+          <p class="text-xs" style="color: var(--color-text-muted)">{{ currentScene?.goodReason }}</p>
         </div>
       </div>
     </div>
@@ -293,7 +296,6 @@ async function copyPrompt() {
     copied.value = true
     setTimeout(() => { copied.value = false }, 2000)
   } catch {
-    // fallback
     const textarea = document.createElement('textarea')
     textarea.value = currentPrompt.value
     document.body.appendChild(textarea)

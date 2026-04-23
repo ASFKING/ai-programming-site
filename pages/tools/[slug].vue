@@ -5,7 +5,7 @@
 
     <ContentDoc :path="`/tools/${slug}`" v-slot="{ doc }">
       <div class="flex gap-8">
-        <article class="prose prose-invert max-w-none flex-1 min-w-0">
+        <article :class="[proseClass, 'max-w-none flex-1 min-w-0']">
           <h1>{{ doc.title }}</h1>
           <ContentRenderer :value="doc" />
         </article>
@@ -28,8 +28,8 @@
       <div class="flex items-center gap-4">
         <span class="text-5xl">{{ currentTool?.icon }}</span>
         <div>
-          <h1 class="text-3xl font-bold">{{ currentTool?.name }}</h1>
-          <p class="text-gray-400">{{ currentTool?.vendor }}</p>
+          <h1 class="text-3xl font-bold" style="color: var(--color-text-primary)">{{ currentTool?.name }}</h1>
+          <p style="color: var(--color-text-muted)">{{ currentTool?.vendor }}</p>
         </div>
       </div>
 
@@ -45,17 +45,17 @@
 
       <section class="card">
         <h2 class="text-xl font-semibold mb-4">定价</h2>
-        <p class="text-gray-300">{{ currentTool?.pricing }}</p>
+        <p style="color: var(--color-text-secondary)">{{ currentTool?.pricing }}</p>
       </section>
 
       <section class="card">
         <h2 class="text-xl font-semibold mb-4">网络要求</h2>
-        <p class="text-gray-300">{{ currentTool?.network }}</p>
+        <p style="color: var(--color-text-secondary)">{{ currentTool?.network }}</p>
       </section>
 
       <section class="card">
         <h2 class="text-xl font-semibold mb-4">适用场景</h2>
-        <p class="text-gray-300">{{ currentTool?.useCases }}</p>
+        <p style="color: var(--color-text-secondary)">{{ currentTool?.useCases }}</p>
       </section>
     </div>
   </div>
@@ -64,6 +64,7 @@
 <script setup lang="ts">
 const route = useRoute()
 const slug = route.params.slug as string
+const { proseClass } = useTheme()
 
 const hasContent = ref(false)
 

@@ -1,7 +1,7 @@
 <template>
   <nav class="py-4">
     <div class="px-4 mb-4">
-      <h3 class="text-xs font-semibold text-gray-500 uppercase tracking-wider">
+      <h3 class="text-xs font-semibold uppercase tracking-wider" style="color: var(--color-text-muted)">
         {{ sectionTitle }}
       </h3>
     </div>
@@ -12,7 +12,8 @@
           class="flex items-center gap-3 px-4 py-2 text-sm rounded-lg transition-all duration-200"
           :class="isActive(item.path)
             ? 'bg-blue-500/20 text-blue-400'
-            : 'text-gray-400 hover:text-gray-100 hover:bg-white/5'"
+            : 'hover:bg-black/5'"
+          :style="isActive(item.path) ? '' : { color: 'var(--color-text-muted)' }"
         >
           <span v-if="item.icon" class="text-lg">{{ item.icon }}</span>
           {{ item.name }}

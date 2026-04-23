@@ -2,17 +2,17 @@
   <div class="space-y-8">
     <div>
       <h1 class="text-3xl font-bold mb-4">编程范式</h1>
-      <p class="text-gray-400">从代码补全到智能体，AI编程的四层演进</p>
+      <p style="color: var(--color-text-muted)">从代码补全到智能体，AI编程的四层演进</p>
     </div>
 
     <!-- 演进路线图 -->
-    <section class="p-6 rounded-xl glass border border-white/[0.08]">
+    <section class="p-6 rounded-xl glass" style="border: 1px solid var(--color-border)">
       <h2 class="text-xl font-semibold mb-6">演进路线</h2>
       <div class="flex items-center justify-between gap-2 overflow-x-auto pb-2">
         <div v-for="(step, index) in evolutionSteps" :key="step.id" class="flex items-center gap-2 shrink-0">
           <NuxtLink
             :to="`/paradigms/${step.id}`"
-            class="flex flex-col items-center gap-2 p-3 rounded-lg hover:bg-white/5 transition-colors group"
+            class="flex flex-col items-center gap-2 p-3 rounded-lg hover:bg-black/5 transition-colors group"
           >
             <span class="text-3xl">{{ step.icon }}</span>
             <span class="text-sm font-medium group-hover:text-blue-400 transition-colors">{{ step.label }}</span>
@@ -36,7 +36,7 @@
         <h2 class="text-xl font-semibold mb-2 paradigm-title transition-colors">
           {{ paradigm.name }}
         </h2>
-        <p class="text-gray-400 text-sm mb-4">{{ paradigm.description }}</p>
+        <p class="text-sm mb-4">{{ paradigm.description }}</p>
         <div class="flex flex-wrap gap-2">
           <span v-for="tag in paradigm.tags" :key="tag" class="px-2 py-1 rounded text-xs paradigm-tag">
             {{ tag }}
@@ -46,12 +46,12 @@
     </div>
 
     <!-- 范式对比 -->
-    <section class="mt-12 p-6 rounded-xl glass border border-white/[0.08]">
+    <section class="mt-12 p-6 rounded-xl glass" style="border: 1px solid var(--color-border)">
       <h2 class="text-xl font-semibold mb-6">范式对比</h2>
       <div class="overflow-x-auto">
         <table class="w-full">
           <thead>
-            <tr class="border-b border-white/[0.08]">
+            <tr class="border-b" style="border-color: var(--color-border)">
               <th class="text-left py-3 px-4 text-gray-400 font-medium">维度</th>
               <th class="text-left py-3 px-4 text-cyan-400 font-medium">Code Completion</th>
               <th class="text-left py-3 px-4 text-blue-400 font-medium">Vibe Coding</th>

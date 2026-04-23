@@ -3,7 +3,7 @@
     <!-- 标题区 -->
     <div>
       <h1 class="text-3xl font-bold mb-4">方法论</h1>
-      <p class="text-gray-400 text-lg">从日常对话到工程化实践，选择适合你的 AI 编程工作方式</p>
+      <p class="text-lg">从日常对话到工程化实践，选择适合你的 AI 编程工作方式</p>
     </div>
 
     <!-- 第一层：日常协作 -->
@@ -31,7 +31,7 @@
           <h3 class="text-lg font-semibold mb-2 group-hover:text-blue-400 transition-colors">
             {{ item.name }}
           </h3>
-          <p class="text-gray-400 text-sm mb-4">{{ item.description }}</p>
+          <p class="text-sm mb-4">{{ item.description }}</p>
           <div class="flex items-center justify-between">
             <span class="text-sm text-gray-500">{{ item.readTime }}</span>
             <span class="text-sm text-blue-400 opacity-0 group-hover:opacity-100 transition-opacity">
@@ -70,7 +70,7 @@
           <h3 class="text-lg font-semibold mb-2 group-hover:text-blue-400 transition-colors">
             {{ item.name }}
           </h3>
-          <p class="text-gray-400 text-sm mb-4">{{ item.description }}</p>
+          <p class="text-sm mb-4">{{ item.description }}</p>
           <div class="flex items-center justify-between">
             <span class="text-sm text-gray-500">{{ item.readTime }}</span>
             <span class="text-sm text-blue-400 opacity-0 group-hover:opacity-100 transition-opacity">
@@ -111,9 +111,9 @@
                   {{ item.difficulty }}
                 </span>
               </div>
-              <p class="text-gray-400 text-sm mb-4">{{ item.description }}</p>
+              <p class="text-sm mb-4">{{ item.description }}</p>
               <div class="flex flex-wrap gap-2">
-                <span v-for="tag in item.tags" :key="tag" class="px-2 py-1 bg-white/5 rounded text-xs text-gray-400">
+                <span v-for="tag in item.tags" :key="tag" class="px-2 py-1 rounded text-xs" style="background: var(--color-bg-surface); color: var(--color-text-muted)">
                   {{ tag }}
                 </span>
               </div>
@@ -136,7 +136,7 @@
     </section>
 
     <!-- Spec 流程图 -->
-    <section class="p-6 rounded-xl glass border border-white/[0.08]">
+    <section class="p-6 rounded-xl glass" style="border: 1px solid var(--color-border)">
       <h2 class="text-xl font-semibold mb-6">Spec-Driven Development 流程</h2>
       <div class="space-y-4">
         <div v-for="(step, index) in specSteps" :key="index" class="flex gap-4">
@@ -145,7 +145,7 @@
           </div>
           <div>
             <h3 class="font-medium">{{ step.name }}</h3>
-            <p class="text-gray-400 text-sm">{{ step.description }}</p>
+            <p class="text-sm">{{ step.description }}</p>
           </div>
         </div>
       </div>
