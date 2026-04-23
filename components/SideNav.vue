@@ -55,12 +55,13 @@ const navItems = computed(() => {
 
   if (path.startsWith('/methodology')) {
     return [
-      { name: 'Spec驱动开发', path: '/methodology/spec-driven', icon: '📋' },
+      { name: 'Chat 模式', path: '/methodology/chat-mode', icon: '💬' },
+      { name: 'Plan 模式', path: '/methodology/plan-mode', icon: '📝' },
       { name: '个人规则', path: '/methodology/personal-rules', icon: '👤' },
       { name: '项目规则', path: '/methodology/project-rules', icon: '📁' },
+      { name: 'AGENTS.md', path: '/methodology/agents-claude-md', icon: '📄' },
       { name: 'Skills', path: '/methodology/skills', icon: '⚡' },
-      { name: 'Plan模式', path: '/methodology/plan-mode', icon: '📝' },
-      { name: 'Chat模式', path: '/methodology/chat-mode', icon: '💬' }
+      { name: 'Spec 驱动开发', path: '/methodology/spec-driven', icon: '📋' }
     ]
   }
 
