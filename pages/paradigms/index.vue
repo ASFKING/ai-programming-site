@@ -29,15 +29,16 @@
         v-for="paradigm in paradigms"
         :key="paradigm.id"
         :to="`/paradigms/${paradigm.id}`"
-        class="card group"
+        class="card group paradigm-card"
+        :class="`paradigm-${paradigm.id}`"
       >
         <div class="text-4xl mb-4">{{ paradigm.icon }}</div>
-        <h2 class="text-xl font-semibold mb-2 group-hover:text-blue-400 transition-colors">
+        <h2 class="text-xl font-semibold mb-2 paradigm-title transition-colors">
           {{ paradigm.name }}
         </h2>
         <p class="text-gray-400 text-sm mb-4">{{ paradigm.description }}</p>
         <div class="flex flex-wrap gap-2">
-          <span v-for="tag in paradigm.tags" :key="tag" class="px-2 py-1 bg-white/5 rounded text-xs text-gray-400">
+          <span v-for="tag in paradigm.tags" :key="tag" class="px-2 py-1 rounded text-xs paradigm-tag">
             {{ tag }}
           </span>
         </div>

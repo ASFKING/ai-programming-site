@@ -75,6 +75,107 @@ pre {
   overflow-x: auto;
 }
 
+/* Page transitions */
+.page-enter-active,
+.page-leave-active {
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.page-enter-from {
+  opacity: 0;
+  transform: translateY(8px);
+}
+
+.page-leave-to {
+  opacity: 0;
+  transform: translateY(-8px);
+}
+
+/* Paradigm color accents */
+.paradigm-code-completion {
+  --accent: #22d3ee;
+  --accent-bg: rgba(34, 211, 238, 0.08);
+  --accent-border: rgba(34, 211, 238, 0.25);
+}
+
+.paradigm-vibe-coding {
+  --accent: #a78bfa;
+  --accent-bg: rgba(167, 139, 250, 0.08);
+  --accent-border: rgba(167, 139, 250, 0.25);
+}
+
+.paradigm-spec-coding {
+  --accent: #fbbf24;
+  --accent-bg: rgba(251, 191, 36, 0.08);
+  --accent-border: rgba(251, 191, 36, 0.25);
+}
+
+.paradigm-agentic-coding {
+  --accent: #f87171;
+  --accent-bg: rgba(248, 113, 113, 0.08);
+  --accent-border: rgba(248, 113, 113, 0.25);
+}
+
+.paradigm-card {
+  background-color: var(--accent-bg, var(--color-bg-card));
+  border-color: var(--accent-border, var(--color-border));
+}
+
+.paradigm-card:hover {
+  border-color: var(--accent, var(--color-border-hover));
+  box-shadow: 0 0 20px var(--accent-bg, transparent);
+}
+
+.paradigm-card .paradigm-title {
+  color: var(--accent, var(--color-text-primary));
+}
+
+.paradigm-card .paradigm-tag {
+  background-color: var(--accent-bg, rgba(255,255,255,0.05));
+  color: var(--accent, var(--color-text-secondary));
+}
+
+/* Code comparison component */
+.code-compare {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+@media (max-width: 768px) {
+  .code-compare {
+    grid-template-columns: 1fr;
+  }
+}
+
+.code-compare-bad {
+  border: 1px solid rgba(248, 113, 113, 0.3);
+  border-radius: 0.75rem;
+  overflow: hidden;
+}
+
+.code-compare-good {
+  border: 1px solid rgba(52, 211, 153, 0.3);
+  border-radius: 0.75rem;
+  overflow: hidden;
+}
+
+.code-compare-label {
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.code-compare-bad .code-compare-label {
+  background: rgba(248, 113, 113, 0.1);
+  color: #f87171;
+}
+
+.code-compare-good .code-compare-label {
+  background: rgba(52, 211, 153, 0.1);
+  color: #34d399;
+}
+
 /* Scrollbar */
 ::-webkit-scrollbar {
   width: 8px;

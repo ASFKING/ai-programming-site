@@ -11,7 +11,8 @@
         v-for="tool in tools"
         :key="tool.id"
         :to="`/tools/${tool.id}`"
-        class="card group"
+        class="card group hover:-translate-y-1 transition-all duration-300"
+        :class="tool.category === '国内' ? 'hover:border-green-400/50 hover:shadow-green-500/10' : 'hover:border-blue-400/50 hover:shadow-blue-500/10'"
       >
         <div class="flex items-start justify-between mb-4">
           <div class="text-3xl">{{ tool.icon }}</div>
@@ -27,7 +28,7 @@
         </h3>
         <p class="text-gray-400 text-sm mb-4">{{ tool.description }}</p>
         <div class="flex flex-wrap gap-2">
-          <span v-for="feature in tool.features.slice(0, 2)" :key="feature" class="px-2 py-1 bg-white/5 rounded text-xs text-gray-400">
+          <span v-for="feature in tool.features.slice(0, 3)" :key="feature" class="px-2 py-1 bg-white/5 rounded text-xs text-gray-400">
             {{ feature }}
           </span>
         </div>

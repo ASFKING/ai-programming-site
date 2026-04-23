@@ -69,15 +69,16 @@
           v-for="paradigm in paradigms"
           :key="paradigm.path"
           :to="paradigm.path"
-          class="p-6 rounded-xl border border-[#334155] hover:border-blue-400/50 bg-[#1e2a3a] transition-colors"
+          class="p-6 rounded-xl border transition-all duration-300 hover:-translate-y-1"
+          :class="paradigm.cardClass"
         >
           <div class="flex items-center gap-3 mb-2">
             <span class="text-2xl">{{ paradigm.icon }}</span>
-            <h3 class="text-xl font-semibold">{{ paradigm.name }}</h3>
+            <h3 class="text-xl font-semibold" :class="paradigm.titleClass">{{ paradigm.name }}</h3>
           </div>
           <p class="text-gray-400 text-sm mb-4">{{ paradigm.description }}</p>
           <div class="flex flex-wrap gap-2">
-            <span v-for="tag in paradigm.tags" :key="tag" class="px-2 py-1 bg-white/5 rounded text-xs text-gray-400">
+            <span v-for="tag in paradigm.tags" :key="tag" class="px-2 py-1 rounded text-xs" :class="paradigm.tagClass">
               {{ tag }}
             </span>
           </div>
@@ -147,28 +148,40 @@ const paradigms = [
     icon: '⌨️',
     description: '代码补全 - AI预测下一步代码，按Tab接受，最基础的AI编程形态',
     tags: ['被动响应', '低门槛', '日常编码'],
-    path: '/paradigms/code-completion'
+    path: '/paradigms/code-completion',
+    cardClass: 'bg-cyan-500/5 border-cyan-500/20 hover:border-cyan-400/50 hover:shadow-cyan-500/10',
+    titleClass: 'text-cyan-400',
+    tagClass: 'bg-cyan-500/10 text-cyan-400'
   },
   {
     name: 'Vibe Coding',
     icon: '🎵',
     description: '氛围编程 - 意图驱动，AI生成代码，人只需描述"做什么"',
     tags: ['快速验证', '创意优先', '适合原型'],
-    path: '/paradigms/vibe-coding'
+    path: '/paradigms/vibe-coding',
+    cardClass: 'bg-purple-500/5 border-purple-500/20 hover:border-purple-400/50 hover:shadow-purple-500/10',
+    titleClass: 'text-purple-400',
+    tagClass: 'bg-purple-500/10 text-purple-400'
   },
   {
     name: 'Spec Coding',
     icon: '📋',
     description: '规格编程 - 先写规格再实现，契约驱动的工程化开发',
     tags: ['规格先行', '可追溯', '团队协作'],
-    path: '/paradigms/spec-coding'
+    path: '/paradigms/spec-coding',
+    cardClass: 'bg-amber-500/5 border-amber-500/20 hover:border-amber-400/50 hover:shadow-amber-500/10',
+    titleClass: 'text-amber-400',
+    tagClass: 'bg-amber-500/10 text-amber-400'
   },
   {
     name: 'Agentic Coding',
     icon: '🧠',
     description: '智能体编程 - AI自主规划、执行、迭代，端到端交付',
     tags: ['工程化', '可靠可扩展', '适合生产'],
-    path: '/paradigms/agentic-coding'
+    path: '/paradigms/agentic-coding',
+    cardClass: 'bg-red-500/5 border-red-500/20 hover:border-red-400/50 hover:shadow-red-500/10',
+    titleClass: 'text-red-400',
+    tagClass: 'bg-red-500/10 text-red-400'
   }
 ]
 </script>

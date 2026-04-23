@@ -8,8 +8,8 @@ export default defineNuxtConfig({
     '@nuxtjs/tailwindcss'
   ],
 
-  // GitHub Pages deployment - 关键修改
-  ssr: false,                      // 静态站点建议关闭 SSR
+  // GitHub Pages deployment
+  ssr: false,
   nitro: {
     preset: 'github-pages',
     prerender: {
@@ -21,14 +21,28 @@ export default defineNuxtConfig({
   },
 
   app: {
-    baseURL: '/ai-programming-site/',   // 正确设置子路径
-    buildAssetsDir: 'assets',           // 避免 _ 开头的文件夹（GitHub Pages 忽略）
+    baseURL: '/ai-programming-site/',
+    buildAssetsDir: 'assets',
+    pageTransition: { name: 'page', mode: 'out-in' },
     head: {
-      title: 'AI编程介绍网站',
+      title: 'AI编程：智能开发的未来 - 从代码补全到智能体编程',
+      htmlAttrs: { lang: 'zh-CN' },
       meta: [
         { charset: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-        { name: 'description', content: 'AI编程技术介绍网站 - 了解AI编程工具、方法和未来趋势' }
+        { name: 'description', content: '全面了解AI编程技术、工具和方法论。从代码补全到智能体编程，掌握AI时代的软件开发方式。' },
+        { name: 'keywords', content: 'AI编程, 代码补全, Vibe Coding, Agentic Coding, Cursor, Claude Code, GitHub Copilot, AI开发工具' },
+        { property: 'og:title', content: 'AI编程：智能开发的未来' },
+        { property: 'og:description', content: '从代码补全到智能体编程，AI正在重塑软件开发的方式。' },
+        { property: 'og:type', content: 'website' },
+        { property: 'og:locale', content: 'zh_CN' },
+        { name: 'twitter:card', content: 'summary_large_image' },
+        { name: 'twitter:title', content: 'AI编程：智能开发的未来' },
+        { name: 'twitter:description', content: '从代码补全到智能体编程，AI正在重塑软件开发的方式。' },
+        { name: 'theme-color', content: '#111827' }
+      ],
+      link: [
+        { rel: 'icon', type: 'image/svg+xml', href: '/ai-programming-site/favicon.svg' }
       ]
     }
   },
