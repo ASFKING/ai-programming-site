@@ -57,7 +57,10 @@ const navItems = computed(() => {
     return [
       { name: 'Spec驱动开发', path: '/methodology/spec-driven', icon: '📋' },
       { name: '个人规则', path: '/methodology/personal-rules', icon: '👤' },
-      { name: 'Skills', path: '/methodology/skills', icon: '⚡' }
+      { name: '项目规则', path: '/methodology/project-rules', icon: '📁' },
+      { name: 'Skills', path: '/methodology/skills', icon: '⚡' },
+      { name: 'Plan模式', path: '/methodology/plan-mode', icon: '📝' },
+      { name: 'Chat模式', path: '/methodology/chat-mode', icon: '💬' }
     ]
   }
 
