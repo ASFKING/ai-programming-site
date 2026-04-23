@@ -4,59 +4,59 @@
     <Breadcrumb :items="breadcrumbItems" />
 
     <ContentDoc :path="`/tools/${slug}`" v-slot="{ doc }">
-      <div class="flex gap-8">
-        <article :class="[proseClass, 'max-w-none flex-1 min-w-0']">
-          <ContentRenderer :value="doc" />
-        </article>
-        <aside class="hidden xl:block w-56 shrink-0">
-          <PageToc :toc="doc.body?.toc?.links || []" />
-        </aside>
-      </div>
-
-      <!-- 社区入口 -->
-      <div class="mt-8">
-        <CommunityLinks />
-      </div>
-
-      <!-- 反馈组件 -->
-      <FeedbackWidget :page-path="`/tools/${slug}`" />
-    </ContentDoc>
-
-    <!-- 如果没有内容，显示静态内容 -->
-    <div v-if="!hasContent" class="space-y-8">
-      <div class="flex items-center gap-4">
-        <span class="text-5xl">{{ currentTool?.icon }}</span>
-        <div>
-          <h1 class="text-3xl font-bold" style="color: var(--color-text-primary)">{{ currentTool?.name }}</h1>
-          <p style="color: var(--color-text-muted)">{{ currentTool?.vendor }}</p>
+      <!-- Markdown 内容存在时 -->
+      <template v-if="doc">
+        <div class="flex gap-8">
+          <article :class="[proseClass, 'max-w-none flex-1 min-w-0']">
+            <ContentRenderer :value="doc" />
+          </article>
+          <aside class="hidden xl:block w-56 shrink-0">
+            <PageToc :toc="doc.body?.toc?.links || []" />
+          </aside>
         </div>
-      </div>
 
-      <section class="card">
-        <h2 class="text-xl font-semibold mb-4">核心功能</h2>
-        <ul class="space-y-2">
-          <li v-for="feature in currentTool?.features" :key="feature" class="flex items-center gap-2">
-            <span class="text-blue-400">✓</span>
-            {{ feature }}
-          </li>
-        </ul>
-      </section>
+        <div class="mt-8"><CommunityLinks /></div>
+        <FeedbackWidget :page-path="`/tools/${slug}`" />
+      </template>
 
-      <section class="card">
-        <h2 class="text-xl font-semibold mb-4">定价</h2>
-        <p style="color: var(--color-text-secondary)">{{ currentTool?.pricing }}</p>
-      </section>
+      <!-- Markdown 内容不存在时：渲染硬编码 fallback -->
+      <template v-else>
+        <div class="space-y-8">
+          <div class="flex items-center gap-4">
+            <span class="text-5xl">{{ currentTool?.icon }}</span>
+            <div>
+              <h1 class="text-3xl font-bold" style="color: var(--color-text-primary)">{{ currentTool?.name }}</h1>
+              <p style="color: var(--color-text-muted)">{{ currentTool?.vendor }}</p>
+            </div>
+          </div>
 
-      <section class="card">
-        <h2 class="text-xl font-semibold mb-4">网络要求</h2>
-        <p style="color: var(--color-text-secondary)">{{ currentTool?.network }}</p>
-      </section>
+          <section class="card">
+            <h2 class="text-xl font-semibold mb-4">核心功能</h2>
+            <ul class="space-y-2">
+              <li v-for="feature in currentTool?.features" :key="feature" class="flex items-center gap-2">
+                <span class="text-blue-400">✓</span>
+                {{ feature }}
+              </li>
+            </ul>
+          </section>
 
-      <section class="card">
-        <h2 class="text-xl font-semibold mb-4">适用场景</h2>
-        <p style="color: var(--color-text-secondary)">{{ currentTool?.useCases }}</p>
-      </section>
-    </div>
+          <section class="card">
+            <h2 class="text-xl font-semibold mb-4">定价</h2>
+            <p style="color: var(--color-text-secondary)">{{ currentTool?.pricing }}</p>
+          </section>
+
+          <section class="card">
+            <h2 class="text-xl font-semibold mb-4">网络要求</h2>
+            <p style="color: var(--color-text-secondary)">{{ currentTool?.network }}</p>
+          </section>
+
+          <section class="card">
+            <h2 class="text-xl font-semibold mb-4">适用场景</h2>
+            <p style="color: var(--color-text-secondary)">{{ currentTool?.useCases }}</p>
+          </section>
+        </div>
+      </template>
+    </ContentDoc>
   </div>
 </template>
 
@@ -64,8 +64,6 @@
 const route = useRoute()
 const slug = route.params.slug as string
 const { proseClass } = useTheme()
-
-const hasContent = ref(false)
 
 const toolsData: Record<string, any> = {
   trae: {

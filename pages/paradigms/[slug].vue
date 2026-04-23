@@ -3,103 +3,108 @@
     <Breadcrumb :items="breadcrumbItems" />
 
     <ContentDoc :path="`/paradigms/${slug}`" v-slot="{ doc }">
-      <div class="flex gap-8">
-        <article :class="[proseClass, 'max-w-none flex-1 min-w-0']">
-          <ContentRenderer :value="doc" />
-        </article>
-        <aside class="hidden xl:block w-56 shrink-0">
-          <PageToc :toc="doc.body?.toc?.links || []" />
-        </aside>
-      </div>
+      <!-- Markdown 内容存在时：渲染 Markdown -->
+      <template v-if="doc">
+        <div class="flex gap-8">
+          <article :class="[proseClass, 'max-w-none flex-1 min-w-0']">
+            <ContentRenderer :value="doc" />
+          </article>
+          <aside class="hidden xl:block w-56 shrink-0">
+            <PageToc :toc="doc.body?.toc?.links || []" />
+          </aside>
+        </div>
 
-      <div class="mt-12"><InteractivePromptTool /></div>
-      <div class="mt-8"><CommunityLinks /></div>
-      <FeedbackWidget :page-path="`/paradigms/${slug}`" />
+        <div class="mt-12"><InteractivePromptTool /></div>
+        <div class="mt-8"><CommunityLinks /></div>
+        <FeedbackWidget :page-path="`/paradigms/${slug}`" />
+      </template>
+
+      <!-- Markdown 内容不存在时：渲染硬编码 fallback -->
+      <template v-else>
+        <div class="space-y-8">
+          <div class="flex items-center gap-4">
+            <span class="text-5xl">{{ currentParadigm?.icon }}</span>
+            <div>
+              <h1 class="text-3xl font-bold" :class="titleColorClass">{{ currentParadigm?.name }}</h1>
+              <p style="color: var(--color-text-muted)">{{ currentParadigm?.enName }}</p>
+            </div>
+          </div>
+
+          <section class="card">
+            <h2 class="text-xl font-semibold mb-4" style="color: var(--color-text-primary)">定义</h2>
+            <p style="color: var(--color-text-secondary)">{{ currentParadigm?.definition }}</p>
+          </section>
+
+          <section class="card">
+            <h2 class="text-xl font-semibold mb-4" style="color: var(--color-text-primary)">核心理念</h2>
+            <ul class="space-y-3">
+              <li v-for="(item, index) in currentParadigm?.concepts" :key="index" class="flex items-start gap-3">
+                <span class="mt-1" :class="accentTextClass">•</span>
+                <span style="color: var(--color-text-secondary)">{{ item }}</span>
+              </li>
+            </ul>
+          </section>
+
+          <section v-if="currentParadigm?.codeExample" class="card">
+            <h2 class="text-xl font-semibold mb-4" style="color: var(--color-text-primary)">代码示例</h2>
+            <p class="text-sm mb-4" style="color: var(--color-text-muted)">{{ currentParadigm.codeExample.description }}</p>
+            <CodeCompare
+              :bad-code="currentParadigm.codeExample.bad"
+              :good-code="currentParadigm.codeExample.good"
+              :bad-label="currentParadigm.codeExample.badLabel"
+              :good-label="currentParadigm.codeExample.goodLabel"
+              :lang="currentParadigm.codeExample.lang"
+            />
+          </section>
+
+          <div class="grid md:grid-cols-2 gap-6">
+            <section class="card border-green-500/20">
+              <h2 class="text-xl font-semibold mb-4 text-green-400">✓ 适用场景</h2>
+              <ul class="space-y-2">
+                <li v-for="(scene, index) in currentParadigm?.scenes" :key="index" class="flex items-start gap-2">
+                  <span class="text-green-400 mt-0.5">✓</span>
+                  <span class="text-sm" style="color: var(--color-text-secondary)">{{ scene }}</span>
+                </li>
+              </ul>
+            </section>
+            <section class="card border-red-500/20">
+              <h2 class="text-xl font-semibold mb-4 text-red-400">✗ 不适用场景</h2>
+              <ul class="space-y-2">
+                <li v-for="(scene, index) in currentParadigm?.notSuitable" :key="index" class="flex items-start gap-2">
+                  <span class="text-red-400 mt-0.5">✗</span>
+                  <span class="text-sm" style="color: var(--color-text-secondary)">{{ scene }}</span>
+                </li>
+              </ul>
+            </section>
+          </div>
+
+          <section class="card">
+            <h2 class="text-xl font-semibold mb-4" style="color: var(--color-text-primary)">代表工具</h2>
+            <div class="flex flex-wrap gap-3">
+              <NuxtLink
+                v-for="tool in currentParadigm?.toolLinks"
+                :key="tool.slug"
+                :to="`/tools/${tool.slug}`"
+                class="px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 hover:-translate-y-0.5"
+                :class="`${accentBgClass} border border-current/20 hover:border-current/40`"
+              >
+                {{ tool.name }}
+              </NuxtLink>
+            </div>
+          </section>
+
+          <InteractivePromptTool />
+          <CommunityLinks />
+          <FeedbackWidget :page-path="`/paradigms/${slug}`" />
+        </div>
+      </template>
     </ContentDoc>
-
-    <div v-if="!hasContent" class="space-y-8">
-      <div class="flex items-center gap-4">
-        <span class="text-5xl">{{ currentParadigm?.icon }}</span>
-        <div>
-          <h1 class="text-3xl font-bold" :class="titleColorClass">{{ currentParadigm?.name }}</h1>
-          <p style="color: var(--color-text-muted)">{{ currentParadigm?.enName }}</p>
-        </div>
-      </div>
-
-      <section class="card">
-        <h2 class="text-xl font-semibold mb-4" style="color: var(--color-text-primary)">定义</h2>
-        <p style="color: var(--color-text-secondary)">{{ currentParadigm?.definition }}</p>
-      </section>
-
-      <section class="card">
-        <h2 class="text-xl font-semibold mb-4" style="color: var(--color-text-primary)">核心理念</h2>
-        <ul class="space-y-3">
-          <li v-for="(item, index) in currentParadigm?.concepts" :key="index" class="flex items-start gap-3">
-            <span class="mt-1" :class="accentTextClass">•</span>
-            <span style="color: var(--color-text-secondary)">{{ item }}</span>
-          </li>
-        </ul>
-      </section>
-
-      <section v-if="currentParadigm?.codeExample" class="card">
-        <h2 class="text-xl font-semibold mb-4" style="color: var(--color-text-primary)">代码示例</h2>
-        <p class="text-sm mb-4" style="color: var(--color-text-muted)">{{ currentParadigm.codeExample.description }}</p>
-        <CodeCompare
-          :bad-code="currentParadigm.codeExample.bad"
-          :good-code="currentParadigm.codeExample.good"
-          :bad-label="currentParadigm.codeExample.badLabel"
-          :good-label="currentParadigm.codeExample.goodLabel"
-          :lang="currentParadigm.codeExample.lang"
-        />
-      </section>
-
-      <div class="grid md:grid-cols-2 gap-6">
-        <section class="card border-green-500/20">
-          <h2 class="text-xl font-semibold mb-4 text-green-400">✓ 适用场景</h2>
-          <ul class="space-y-2">
-            <li v-for="(scene, index) in currentParadigm?.scenes" :key="index" class="flex items-start gap-2">
-              <span class="text-green-400 mt-0.5">✓</span>
-              <span class="text-sm" style="color: var(--color-text-secondary)">{{ scene }}</span>
-            </li>
-          </ul>
-        </section>
-        <section class="card border-red-500/20">
-          <h2 class="text-xl font-semibold mb-4 text-red-400">✗ 不适用场景</h2>
-          <ul class="space-y-2">
-            <li v-for="(scene, index) in currentParadigm?.notSuitable" :key="index" class="flex items-start gap-2">
-              <span class="text-red-400 mt-0.5">✗</span>
-              <span class="text-sm" style="color: var(--color-text-secondary)">{{ scene }}</span>
-            </li>
-          </ul>
-        </section>
-      </div>
-
-      <section class="card">
-        <h2 class="text-xl font-semibold mb-4" style="color: var(--color-text-primary)">代表工具</h2>
-        <div class="flex flex-wrap gap-3">
-          <NuxtLink
-            v-for="tool in currentParadigm?.toolLinks"
-            :key="tool.slug"
-            :to="`/tools/${tool.slug}`"
-            class="px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 hover:-translate-y-0.5"
-            :class="`${accentBgClass} border border-current/20 hover:border-current/40`"
-          >
-            {{ tool.name }}
-          </NuxtLink>
-        </div>
-      </section>
-
-      <InteractivePromptTool />
-      <CommunityLinks />
-      <FeedbackWidget :page-path="`/paradigms/${slug}`" />
-    </div>
   </div>
 </template>
 
 <script setup lang="ts">
 const route = useRoute()
 const slug = route.params.slug as string
-const hasContent = ref(false)
 const { proseClass } = useTheme()
 
 const paradigmsData: Record<string, any> = {
