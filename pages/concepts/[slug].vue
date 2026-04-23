@@ -1,10 +1,15 @@
 <template>
   <div class="space-y-8">
     <ContentDoc :path="`/concepts/${slug}`" v-slot="{ doc }">
-      <article v-if="doc" class="prose prose-invert max-w-none">
-        <h1>{{ doc.title }}</h1>
-        <ContentRenderer :value="doc" />
-      </article>
+      <div v-if="doc" class="flex gap-8">
+        <article class="prose prose-invert max-w-none flex-1 min-w-0">
+          <h1>{{ doc.title }}</h1>
+          <ContentRenderer :value="doc" />
+        </article>
+        <aside class="hidden xl:block w-56 shrink-0">
+          <PageToc :toc="doc.body?.toc?.links || []" />
+        </aside>
+      </div>
       <div v-else class="text-center py-16">
         <div class="text-6xl mb-4">📚</div>
         <h2 class="text-2xl font-bold text-gray-300 mb-2">内容不存在</h2>

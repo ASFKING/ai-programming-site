@@ -7,10 +7,15 @@
     </div>
 
     <ContentDoc :path="`/tools/${slug}`" v-slot="{ doc }">
-      <article class="prose prose-invert max-w-none">
-        <h1>{{ doc.title }}</h1>
-        <ContentRenderer :value="doc" />
-      </article>
+      <div class="flex gap-8">
+        <article class="prose prose-invert max-w-none flex-1 min-w-0">
+          <h1>{{ doc.title }}</h1>
+          <ContentRenderer :value="doc" />
+        </article>
+        <aside class="hidden xl:block w-56 shrink-0">
+          <PageToc :toc="doc.body?.toc?.links || []" />
+        </aside>
+      </div>
     </ContentDoc>
 
     <!-- 如果没有内容，显示静态内容 -->

@@ -50,7 +50,7 @@
     <!-- 浮动导航栏 - 移动端底部 -->
     <nav class="fixed bottom-4 left-1/2 -translate-x-1/2 z-50 lg:hidden">
       <div
-        class="flex items-center gap-1 p-2 bg-[#0f172a]/95 backdrop-blur-sm border border-white/10 rounded-2xl shadow-2xl">
+        class="flex items-center gap-1 p-2 bg-[#111827]/95 backdrop-blur-sm border border-white/10 rounded-2xl shadow-2xl">
         <button @click="scrollToSection('stage1')" :class="[
           'px-3 py-2 rounded-xl flex flex-col items-center gap-0.5 transition-all duration-300 min-w-[60px]',
           activeStage === 'stage1'
