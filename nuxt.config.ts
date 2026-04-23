@@ -15,7 +15,6 @@ export default defineNuxtConfig({
     prerender: {
       failOnError: false,
       ignore: [
-        '/methodology/**',
         '/api/**'
       ]
     }
