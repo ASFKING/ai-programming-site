@@ -8,7 +8,6 @@
     <!-- 构建方式卡片 -->
     <section class="p-6 rounded-xl glass border border-white/[0.08]">
       <div class="flex items-center gap-3 mb-4">
-        <span class="text-3xl">🦞</span>
         <div>
           <h2 class="text-xl font-semibold">构建方式</h2>
           <p class="text-gray-400 text-sm">Claude Code + Spec 驱动开发</p>
