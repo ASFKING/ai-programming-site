@@ -1,11 +1,11 @@
 <template>
-  <nav class="py-4">
+  <nav class="py-4 flex flex-col h-full">
     <div class="px-4 mb-4">
       <h3 class="text-xs font-semibold uppercase tracking-wider" style="color: var(--color-text-muted)">
         {{ sectionTitle }}
       </h3>
     </div>
-    <ul class="space-y-1">
+    <ul class="space-y-1 flex-1">
       <li v-for="item in navItems" :key="item.path">
         <NuxtLink
           :to="item.path"
@@ -20,6 +20,23 @@
         </NuxtLink>
       </li>
     </ul>
+
+    <!-- 相关推荐 -->
+    <div v-if="relatedItems.length" class="mt-auto pt-4 px-4" style="border-top: 1px solid var(--color-border)">
+      <p class="text-[10px] font-semibold uppercase tracking-wider mb-2" style="color: var(--color-text-muted)">相关推荐</p>
+      <ul class="space-y-1">
+        <li v-for="item in relatedItems" :key="item.path">
+          <NuxtLink
+            :to="item.path"
+            class="flex items-center gap-2 px-3 py-1.5 text-xs rounded-md transition-all hover:bg-black/5"
+            style="color: var(--color-text-muted)"
+          >
+            <span>{{ item.icon }}</span>
+            {{ item.name }}
+          </NuxtLink>
+        </li>
+      </ul>
+    </div>
   </nav>
 </template>
 
@@ -72,6 +89,35 @@ const navItems = computed(() => {
     ]
   }
 
+  return []
+})
+
+const relatedItems = computed(() => {
+  const path = route.path
+  if (path.startsWith('/concepts')) {
+    return [
+      { name: '工具对比', path: '/tools', icon: '🛠️' },
+      { name: '编程范式', path: '/paradigms', icon: '🧩' }
+    ]
+  }
+  if (path.startsWith('/tools')) {
+    return [
+      { name: '概念入门', path: '/concepts', icon: '📚' },
+      { name: '编程范式', path: '/paradigms', icon: '🧩' }
+    ]
+  }
+  if (path.startsWith('/paradigms')) {
+    return [
+      { name: '方法论', path: '/methodology', icon: '📋' },
+      { name: '工具对比', path: '/tools', icon: '🛠️' }
+    ]
+  }
+  if (path.startsWith('/methodology')) {
+    return [
+      { name: '编程范式', path: '/paradigms', icon: '🧩' },
+      { name: '概念入门', path: '/concepts', icon: '📚' }
+    ]
+  }
   return []
 })
 

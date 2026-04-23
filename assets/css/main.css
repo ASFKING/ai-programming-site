@@ -304,8 +304,30 @@ pre code {
 
 .card:hover {
   border-color: var(--color-border-hover);
-  transform: translateY(-2px);
+  transform: translateY(-3px);
   box-shadow: var(--shadow-card-hover);
+}
+
+/* 首张卡片突出 */
+.card.ring-1 {
+  background: var(--color-bg-elevated);
+}
+
+/* ─── 移动端表格滚动 ─── */
+@media (max-width: 768px) {
+  .overflow-x-auto {
+    -webkit-overflow-scrolling: touch;
+  }
+  .overflow-x-auto table {
+    min-width: 600px;
+  }
+}
+
+/* ─── 移动端侧边栏按钮安全距离 ─── */
+@media (max-width: 1023px) {
+  main {
+    padding-bottom: 4rem !important;
+  }
 }
 
 .btn {

@@ -2,24 +2,28 @@
   <div class="space-y-8">
     <div>
       <h1 class="text-3xl font-bold mb-4">编程范式</h1>
-      <p style="color: var(--color-text-muted)">从代码补全到智能体，AI编程的四层演进</p>
+      <p style="color: var(--color-text-muted)">四种AI编程范式，不是升级路径——而是不同场景下的最佳选择</p>
     </div>
 
-    <!-- 演进路线图 -->
+    <!-- 场景选择器 -->
     <section class="p-6 rounded-xl glass" style="border: 1px solid var(--color-border)">
-      <h2 class="text-xl font-semibold mb-6">演进路线</h2>
-      <div class="flex items-center justify-between gap-2 overflow-x-auto pb-2">
-        <div v-for="(step, index) in evolutionSteps" :key="step.id" class="flex items-center gap-2 shrink-0">
-          <NuxtLink
-            :to="`/paradigms/${step.id}`"
-            class="flex flex-col items-center gap-2 p-3 rounded-lg hover:bg-black/5 transition-colors group"
-          >
-            <span class="text-3xl">{{ step.icon }}</span>
-            <span class="text-sm font-medium group-hover:text-blue-400 transition-colors">{{ step.label }}</span>
-            <span class="text-xs text-gray-500">{{ step.keyword }}</span>
-          </NuxtLink>
-          <span v-if="index < evolutionSteps.length - 1" class="text-gray-600 text-xl">→</span>
-        </div>
+      <h2 class="text-lg font-semibold mb-4">🧭 根据你的场景选择</h2>
+      <p class="text-sm mb-5" style="color: var(--color-text-muted)">一个开发者可以同时使用多种范式，关键在于匹配当前任务的复杂度和协作需求。</p>
+      <div class="grid sm:grid-cols-2 md:grid-cols-4 gap-3">
+        <NuxtLink
+          v-for="step in scenarioGuide"
+          :key="step.id"
+          :to="`/paradigms/${step.id}`"
+          class="p-4 rounded-xl border transition-all duration-300 hover:-translate-y-1 text-center group"
+          :class="step.cardClass"
+        >
+          <span class="text-3xl block mb-2">{{ step.icon }}</span>
+          <span class="text-sm font-semibold block mb-1" :class="step.textClass">{{ step.label }}</span>
+          <span class="text-xs block mb-2" style="color: var(--color-text-muted)">{{ step.scenario }}</span>
+          <span class="text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity" :class="step.textClass">
+            了解更多 →
+          </span>
+        </NuxtLink>
       </div>
     </section>
 
@@ -32,15 +36,23 @@
         class="card group paradigm-card"
         :class="`paradigm-${paradigm.id}`"
       >
-        <div class="text-4xl mb-4">{{ paradigm.icon }}</div>
-        <h2 class="text-xl font-semibold mb-2 paradigm-title transition-colors">
-          {{ paradigm.name }}
-        </h2>
-        <p class="text-sm mb-4">{{ paradigm.description }}</p>
-        <div class="flex flex-wrap gap-2">
+        <div class="flex items-start justify-between mb-3">
+          <div class="flex items-center gap-3">
+            <span class="text-3xl">{{ paradigm.icon }}</span>
+            <h2 class="text-xl font-semibold paradigm-title transition-colors">
+              {{ paradigm.name }}
+            </h2>
+          </div>
+          <span class="text-xs px-2 py-0.5 rounded-full font-medium" :class="paradigm.levelClass">{{ paradigm.level }}</span>
+        </div>
+        <p class="text-sm mb-3">{{ paradigm.description }}</p>
+        <div class="flex flex-wrap gap-2 mb-3">
           <span v-for="tag in paradigm.tags" :key="tag" class="px-2 py-1 rounded text-xs paradigm-tag">
             {{ tag }}
           </span>
+        </div>
+        <div class="text-xs font-medium paradigm-title opacity-0 group-hover:opacity-100 transition-opacity">
+          {{ paradigm.when }} →
         </div>
       </NuxtLink>
     </div>
@@ -95,26 +107,73 @@
               <td class="py-3 px-4">团队项目</td>
               <td class="py-3 px-4">企业级交付</td>
             </tr>
-            <tr>
+            <tr class="border-b border-white/[0.04]">
               <td class="py-3 px-4 text-gray-400">质量控制</td>
               <td class="py-3 px-4">人工负责</td>
               <td class="py-3 px-4">大致可用</td>
               <td class="py-3 px-4">规格验证</td>
               <td class="py-3 px-4">自动化门禁</td>
             </tr>
+            <tr>
+              <td class="py-3 px-4 text-gray-400">学习成本</td>
+              <td class="py-3 px-4">⭐</td>
+              <td class="py-3 px-4">⭐⭐</td>
+              <td class="py-3 px-4">⭐⭐⭐</td>
+              <td class="py-3 px-4">⭐⭐⭐⭐</td>
+            </tr>
           </tbody>
         </table>
+      </div>
+      <p class="text-xs mt-4" style="color: var(--color-text-muted)">💡 多数成熟团队会同时使用多种范式：日常用 Code Completion，原型用 Vibe Coding，生产用 Spec Coding，复杂任务用 Agentic Coding。</p>
+    </section>
+
+    <!-- 常见误区 -->
+    <section class="p-6 rounded-xl" style="background: rgba(248, 113, 113, 0.05); border: 1px solid rgba(248, 113, 113, 0.15)">
+      <h2 class="text-lg font-semibold mb-4 text-red-400">⚠️ 常见误区</h2>
+      <div class="space-y-3 text-sm" style="color: var(--color-text-secondary)">
+        <div class="flex gap-3">
+          <span class="text-red-400 font-bold shrink-0">❌</span>
+          <span><strong>"范式越高级越好"</strong> — 错。一个 500 行的脚本用 Vibe Coding 就够了，没必要写 Spec。</span>
+        </div>
+        <div class="flex gap-3">
+          <span class="text-red-400 font-bold shrink-0">❌</span>
+          <span><strong>"Vibe Coding 不专业"</strong> — 错。快速原型和个人项目中，它的效率远超传统方式。</span>
+        </div>
+        <div class="flex gap-3">
+          <span class="text-red-400 font-bold shrink-0">❌</span>
+          <span><strong>"选一个范式就够了"</strong> — 错。成熟的AI编程实践是根据场景灵活切换。</span>
+        </div>
       </div>
     </section>
   </div>
 </template>
 
 <script setup lang="ts">
-const evolutionSteps = [
-  { id: 'code-completion', icon: '⌨️', label: '补全', keyword: '被动' },
-  { id: 'vibe-coding', icon: '🎵', label: '氛围', keyword: '意图' },
-  { id: 'spec-coding', icon: '📋', label: '规格', keyword: '约束' },
-  { id: 'agentic-coding', icon: '🧠', label: '智能体', keyword: '自主' }
+const scenarioGuide = [
+  {
+    id: 'code-completion', icon: '⌨️', label: 'Code Completion',
+    scenario: '日常编码、学习新语言/框架',
+    cardClass: 'bg-cyan-500/5 border-cyan-500/20 hover:border-cyan-400/50 hover:shadow-cyan-500/5 hover:shadow-lg',
+    textClass: 'text-cyan-400'
+  },
+  {
+    id: 'vibe-coding', icon: '🎵', label: 'Vibe Coding',
+    scenario: '快速原型、个人项目、创意探索',
+    cardClass: 'bg-purple-500/5 border-purple-500/20 hover:border-purple-400/50 hover:shadow-purple-500/5 hover:shadow-lg',
+    textClass: 'text-purple-400'
+  },
+  {
+    id: 'spec-coding', icon: '📋', label: 'Spec Coding',
+    scenario: '团队协作、生产项目、质量要求高',
+    cardClass: 'bg-amber-500/5 border-amber-500/20 hover:border-amber-400/50 hover:shadow-amber-500/5 hover:shadow-lg',
+    textClass: 'text-amber-400'
+  },
+  {
+    id: 'agentic-coding', icon: '🧠', label: 'Agentic Coding',
+    scenario: '复杂系统、端到端交付、自动化',
+    cardClass: 'bg-red-500/5 border-red-500/20 hover:border-red-400/50 hover:shadow-red-500/5 hover:shadow-lg',
+    textClass: 'text-red-400'
+  }
 ]
 
 const paradigms = [
@@ -122,29 +181,37 @@ const paradigms = [
     id: 'code-completion',
     name: 'Code Completion',
     icon: '⌨️',
-    description: '代码补全 - AI预测你下一步要写的代码，按Tab接受',
-    tags: ['被动响应', '逐行建议', '低门槛']
+    description: 'AI预测你下一步要写的代码，按Tab接受。零学习成本，立即提效。',
+    tags: ['被动响应', '逐行建议', '低门槛'],
+    level: '入门', levelClass: 'bg-cyan-500/15 text-cyan-400',
+    when: '日常编码、学习新语言/框架时'
   },
   {
     id: 'vibe-coding',
     name: 'Vibe Coding',
     icon: '🎵',
-    description: '氛围编程 - 描述意图，AI实现，快速验证创意',
-    tags: ['自然语言', '创意优先', '沉浸式']
+    description: '描述意图，AI实现，快速验证创意。适合"先做出来再说"的场景。',
+    tags: ['自然语言', '创意优先', '沉浸式'],
+    level: '进阶', levelClass: 'bg-purple-500/15 text-purple-400',
+    when: '原型验证、个人项目、创意探索时'
   },
   {
     id: 'spec-coding',
     name: 'Spec Coding',
     icon: '📋',
-    description: '规格编程 - 先写规格再实现，契约驱动的工程化开发',
-    tags: ['规格先行', '可追溯', '质量保证']
+    description: '先写规格再实现，契约驱动的工程化开发。规格是合同，代码是执行。',
+    tags: ['规格先行', '可追溯', '质量保证'],
+    level: '工程化', levelClass: 'bg-amber-500/15 text-amber-400',
+    when: '团队协作、生产项目、质量要求高时'
   },
   {
     id: 'agentic-coding',
     name: 'Agentic Coding',
     icon: '🧠',
-    description: '智能体编程 - AI自主规划、执行、闭环的端到端开发',
-    tags: ['自主决策', '工具调用', '端到端']
+    description: 'AI自主规划、执行、闭环的端到端开发。人是指挥官，AI是执行者。',
+    tags: ['自主决策', '工具调用', '端到端'],
+    level: '高级', levelClass: 'bg-red-500/15 text-red-400',
+    when: '复杂系统、端到端交付、自动化流程时'
   }
 ]
 
@@ -152,7 +219,7 @@ const paradigms = [
 useHead({
   title: 'AI编程四大范式 - Code Completion / Vibe Coding / Spec Coding / Agentic Coding',
   meta: [
-    { name: 'description', content: '详解AI编程的四种范式演进：从代码补全到智能体编程，包含定义、对比、代码示例和适用场景。' }
+    { name: 'description', content: '详解AI编程的四种范式：从代码补全到智能体编程，根据场景选择最佳方案。包含定义、对比、代码示例和适用场景。' }
   ]
 })
 </script>
