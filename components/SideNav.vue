@@ -23,13 +23,15 @@
 
     <!-- 相关推荐 -->
     <div v-if="relatedItems.length" class="mt-auto pt-4 px-4" style="border-top: 1px solid var(--color-border)">
-      <p class="text-[10px] font-semibold uppercase tracking-wider mb-2" style="color: var(--color-text-muted)">相关推荐</p>
+      <p class="text-xs font-semibold uppercase tracking-wider mb-2" style="color: var(--color-text-secondary)">
+        💡 相关推荐
+      </p>
       <ul class="space-y-1">
         <li v-for="item in relatedItems" :key="item.path">
           <NuxtLink
             :to="item.path"
-            class="flex items-center gap-2 px-3 py-1.5 text-xs rounded-md transition-all hover:bg-black/5"
-            style="color: var(--color-text-muted)"
+            class="flex items-center gap-2 px-3 py-2 text-sm rounded-md transition-all hover:bg-black/5 dark:hover:bg-white/5"
+            style="color: var(--color-text-secondary)"
           >
             <span>{{ item.icon }}</span>
             {{ item.name }}
