@@ -9,7 +9,7 @@ export default defineNuxtConfig({
   ],
 
   // GitHub Pages deployment
-  ssr: false,
+  ssr: true,
   nitro: {
     preset: 'github-pages',
     prerender: {
