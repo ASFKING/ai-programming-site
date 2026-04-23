@@ -19,6 +19,37 @@
       </div>
     </section>
 
+    <!-- 用户分流 -->
+    <section class="p-6 rounded-xl glass border border-white/[0.08]">
+      <h2 class="text-xl font-semibold mb-6 text-center">你是哪种开发者？</h2>
+      <div class="grid md:grid-cols-3 gap-4">
+        <NuxtLink
+          to="/concepts"
+          class="p-5 rounded-xl border border-green-500/20 bg-green-500/5 hover:border-green-400/50 hover:bg-green-500/10 transition-all group text-center"
+        >
+          <div class="text-3xl mb-3">🐣</div>
+          <h3 class="font-semibold text-green-400 mb-2">编程新手</h3>
+          <p class="text-gray-400 text-sm">从概念入门，了解 AI 编程的全貌</p>
+        </NuxtLink>
+        <NuxtLink
+          to="/tools"
+          class="p-5 rounded-xl border border-blue-500/20 bg-blue-500/5 hover:border-blue-400/50 hover:bg-blue-500/10 transition-all group text-center"
+        >
+          <div class="text-3xl mb-3">🧑‍💻</div>
+          <h3 class="font-semibold text-blue-400 mb-2">有经验开发者</h3>
+          <p class="text-gray-400 text-sm">直接看工具对比，选择适合你的工具</p>
+        </NuxtLink>
+        <NuxtLink
+          to="/methodology"
+          class="p-5 rounded-xl border border-purple-500/20 bg-purple-500/5 hover:border-purple-400/50 hover:bg-purple-500/10 transition-all group text-center"
+        >
+          <div class="text-3xl mb-3">🏗️</div>
+          <h3 class="font-semibold text-purple-400 mb-2">团队负责人</h3>
+          <p class="text-gray-400 text-sm">学习方法论 + Spec 驱动开发</p>
+        </NuxtLink>
+      </div>
+    </section>
+
     <!-- 核心概念卡片 -->
     <section>
       <h2 class="text-2xl font-bold mb-6">核心内容</h2>
@@ -95,9 +126,14 @@
     <section class="text-center py-12">
       <h2 class="text-2xl font-bold mb-4">开始学习AI编程</h2>
       <p class="text-gray-400 mb-6">掌握AI编程工具，提升开发效率</p>
-      <NuxtLink to="/methodology" class="px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 rounded-lg font-medium transition-all">
-        查看方法论
-      </NuxtLink>
+      <div class="flex justify-center gap-4">
+        <NuxtLink to="/methodology" class="px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 rounded-lg font-medium transition-all">
+          查看方法论
+        </NuxtLink>
+        <NuxtLink to="/about" class="px-6 py-3 bg-white/10 hover:bg-white/20 border border-white/20 rounded-lg font-medium transition-colors">
+          本站诞生记
+        </NuxtLink>
+      </div>
     </section>
   </div>
 </template>

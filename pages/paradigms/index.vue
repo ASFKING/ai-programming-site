@@ -147,4 +147,12 @@ const paradigms = [
     tags: ['自主决策', '工具调用', '端到端']
   }
 ]
+
+// SEO
+useHead({
+  title: 'AI编程四大范式 - Code Completion / Vibe Coding / Spec Coding / Agentic Coding',
+  meta: [
+    { name: 'description', content: '详解AI编程的四种范式演进：从代码补全到智能体编程，包含定义、对比、代码示例和适用场景。' }
+  ]
+})
 </script>

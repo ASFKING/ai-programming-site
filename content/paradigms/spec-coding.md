@@ -150,6 +150,56 @@ Spec Coding 不是替代 Vibe Coding，而是解决不同的问题：
 
 ---
 
+## 实战示例：同一需求的 Spec Coding 写法
+
+> 需求：构建一个天气查询页面，调用 OpenWeatherMap API 显示当前天气
+
+**第一步：编写 Spec 文档**
+
+```markdown
+# Spec: 天气查询页面
+
+## 功能需求
+- 用户输入城市名称，点击按钮查询
+- 调用 OpenWeatherMap Current Weather API
+- 展示：城市名、温度（摄氏度）、湿度、风速、天气图标
+- 支持加载状态、空状态、错误状态
+
+## 数据模型
+interface WeatherData {
+  name: string
+  main: { temp: number; humidity: number }
+  wind: { speed: number }
+  weather: [{ icon: string; description: string }]
+}
+
+## API 规格
+- Endpoint: GET /data/2.5/weather?q={city}&appid={key}&units=metric
+- 成功: 200 + WeatherData
+- 城市未找到: 404
+- API Key 无效: 401
+
+## 验收标准
+- [ ] 输入中文城市名可正常查询
+- [ ] 温度显示为摄氏度，保留整数
+- [ ] 加载时显示骨架屏动画
+- [ ] 错误时显示可操作的提示文案
+- [ ] 空状态显示引导文字
+- [ ] 组件可单独测试，无外部副作用
+```
+
+**第二步：将 Spec 输入 AI 工具**
+
+将上述 Spec 文档交给 Claude Code / Cursor，AI 严格按照规格生成：
+- React 组件 + TypeScript 类型
+- API 封装层 + 错误处理
+- 单元测试
+- 对照验收标准逐项通过
+
+**关键特征**：规格先行，AI 按合同执行。代码质量由 Spec 保障，而非依赖 AI 的"发挥"。适合团队协作——Spec 就是沟通语言。
+
+---
+
 ## 相关资源
 
 - [SpecKit GitHub仓库](https://github.com/github/spec-kit)
