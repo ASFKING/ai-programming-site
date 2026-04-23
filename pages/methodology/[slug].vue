@@ -6,7 +6,6 @@
     <ContentDoc :path="`/methodology/${slug}`" v-slot="{ doc }">
       <div v-if="doc" class="flex gap-8">
         <article :class="[proseClass, 'max-w-none flex-1 min-w-0']">
-          <h1>{{ doc.title }}</h1>
           <ContentRenderer :value="doc" />
         </article>
         <aside class="hidden xl:block w-56 shrink-0">
