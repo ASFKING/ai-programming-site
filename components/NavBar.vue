@@ -16,13 +16,18 @@
         v-for="item in navItems"
         :key="item.path"
         :to="item.path"
-        class="px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200"
+        class="relative px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200"
         :class="isActive(item.path)
-          ? 'bg-blue-500/20 text-blue-400'
+          ? 'text-blue-400'
           : 'hover:bg-black/5'"
         :style="isActive(item.path) ? '' : { color: 'var(--color-text-muted)' }"
       >
         {{ item.name }}
+        <!-- Active 下划线指示器 -->
+        <span
+          v-if="isActive(item.path)"
+          class="absolute bottom-0 left-1/2 -translate-x-1/2 w-5 h-0.5 bg-blue-400 rounded-full"
+        ></span>
       </NuxtLink>
       <ThemeToggle />
     </div>
@@ -52,10 +57,10 @@
         :key="item.path"
         :to="item.path"
         @click="mobileMenuOpen = false"
-        class="block px-4 py-3 rounded-lg text-sm font-medium"
+        class="block px-4 py-3 rounded-lg text-sm font-medium border-l-2 transition-all"
         :class="isActive(item.path)
-          ? 'bg-blue-500/20 text-blue-400'
-          : ''"
+          ? 'bg-blue-500/10 text-blue-400 border-blue-400'
+          : 'border-transparent'"
         :style="isActive(item.path) ? '' : { color: 'var(--color-text-muted)' }"
       >
         {{ item.name }}

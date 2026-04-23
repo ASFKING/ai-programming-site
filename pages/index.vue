@@ -1,5 +1,5 @@
 <template>
-  <div class="space-y-12">
+  <div>
     <!-- 锚点导航 -->
     <nav class="sticky top-16 z-40 -mx-4 md:-mx-8 px-4 md:px-8 py-3 backdrop-blur-xl" style="border-bottom: 1px solid var(--color-border); background: var(--color-bg-nav)">
       <div class="flex items-center gap-1 overflow-x-auto scrollbar-hide">
@@ -19,22 +19,22 @@
       </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section id="hero" class="text-center py-20 relative overflow-hidden">
+    <!-- Hero Section — 视觉重心区，加大呼吸空间 -->
+    <section id="hero" class="text-center pt-28 pb-32 relative overflow-hidden">
       <!-- 背景装饰 -->
       <div class="absolute inset-0 pointer-events-none opacity-30">
         <div class="absolute top-10 left-1/4 w-72 h-72 bg-blue-500/20 rounded-full blur-3xl"></div>
         <div class="absolute bottom-10 right-1/4 w-64 h-64 bg-purple-500/20 rounded-full blur-3xl"></div>
       </div>
       <div class="relative z-10">
-        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-medium mb-6" style="background: var(--color-bg-card); border: 1px solid var(--color-border); color: var(--color-text-muted)">
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-medium mb-8" style="background: var(--color-bg-card); border: 1px solid var(--color-border); color: var(--color-text-muted)">
           <span class="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse"></span>
           覆盖 8 款主流工具 · 4 种编程范式
         </div>
-        <h1 class="text-5xl md:text-6xl lg:text-7xl font-extrabold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-blue-500 via-purple-500 to-cyan-500 leading-tight">
+        <h1 class="text-5xl md:text-6xl lg:text-7xl font-extrabold mb-8 bg-clip-text text-transparent bg-gradient-to-r from-blue-500 via-purple-500 to-cyan-500 leading-tight">
           AI编程：智能开发的未来
         </h1>
-        <p class="text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed" style="color: var(--color-text-muted)">
+        <p class="text-lg md:text-xl max-w-2xl mx-auto mb-12 leading-relaxed" style="color: var(--color-text-muted)">
           从代码补全到智能体编程，AI正在重塑软件开发的方式。<br class="hidden md:block">
           本网站帮助你全面了解AI编程技术、工具和方法论。
         </p>
@@ -49,41 +49,43 @@
       </div>
     </section>
 
-    <!-- 用户分流 -->
-    <section id="audience" class="p-6 rounded-xl glass">
-      <h2 class="text-xl font-semibold mb-6 text-center" style="color: var(--color-text-primary)">你是哪种开发者？</h2>
-      <div class="grid md:grid-cols-3 gap-4">
-        <NuxtLink
-          to="/concepts"
-          class="p-5 rounded-xl border border-green-500/20 bg-green-500/5 hover:border-green-400/50 hover:bg-green-500/10 transition-all group text-center"
-        >
-          <div class="text-3xl mb-3">🐣</div>
-          <h3 class="font-semibold text-green-500 mb-2">编程新手</h3>
-          <p class="text-sm" style="color: var(--color-text-muted)">从概念入门，了解 AI 编程的全貌</p>
-        </NuxtLink>
-        <NuxtLink
-          to="/tools"
-          class="p-5 rounded-xl border border-blue-500/20 bg-blue-500/5 hover:border-blue-400/50 hover:bg-blue-500/10 transition-all group text-center"
-        >
-          <div class="text-3xl mb-3">🧑‍💻</div>
-          <h3 class="font-semibold text-blue-500 mb-2">有经验开发者</h3>
-          <p class="text-sm" style="color: var(--color-text-muted)">直接看工具对比，选择适合你的工具</p>
-        </NuxtLink>
-        <NuxtLink
-          to="/methodology"
-          class="p-5 rounded-xl border border-purple-500/20 bg-purple-500/5 hover:border-purple-400/50 hover:bg-purple-500/10 transition-all group text-center"
-        >
-          <div class="text-3xl mb-3">🏗️</div>
-          <h3 class="font-semibold text-purple-500 mb-2">团队负责人</h3>
-          <p class="text-sm" style="color: var(--color-text-muted)">学习方法论 + Spec 驱动开发</p>
-        </NuxtLink>
+    <!-- 用户分流 — 全宽浅色背景区，创造视觉节奏 -->
+    <section id="audience" class="py-20 -mx-4 md:-mx-8 px-4 md:px-8" style="background: var(--color-bg-surface)">
+      <div class="max-w-5xl mx-auto">
+        <h2 class="text-2xl font-bold mb-8 text-center" style="color: var(--color-text-primary)">你是哪种开发者？</h2>
+        <div class="grid md:grid-cols-3 gap-5">
+          <NuxtLink
+            to="/concepts"
+            class="p-6 rounded-xl border border-green-500/20 bg-green-500/5 hover:border-green-400/50 hover:bg-green-500/10 transition-all group text-center"
+          >
+            <div class="text-4xl mb-4">🐣</div>
+            <h3 class="font-semibold text-green-500 mb-2 text-lg">编程新手</h3>
+            <p class="text-sm" style="color: var(--color-text-muted)">从概念入门，了解 AI 编程的全貌</p>
+          </NuxtLink>
+          <NuxtLink
+            to="/tools"
+            class="p-6 rounded-xl border border-blue-500/20 bg-blue-500/5 hover:border-blue-400/50 hover:bg-blue-500/10 transition-all group text-center"
+          >
+            <div class="text-4xl mb-4">🧑‍💻</div>
+            <h3 class="font-semibold text-blue-500 mb-2 text-lg">有经验开发者</h3>
+            <p class="text-sm" style="color: var(--color-text-muted)">直接看工具对比，选择适合你的工具</p>
+          </NuxtLink>
+          <NuxtLink
+            to="/methodology"
+            class="p-6 rounded-xl border border-purple-500/20 bg-purple-500/5 hover:border-purple-400/50 hover:bg-purple-500/10 transition-all group text-center"
+          >
+            <div class="text-4xl mb-4">🏗️</div>
+            <h3 class="font-semibold text-purple-500 mb-2 text-lg">团队负责人</h3>
+            <p class="text-sm" style="color: var(--color-text-muted)">学习方法论 + Spec 驱动开发</p>
+          </NuxtLink>
+        </div>
       </div>
     </section>
 
     <!-- 核心概念卡片 -->
-    <section id="content">
-      <h2 class="text-2xl font-bold mb-6" style="color: var(--color-text-primary)">核心内容</h2>
-      <div class="grid md:grid-cols-3 gap-5">
+    <section id="content" class="py-20">
+      <h2 class="text-2xl font-bold mb-8" style="color: var(--color-text-primary)">核心内容</h2>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
         <NuxtLink
           v-for="(card, index) in cards"
           :key="card.path"
@@ -106,34 +108,36 @@
       </div>
     </section>
 
-    <!-- AI编程发展时间线 -->
-    <section id="timeline">
-      <h2 class="text-2xl font-bold mb-6" style="color: var(--color-text-primary)">发展历程</h2>
-      <div class="space-y-4">
-        <div v-for="(era, index) in eras" :key="index" class="flex gap-4">
-          <div class="flex flex-col items-center">
-            <div class="w-4 h-4 rounded-full bg-blue-500"></div>
-            <div v-if="index < eras.length - 1" class="w-0.5 h-16" style="background: var(--color-border)"></div>
-          </div>
-          <div class="flex-1 pb-8">
-            <span class="text-sm text-blue-400 font-medium">{{ era.period }}</span>
-            <h3 class="text-lg font-semibold mt-1" style="color: var(--color-text-primary)">{{ era.title }}</h3>
-            <p class="text-sm mt-1" style="color: var(--color-text-muted)">{{ era.description }}</p>
+    <!-- AI编程发展时间线 — 全宽交替背景区 -->
+    <section id="timeline" class="py-20 -mx-4 md:-mx-8 px-4 md:px-8" style="background: var(--color-bg-surface)">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-2xl font-bold mb-8" style="color: var(--color-text-primary)">发展历程</h2>
+        <div class="space-y-4">
+          <div v-for="(era, index) in eras" :key="index" class="flex gap-4">
+            <div class="flex flex-col items-center">
+              <div class="w-4 h-4 rounded-full bg-blue-500"></div>
+              <div v-if="index < eras.length - 1" class="w-0.5 h-16" style="background: var(--color-border)"></div>
+            </div>
+            <div class="flex-1 pb-8">
+              <span class="text-sm text-blue-400 font-medium">{{ era.period }}</span>
+              <h3 class="text-lg font-semibold mt-1" style="color: var(--color-text-primary)">{{ era.title }}</h3>
+              <p class="text-sm mt-1" style="color: var(--color-text-muted)">{{ era.description }}</p>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="mt-4">
-        <NuxtLink to="/concepts/history" class="text-blue-400 hover:text-blue-300 text-sm">
-          查看完整发展历程 →
-        </NuxtLink>
+        <div class="mt-4">
+          <NuxtLink to="/concepts/history" class="text-blue-400 hover:text-blue-300 text-sm">
+            查看完整发展历程 →
+          </NuxtLink>
+        </div>
       </div>
     </section>
 
     <!-- 编程范式 -->
-    <section id="paradigms">
+    <section id="paradigms" class="py-20">
       <h2 class="text-2xl font-bold mb-3" style="color: var(--color-text-primary)">四大编程范式</h2>
-      <p class="text-sm mb-6" style="color: var(--color-text-muted)">它们不是升级路径，而是不同场景下的最佳选择——像工具箱里的四把钳子，各有专长。</p>
-      <div class="grid md:grid-cols-2 gap-5">
+      <p class="text-sm mb-8" style="color: var(--color-text-muted)">它们不是升级路径，而是不同场景下的最佳选择——像工具箱里的四把钳子，各有专长。</p>
+      <div class="grid sm:grid-cols-2 gap-5">
         <NuxtLink
           v-for="paradigm in paradigms"
           :key="paradigm.path"
@@ -161,9 +165,9 @@
       </div>
 
       <!-- 如何选择 -->
-      <div class="mt-6 p-5 rounded-xl glass" style="border: 1px solid var(--color-border)">
+      <div class="mt-8 p-5 rounded-xl glass" style="border: 1px solid var(--color-border)">
         <h3 class="text-sm font-semibold mb-3" style="color: var(--color-text-primary)">🧭 如何选择？</h3>
-        <div class="grid sm:grid-cols-2 md:grid-cols-4 gap-3 text-xs">
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-3 text-xs">
           <div class="flex items-start gap-2">
             <span class="text-cyan-400 font-bold mt-0.5">→</span>
             <span style="color: var(--color-text-muted)"><strong class="text-cyan-400">刚接触AI编程</strong>：从 Code Completion 开始</span>
@@ -190,17 +194,19 @@
       </div>
     </section>
 
-    <!-- CTA -->
-    <section class="text-center py-14 px-6 rounded-2xl" style="background: linear-gradient(135deg, rgba(96,165,250,0.08), rgba(167,139,250,0.08)); border: 1px solid var(--color-border)">
-      <h2 class="text-2xl md:text-3xl font-bold mb-3" style="color: var(--color-text-primary)">准备好开始了吗？</h2>
-      <p class="mb-8 max-w-lg mx-auto" style="color: var(--color-text-muted)">无论你是刚接触编程还是资深工程师，都能在这里找到适合你的AI编程方式</p>
-      <div class="flex flex-col sm:flex-row justify-center gap-3">
-        <NuxtLink to="/methodology" class="px-8 py-3.5 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white rounded-xl font-semibold transition-all shadow-lg shadow-blue-500/20 hover:-translate-y-0.5">
-          查看方法论
-        </NuxtLink>
-        <NuxtLink to="/about" class="px-8 py-3.5 rounded-xl font-semibold transition-all hover:-translate-y-0.5" style="background: var(--color-bg-card); border: 1px solid var(--color-border); color: var(--color-text-primary)">
-          本站诞生记
-        </NuxtLink>
+    <!-- CTA — 全宽渐变背景区 -->
+    <section class="text-center py-20 px-6 -mx-4 md:-mx-8" style="background: linear-gradient(135deg, rgba(96,165,250,0.06), rgba(167,139,250,0.06))">
+      <div class="max-w-2xl mx-auto">
+        <h2 class="text-2xl md:text-3xl font-bold mb-4" style="color: var(--color-text-primary)">准备好开始了吗？</h2>
+        <p class="mb-10 max-w-lg mx-auto" style="color: var(--color-text-muted)">无论你是刚接触编程还是资深工程师，都能在这里找到适合你的AI编程方式</p>
+        <div class="flex flex-col sm:flex-row justify-center gap-3">
+          <NuxtLink to="/methodology" class="px-8 py-3.5 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white rounded-xl font-semibold transition-all shadow-lg shadow-blue-500/20 hover:-translate-y-0.5">
+            查看方法论
+          </NuxtLink>
+          <NuxtLink to="/about" class="px-8 py-3.5 rounded-xl font-semibold transition-all hover:-translate-y-0.5" style="background: var(--color-bg-card); border: 1px solid var(--color-border); color: var(--color-text-primary)">
+            本站诞生记
+          </NuxtLink>
+        </div>
       </div>
     </section>
   </div>
