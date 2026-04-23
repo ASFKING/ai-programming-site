@@ -136,7 +136,7 @@
     </section>
 
     <!-- Spec 流程图 -->
-    <section class="p-6 rounded-xl bg-[#1f2937] border border-[#334155]">
+    <section class="p-6 rounded-xl glass border border-white/[0.08]">
       <h2 class="text-xl font-semibold mb-6">Spec-Driven Development 流程</h2>
       <div class="space-y-4">
         <div v-for="(step, index) in specSteps" :key="index" class="flex gap-4">

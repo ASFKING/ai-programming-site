@@ -14,9 +14,7 @@ export default defineNuxtConfig({
     preset: 'github-pages',
     prerender: {
       failOnError: false,
-      ignore: [
-        '/api/**'
-      ]
+      ignore: ['/api/**']
     }
   },
 
@@ -39,7 +37,7 @@ export default defineNuxtConfig({
         { name: 'twitter:card', content: 'summary_large_image' },
         { name: 'twitter:title', content: 'AI编程：智能开发的未来' },
         { name: 'twitter:description', content: '从代码补全到智能体编程，AI正在重塑软件开发的方式。' },
-        { name: 'theme-color', content: '#111827' }
+        { name: 'theme-color', content: '#0f172a' }
       ],
       link: [
         { rel: 'icon', type: 'image/svg+xml', href: '/ai-programming-site/favicon.svg' }
@@ -60,6 +58,7 @@ export default defineNuxtConfig({
   },
 
   tailwindcss: {
-    cssPath: '~/assets/css/main.css'
+    cssPath: '~/assets/css/main.css',
+    plugins: ['@tailwindcss/typography']
   }
 })

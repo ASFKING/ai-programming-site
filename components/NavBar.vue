@@ -39,7 +39,7 @@
     <!-- 移动端菜单 -->
     <div
       v-if="mobileMenuOpen"
-      class="absolute top-16 left-0 right-0 bg-[#1f2937] border-b border-[#334155] p-4 md:hidden"
+      class="absolute top-16 left-0 right-0 border-b border-white/[0.08] bg-[#0f172a]/95 backdrop-blur-xl p-4 md:hidden"
     >
       <NuxtLink
         v-for="item in navItems"

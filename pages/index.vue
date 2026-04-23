@@ -45,7 +45,7 @@
         <div v-for="(era, index) in eras" :key="index" class="flex gap-4">
           <div class="flex flex-col items-center">
             <div class="w-4 h-4 rounded-full bg-blue-500"></div>
-            <div v-if="index < eras.length - 1" class="w-0.5 h-16 bg-[#334155]"></div>
+            <div v-if="index < eras.length - 1" class="w-0.5 h-16 bg-white/[0.1]"></div>
           </div>
           <div class="flex-1 pb-8">
             <span class="text-sm text-blue-400 font-medium">{{ era.period }}</span>

@@ -7,7 +7,7 @@
         'w-12 h-12 rounded-xl flex items-center justify-center text-lg transition-all duration-300 border',
         activeStage === 'stage1'
           ? 'bg-blue-500/30 border-blue-500/50 text-blue-400 scale-110'
-          : 'bg-gray-900/80 border-white/10 text-gray-500 hover:bg-blue-500/10 hover:border-blue-500/30'
+          : 'bg-white/[0.04] border-white/10 text-gray-500 hover:bg-blue-500/10 hover:border-blue-500/30'
       ]" title="第一阶段：辅助时代">
         ⌨️
       </button>
@@ -15,7 +15,7 @@
         'w-12 h-12 rounded-xl flex items-center justify-center text-lg transition-all duration-300 border',
         activeStage === 'stage2'
           ? 'bg-purple-500/30 border-purple-500/50 text-purple-400 scale-110'
-          : 'bg-gray-900/80 border-white/10 text-gray-500 hover:bg-purple-500/10 hover:border-purple-500/30'
+          : 'bg-white/[0.04] border-white/10 text-gray-500 hover:bg-purple-500/10 hover:border-purple-500/30'
       ]" title="第二阶段：对话时代">
         💬
       </button>
@@ -23,7 +23,7 @@
         'w-12 h-12 rounded-xl flex items-center justify-center text-lg transition-all duration-300 border',
         activeStage === 'stage3'
           ? 'bg-cyan-500/30 border-cyan-500/50 text-cyan-400 scale-110'
-          : 'bg-gray-900/80 border-white/10 text-gray-500 hover:bg-cyan-500/10 hover:border-cyan-500/30'
+          : 'bg-white/[0.04] border-white/10 text-gray-500 hover:bg-cyan-500/10 hover:border-cyan-500/30'
       ]" title="第三阶段：智能体时代">
         🤖
       </button>
@@ -31,7 +31,7 @@
         'w-12 h-12 rounded-xl flex items-center justify-center text-lg transition-all duration-300 border',
         activeStage === 'milestones'
           ? 'bg-gradient-to-br from-blue-500/30 to-cyan-500/30 border-white/30 text-white scale-110'
-          : 'bg-gray-900/80 border-white/10 text-gray-500 hover:bg-white/5 hover:border-white/20'
+          : 'bg-white/[0.04] border-white/10 text-gray-500 hover:bg-white/5 hover:border-white/20'
       ]" title="里程碑总表">
         📋
       </button>
@@ -41,7 +41,7 @@
 
       <!-- 回到顶部按钮 -->
       <button @click="scrollToTop"
-        class="w-12 h-12 rounded-xl flex items-center justify-center text-lg bg-gray-900/80 border border-white/10 text-gray-400 hover:bg-white/10 hover:border-white/30 hover:text-white transition-all duration-300"
+        class="w-12 h-12 rounded-xl flex items-center justify-center text-lg bg-white/[0.04] border border-white/10 text-gray-400 hover:bg-white/10 hover:border-white/30 hover:text-white transition-all duration-300"
         title="回到顶部">
         ⬆️
       </button>
@@ -50,7 +50,7 @@
     <!-- 浮动导航栏 - 移动端底部 -->
     <nav class="fixed bottom-4 left-1/2 -translate-x-1/2 z-50 lg:hidden">
       <div
-        class="flex items-center gap-1 p-2 bg-gray-900/95 backdrop-blur-sm border border-white/10 rounded-2xl shadow-2xl">
+        class="flex items-center gap-1 p-2 bg-[#0f172a]/95 backdrop-blur-sm border border-white/10 rounded-2xl shadow-2xl">
         <button @click="scrollToSection('stage1')" :class="[
           'px-3 py-2 rounded-xl flex flex-col items-center gap-0.5 transition-all duration-300 min-w-[60px]',
           activeStage === 'stage1'

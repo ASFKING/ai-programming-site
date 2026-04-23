@@ -6,7 +6,7 @@
         'w-12 h-12 rounded-xl flex items-center justify-center text-lg transition-all duration-300 border',
         activeSection === 'basics'
           ? 'bg-blue-500/30 border-blue-500/50 text-blue-400 scale-110'
-          : 'bg-gray-900/80 border-white/10 text-gray-500 hover:bg-blue-500/10 hover:border-blue-500/30'
+          : 'bg-white/[0.04] border-white/10 text-gray-500 hover:bg-blue-500/10 hover:border-blue-500/30'
       ]" title="基础术语">
         📚
       </button>
@@ -14,7 +14,7 @@
         'w-12 h-12 rounded-xl flex items-center justify-center text-lg transition-all duration-300 border',
         activeSection === 'prompt-skills'
           ? 'bg-purple-500/30 border-purple-500/50 text-purple-400 scale-110'
-          : 'bg-gray-900/80 border-white/10 text-gray-500 hover:bg-purple-500/10 hover:border-purple-500/30'
+          : 'bg-white/[0.04] border-white/10 text-gray-500 hover:bg-purple-500/10 hover:border-purple-500/30'
       ]" title="提示词技巧">
         ✍️
       </button>
@@ -22,7 +22,7 @@
         'w-12 h-12 rounded-xl flex items-center justify-center text-lg transition-all duration-300 border',
         activeSection === 'principles'
           ? 'bg-cyan-500/30 border-cyan-500/50 text-cyan-400 scale-110'
-          : 'bg-gray-900/80 border-white/10 text-gray-500 hover:bg-cyan-500/10 hover:border-cyan-500/30'
+          : 'bg-white/[0.04] border-white/10 text-gray-500 hover:bg-cyan-500/10 hover:border-cyan-500/30'
       ]" title="核心原理">
         ⚙️
       </button>
@@ -30,13 +30,13 @@
         'w-12 h-12 rounded-xl flex items-center justify-center text-lg transition-all duration-300 border',
         activeSection === 'practice'
           ? 'bg-green-500/30 border-green-500/50 text-green-400 scale-110'
-          : 'bg-gray-900/80 border-white/10 text-gray-500 hover:bg-green-500/10 hover:border-green-500/30'
+          : 'bg-white/[0.04] border-white/10 text-gray-500 hover:bg-green-500/10 hover:border-green-500/30'
       ]" title="实战应用">
         🚀
       </button>
       <div class="w-8 h-px bg-white/10 mx-auto my-1"></div>
       <button @click="scrollToTop"
-        class="w-12 h-12 rounded-xl flex items-center justify-center text-lg bg-gray-900/80 border border-white/10 text-gray-400 hover:bg-white/10 hover:border-white/30 hover:text-white transition-all duration-300"
+        class="w-12 h-12 rounded-xl flex items-center justify-center text-lg bg-white/[0.04] border border-white/10 text-gray-400 hover:bg-white/10 hover:border-white/30 hover:text-white transition-all duration-300"
         title="回到顶部">
         ⬆️
       </button>
@@ -45,7 +45,7 @@
     <!-- 浮动导航栏 - 移动端底部 -->
     <nav class="fixed bottom-4 left-1/2 -translate-x-1/2 z-50 lg:hidden">
       <div
-        class="flex items-center gap-1 p-2 bg-gray-900/95 backdrop-blur-sm border border-white/10 rounded-2xl shadow-2xl">
+        class="flex items-center gap-1 p-2 bg-[#0f172a]/95 backdrop-blur-sm border border-white/10 rounded-2xl shadow-2xl">
         <button @click="scrollToSection('basics')" :class="[
           'px-3 py-2 rounded-xl flex flex-col items-center gap-0.5 transition-all duration-300 min-w-[60px]',
           activeSection === 'basics'
