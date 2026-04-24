@@ -29,11 +29,13 @@
           class="absolute bottom-0 left-1/2 -translate-x-1/2 w-5 h-0.5 bg-blue-400 rounded-full"
         ></span>
       </NuxtLink>
+      <SearchTrigger />
       <ThemeToggle />
     </div>
 
     <!-- 移动端菜单按钮 -->
     <div class="flex items-center gap-2 md:hidden">
+      <SearchTrigger />
       <ThemeToggle />
       <button
         @click="mobileMenuOpen = !mobileMenuOpen"
