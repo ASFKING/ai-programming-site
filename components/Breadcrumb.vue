@@ -4,14 +4,14 @@
       <NuxtLink
         v-if="item.path && index < items.length - 1"
         :to="item.path"
-        class="text-gray-500 hover:text-blue-400 transition-colors"
+        class="breadcrumb-link transition-colors"
       >
         {{ item.label }}
       </NuxtLink>
-      <span v-else-if="index === items.length - 1" class="text-gray-300 font-medium">
+      <span v-else-if="index === items.length - 1" class="breadcrumb-current font-medium">
         {{ item.label }}
       </span>
-      <span v-if="index < items.length - 1" class="text-gray-600">/</span>
+      <span v-if="index < items.length - 1" class="breadcrumb-separator">/</span>
     </template>
   </nav>
 </template>
@@ -26,3 +26,19 @@ const props = defineProps<{
   items: BreadcrumbItem[]
 }>()
 </script>
+
+<style scoped>
+.breadcrumb-link {
+  color: var(--color-text-muted);
+}
+.breadcrumb-link:hover {
+  color: var(--color-accent-primary);
+}
+.breadcrumb-current {
+  color: var(--color-text-secondary);
+}
+.breadcrumb-separator {
+  color: var(--color-text-muted);
+  opacity: 0.5;
+}
+</style>
