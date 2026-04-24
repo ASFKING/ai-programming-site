@@ -1,3 +1,5 @@
 User-agent: *
 Allow: /
+
+# 自动生成的 sitemap（由 @nuxtjs/sitemap 模块生成）
 Sitemap: https://asfking.github.io/ai-programming-site/sitemap.xml
