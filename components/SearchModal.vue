@@ -220,6 +220,10 @@ onMounted(() => {
 <style scoped>
 /* ─── 触发按钮 ─── */
 .search-trigger {
+  position: fixed;
+  top: 0.5rem;
+  right: 6.5rem;
+  z-index: 51;
   display: inline-flex;
   align-items: center;
   gap: 0.375rem;
@@ -237,6 +241,12 @@ onMounted(() => {
   color: var(--color-text-secondary);
   border-color: var(--color-border-hover);
   background: var(--color-bg-elevated);
+}
+
+@media (max-width: 768px) {
+  .search-trigger {
+    right: 4.5rem;
+  }
 }
 
 .search-kbd {
