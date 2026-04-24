@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f172a"/>
+      <stop offset="50%" style="stop-color:#1e293b"/>
+      <stop offset="100%" style="stop-color:#0f172a"/>
+    </linearGradient>
+    <linearGradient id="title" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#3b82f6"/>
+      <stop offset="50%" style="stop-color:#a855f7"/>
+      <stop offset="100%" style="stop-color:#22d3ee"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#60a5fa"/>
+      <stop offset="100%" style="stop-color:#a78bfa"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <g opacity="0.04">
+    <circle cx="60" cy="60" r="2" fill="white"/><circle cx="120" cy="60" r="2" fill="white"/><circle cx="180" cy="60" r="2" fill="white"/><circle cx="240" cy="60" r="2" fill="white"/><circle cx="300" cy="60" r="2" fill="white"/><circle cx="360" cy="60" r="2" fill="white"/><circle cx="420" cy="60" r="2" fill="white"/><circle cx="480" cy="60" r="2" fill="white"/><circle cx="540" cy="60" r="2" fill="white"/><circle cx="600" cy="60" r="2" fill="white"/><circle cx="660" cy="60" r="2" fill="white"/><circle cx="720" cy="60" r="2" fill="white"/><circle cx="780" cy="60" r="2" fill="white"/><circle cx="840" cy="60" r="2" fill="white"/><circle cx="900" cy="60" r="2" fill="white"/><circle cx="960" cy="60" r="2" fill="white"/><circle cx="1020" cy="60" r="2" fill="white"/><circle cx="1080" cy="60" r="2" fill="white"/><circle cx="1140" cy="60" r="2" fill="white"/>
+    <circle cx="60" cy="120" r="2" fill="white"/><circle cx="120" cy="120" r="2" fill="white"/><circle cx="180" cy="120" r="2" fill="white"/><circle cx="240" cy="120" r="2" fill="white"/><circle cx="300" cy="120" r="2" fill="white"/><circle cx="360" cy="120" r="2" fill="white"/><circle cx="420" cy="120" r="2" fill="white"/><circle cx="480" cy="120" r="2" fill="white"/><circle cx="540" cy="120" r="2" fill="white"/><circle cx="600" cy="120" r="2" fill="white"/><circle cx="660" cy="120" r="2" fill="white"/><circle cx="720" cy="120" r="2" fill="white"/><circle cx="780" cy="120" r="2" fill="white"/><circle cx="840" cy="120" r="2" fill="white"/><circle cx="900" cy="120" r="2" fill="white"/><circle cx="960" cy="120" r="2" fill="white"/><circle cx="1020" cy="120" r="2" fill="white"/><circle cx="1080" cy="120" r="2" fill="white"/><circle cx="1140" cy="120" r="2" fill="white"/>
+  </g>
+  <circle cx="200" cy="200" r="180" fill="#3b82f6" opacity="0.06"/>
+  <circle cx="900" cy="450" r="200" fill="#a855f7" opacity="0.06"/>
+  <circle cx="600" cy="350" r="150" fill="#22d3ee" opacity="0.04"/>
+  <rect x="420" y="100" width="360" height="36" rx="18" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+  <circle cx="440" cy="118" r="5" fill="#22c55e"/>
+  <text x="455" y="123" font-family="system-ui, -apple-system, sans-serif" font-size="14" fill="#94a3b8">覆盖 10+ 主流工具 · 4 种编程范式</text>
+  <text x="600" y="210" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="64" font-weight="800" fill="url(#title)" filter="url(#glow)">AI 编程完全指南</text>
+  <text x="600" y="270" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="24" fill="#94a3b8" font-weight="400">从代码补全到智能体开发</text>
+  <rect x="350" y="300" width="500" height="1" fill="url(#accent)" opacity="0.3"/>
+  <g transform="translate(160, 340)">
+    <rect x="0" y="0" width="200" height="60" rx="12" fill="rgba(34,211,238,0.08)" stroke="rgba(34,211,238,0.25)" stroke-width="1"/>
+    <text x="20" y="28" font-family="system-ui, sans-serif" font-size="20">⌨️</text>
+    <text x="50" y="28" font-family="system-ui, sans-serif" font-size="14" font-weight="600" fill="#22d3ee">Code Completion</text>
+    <text x="20" y="48" font-family="system-ui, sans-serif" font-size="11" fill="#64748b">AI 预测代码 · Tab 接受</text>
+  </g>
+  <g transform="translate(400, 340)">
+    <rect x="0" y="0" width="200" height="60" rx="12" fill="rgba(167,139,250,0.08)" stroke="rgba(167,139,250,0.25)" stroke-width="1"/>
+    <text x="20" y="28" font-family="system-ui, sans-serif" font-size="20">🎵</text>
+    <text x="50" y="28" font-family="system-ui, sans-serif" font-size="14" font-weight="600" fill="#a78bfa">Vibe Coding</text>
+    <text x="20" y="48" font-family="system-ui, sans-serif" font-size="11" fill="#64748b">意图驱动 · 快速生成</text>
+  </g>
+  <g transform="translate(640, 340)">
+    <rect x="0" y="0" width="200" height="60" rx="12" fill="rgba(251,191,36,0.08)" stroke="rgba(251,191,36,0.25)" stroke-width="1"/>
+    <text x="20" y="28" font-family="system-ui, sans-serif" font-size="20">📋</text>
+    <text x="50" y="28" font-family="system-ui, sans-serif" font-size="14" font-weight="600" fill="#fbbf24">Spec Coding</text>
+    <text x="20" y="48" font-family="system-ui, sans-serif" font-size="11" fill="#64748b">规格先行 · 工程化</text>
+  </g>
+  <g transform="translate(880, 340)">
+    <rect x="0" y="0" width="200" height="60" rx="12" fill="rgba(248,113,113,0.08)" stroke="rgba(248,113,113,0.25)" stroke-width="1"/>
+    <text x="20" y="28" font-family="system-ui, sans-serif" font-size="20">🧠</text>
+    <text x="50" y="28" font-family="system-ui, sans-serif" font-size="14" font-weight="600" fill="#f87171">Agentic Coding</text>
+    <text x="20" y="48" font-family="system-ui, sans-serif" font-size="11" fill="#64748b">自主规划 · 端到端</text>
+  </g>
+  <text x="600" y="460" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" fill="#475569">Cursor · Claude Code · GitHub Copilot · Trae · Windsurf · Codex · Aider · 10+</text>
+  <rect x="0" y="570" width="1200" height="60" fill="rgba(255,255,255,0.02)"/>
+  <line x1="0" y1="570" x2="1200" y2="570" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+  <rect x="60" y="585" width="32" height="32" rx="8" fill="url(#title)"/>
+  <text x="76" y="607" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" font-weight="700" fill="white">AI</text>
+  <text x="105" y="607" font-family="system-ui, sans-serif" font-size="16" font-weight="600" fill="#e2e8f0">AI编程</text>
+  <text x="1140" y="607" text-anchor="end" font-family="system-ui, sans-serif" font-size="13" fill="#475569">asfking.github.io/ai-programming-site</text>
+</svg>
