@@ -1,12 +1,15 @@
 <template>
   <div class="space-y-8 relative">
+    <!-- 面包屑导航 -->
+    <Breadcrumb :items="breadcrumbItems" />
+
     <!-- 浮动导航栏 - 桌面端右侧 -->
     <nav class="fixed right-6 top-1/2 -translate-y-1/2 z-50 hidden lg:flex flex-col gap-2">
       <button @click="scrollToSection('basics')" :class="[
         'w-12 h-12 rounded-xl flex items-center justify-center text-lg transition-all duration-300 border',
         activeSection === 'basics'
           ? 'bg-blue-500/30 border-blue-500/50 text-blue-400 scale-110'
-          : 'bg-white/[0.04] var(--color-border) text-gray-500 hover:bg-blue-500/10 hover:border-blue-500/30'
+          : 'theme-bg-surface var(--color-border) theme-text-muted hover:bg-blue-500/10 hover:border-blue-500/30'
       ]" title="基础术语">
         📚
       </button>
@@ -14,7 +17,7 @@
         'w-12 h-12 rounded-xl flex items-center justify-center text-lg transition-all duration-300 border',
         activeSection === 'prompt-skills'
           ? 'bg-purple-500/30 border-purple-500/50 text-purple-400 scale-110'
-          : 'bg-white/[0.04] var(--color-border) text-gray-500 hover:bg-purple-500/10 hover:border-purple-500/30'
+          : 'theme-bg-surface var(--color-border) theme-text-muted hover:bg-purple-500/10 hover:border-purple-500/30'
       ]" title="提示词技巧">
         ✍️
       </button>
@@ -22,7 +25,7 @@
         'w-12 h-12 rounded-xl flex items-center justify-center text-lg transition-all duration-300 border',
         activeSection === 'principles'
           ? 'bg-cyan-500/30 border-cyan-500/50 text-cyan-400 scale-110'
-          : 'bg-white/[0.04] var(--color-border) text-gray-500 hover:bg-cyan-500/10 hover:border-cyan-500/30'
+          : 'theme-bg-surface var(--color-border) theme-text-muted hover:bg-cyan-500/10 hover:border-cyan-500/30'
       ]" title="核心原理">
         ⚙️
       </button>
@@ -30,11 +33,11 @@
         'w-12 h-12 rounded-xl flex items-center justify-center text-lg transition-all duration-300 border',
         activeSection === 'practice'
           ? 'bg-green-500/30 border-green-500/50 text-green-400 scale-110'
-          : 'bg-white/[0.04] var(--color-border) text-gray-500 hover:bg-green-500/10 hover:border-green-500/30'
+          : 'theme-bg-surface var(--color-border) theme-text-muted hover:bg-green-500/10 hover:border-green-500/30'
       ]" title="实战应用">
         🚀
       </button>
-      <div class="w-8 h-px bg-white/10 mx-auto my-1"></div>
+      <div class="w-8 h-px theme-border mx-auto my-1"></div>
       <button @click="scrollToTop"
         class="w-12 h-12 rounded-xl flex items-center justify-center text-lg transition-all duration-300 hover:bg-black/10" style="background: var(--color-bg-surface); border: 1px solid var(--color-border); color: var(--color-text-muted)"
         title="回到顶部">
@@ -50,7 +53,7 @@
           'px-3 py-2 rounded-xl flex flex-col items-center gap-0.5 transition-all duration-300 min-w-[60px]',
           activeSection === 'basics'
             ? 'bg-blue-500/20 text-blue-400'
-            : 'text-gray-500 hover:bg-black/5'
+            : 'theme-text-muted hover:bg-black/5'
         ]">
           <span class="text-lg">📚</span>
           <span class="text-[10px]">术语</span>
@@ -59,7 +62,7 @@
           'px-3 py-2 rounded-xl flex flex-col items-center gap-0.5 transition-all duration-300 min-w-[60px]',
           activeSection === 'prompt-skills'
             ? 'bg-purple-500/20 text-purple-400'
-            : 'text-gray-500 hover:bg-black/5'
+            : 'theme-text-muted hover:bg-black/5'
         ]">
           <span class="text-lg">✍️</span>
           <span class="text-[10px]">提示词</span>
@@ -68,7 +71,7 @@
           'px-3 py-2 rounded-xl flex flex-col items-center gap-0.5 transition-all duration-300 min-w-[60px]',
           activeSection === 'principles'
             ? 'bg-cyan-500/20 text-cyan-400'
-            : 'text-gray-500 hover:bg-black/5'
+            : 'theme-text-muted hover:bg-black/5'
         ]">
           <span class="text-lg">⚙️</span>
           <span class="text-[10px]">原理</span>
@@ -77,14 +80,14 @@
           'px-3 py-2 rounded-xl flex flex-col items-center gap-0.5 transition-all duration-300 min-w-[60px]',
           activeSection === 'practice'
             ? 'bg-green-500/20 text-green-400'
-            : 'text-gray-500 hover:bg-black/5'
+            : 'theme-text-muted hover:bg-black/5'
         ]">
           <span class="text-lg">🚀</span>
           <span class="text-[10px]">实战</span>
         </button>
-        <div class="w-px h-8 bg-white/10 mx-1"></div>
+        <div class="w-px h-8 theme-border mx-1"></div>
         <button @click="scrollToTop"
-          class="px-3 py-2 rounded-xl flex flex-col items-center gap-0.5 text-gray-500 hover:bg-black/5 transition-all duration-300 min-w-[50px]">
+          class="px-3 py-2 rounded-xl flex flex-col items-center gap-0.5 theme-text-muted hover:bg-black/5 transition-all duration-300 min-w-[50px]">
           <span class="text-lg">⬆️</span>
           <span class="text-[10px]">顶部</span>
         </button>
@@ -106,7 +109,7 @@
           class="text-4xl font-bold bg-gradient-to-r from-blue-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent mb-4">
           AI编程核心概念
         </h1>
-        <p class="text-xl text-gray-400 max-w-3xl">
+        <p class="text-xl theme-text-muted max-w-3xl">
           掌握AI编程的关键术语和核心原理，为高效使用AI编程工具打下坚实基础
         </p>
         <div class="mt-6 p-4 rounded-xl" style="background: var(--color-bg-surface); border: 1px solid var(--color-border)">
@@ -139,12 +142,12 @@
         <div class="space-y-3">
           <div class="p-4 bg-red-500/5 border border-red-500/20 rounded-lg">
             <p class="text-red-400 font-medium mb-2">❌ 模糊的提示词</p>
-            <code class="text-sm text-gray-400">"生成一个接口"</code>
+            <code class="text-sm theme-text-muted">"生成一个接口"</code>
             <p class="text-sm mt-2">AI不知道你要什么类型的接口，用什么框架，返回什么数据...</p>
           </div>
           <div class="p-4 bg-green-500/5 border border-green-500/20 rounded-lg">
             <p class="text-green-400 font-medium mb-2">✓ 精准的提示词</p>
-            <code class="text-sm text-gray-400">"生成一个基于Go Gin框架的用户登录接口，接收JSON格式的用户名和密码，返回包含token的JSON响应"</code>
+            <code class="text-sm theme-text-muted">"生成一个基于Go Gin框架的用户登录接口，接收JSON格式的用户名和密码，返回包含token的JSON响应"</code>
             <p class="text-sm mt-2">AI清楚知道要生成什么，直接输出可用的代码</p>
           </div>
         </div>
@@ -160,7 +163,7 @@
         </p>
         <div class="p-4 rounded-lg mb-4" style="background: var(--color-bg-surface)">
           <p class="text-blue-400 font-medium mb-2">核心技巧</p>
-          <ul class="space-y-2 text-gray-300">
+          <ul class="space-y-2 theme-text-secondary">
             <li class="flex items-start gap-2">
               <span class="text-blue-400">•</span>
               <span><strong>明确需求</strong>：清楚告诉AI你要做什么</span>
@@ -188,15 +191,15 @@
         <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
           <div class="p-3 rounded-lg text-center" style="background: var(--color-bg-surface)">
             <span class="text-2xl">📝</span>
-            <p class="text-sm text-gray-300 mt-2">代码生成</p>
+            <p class="text-sm theme-text-secondary mt-2">代码生成</p>
           </div>
           <div class="p-3 rounded-lg text-center" style="background: var(--color-bg-surface)">
             <span class="text-2xl">🐛</span>
-            <p class="text-sm text-gray-300 mt-2">Bug修复</p>
+            <p class="text-sm theme-text-secondary mt-2">Bug修复</p>
           </div>
           <div class="p-3 rounded-lg text-center" style="background: var(--color-bg-surface)">
             <span class="text-2xl">⚡</span>
-            <p class="text-sm text-gray-300 mt-2">代码优化</p>
+            <p class="text-sm theme-text-secondary mt-2">代码优化</p>
           </div>
         </div>
       </div>
@@ -211,7 +214,7 @@
         </p>
         <div class="p-4 rounded-lg" style="background: var(--color-bg-surface)">
           <p class="text-sm mb-2">例如，当你输入：</p>
-          <pre class="text-sm text-gray-300 bg-black/30 p-3 rounded overflow-x-auto"><code>def calculate_sum(numbers):
+          <pre class="text-sm theme-text-secondary bg-black/30 p-3 rounded overflow-x-auto"><code>def calculate_sum(numbers):
     total = 0
     for num in numbers:
         total += num
@@ -235,7 +238,7 @@
         </p>
         <div class="p-4 rounded-lg" style="background: var(--color-bg-surface)">
           <p class="text-blue-400 font-medium mb-2">常见应用场景</p>
-          <ul class="space-y-1 text-sm text-gray-300">
+          <ul class="space-y-1 text-sm theme-text-secondary">
             <li>• 简化冗余代码</li>
             <li>• 优化变量命名</li>
             <li>• 提取重复逻辑为函数</li>
@@ -269,11 +272,11 @@
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div class="p-4 rounded-lg" style="background: var(--color-bg-surface)">
             <p class="text-purple-400 font-medium mb-2">通用模型</p>
-            <p class="text-sm text-gray-400">适配多场景，通用性强，如GPT-4、Claude 3</p>
+            <p class="text-sm theme-text-muted">适配多场景，通用性强，如GPT-4、Claude 3</p>
           </div>
           <div class="p-4 rounded-lg" style="background: var(--color-bg-surface)">
             <p class="text-cyan-400 font-medium mb-2">编程专用模型</p>
-            <p class="text-sm text-gray-400">聚焦编程场景，输出更精准，如Codex、StarCoder</p>
+            <p class="text-sm theme-text-muted">聚焦编程场景，输出更精准，如Codex、StarCoder</p>
           </div>
         </div>
       </div>
@@ -288,7 +291,7 @@
         </p>
         <div class="p-4 rounded-lg mb-4" style="background: var(--color-bg-surface)">
           <p class="text-blue-400 font-medium mb-2">Token换算</p>
-          <ul class="space-y-1 text-sm text-gray-300">
+          <ul class="space-y-1 text-sm theme-text-secondary">
             <li>• 英文：1个Token ≈ 0.75个词</li>
             <li>• 中文：1个汉字 ≈ 1.5-2个Token</li>
             <li>• 代码：空格、缩进、换行都会占用Token</li>
@@ -354,15 +357,15 @@
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div class="p-4 rounded-lg" style="background: var(--color-bg-surface)">
             <p class="text-purple-400 font-medium mb-2">系统提示词</p>
-            <p class="text-sm text-gray-400 mb-3">给AI"定规矩、划边界"，设定AI的角色和行为准则</p>
+            <p class="text-sm theme-text-muted mb-3">给AI"定规矩、划边界"，设定AI的角色和行为准则</p>
             <pre
-              class="text-xs text-gray-300 bg-black/30 p-3 rounded overflow-x-auto"><code>"你是一个严谨的Go后端工程师，代码需符合Go 1.21版本规范，遵循项目代码风格"</code></pre>
+              class="text-xs theme-text-secondary bg-black/30 p-3 rounded overflow-x-auto"><code>"你是一个严谨的Go后端工程师，代码需符合Go 1.21版本规范，遵循项目代码风格"</code></pre>
           </div>
           <div class="p-4 rounded-lg" style="background: var(--color-bg-surface)">
             <p class="text-purple-400 font-medium mb-2">用户提示词</p>
-            <p class="text-sm text-gray-400 mb-3">你给AI的具体编程任务指令</p>
+            <p class="text-sm theme-text-muted mb-3">你给AI的具体编程任务指令</p>
             <pre
-              class="text-xs text-gray-300 bg-black/30 p-3 rounded overflow-x-auto"><code>"生成一个基于Gin框架的用户登录接口代码"</code></pre>
+              class="text-xs theme-text-secondary bg-black/30 p-3 rounded overflow-x-auto"><code>"生成一个基于Gin框架的用户登录接口代码"</code></pre>
           </div>
         </div>
         <div class="mt-4 p-4 bg-blue-500/5 border border-blue-500/20 rounded-lg">
@@ -385,27 +388,27 @@
               <span class="px-2 py-1 rounded bg-purple-500/20 text-purple-400 text-sm font-bold">C</span>
               <span class="text-purple-400 font-medium">Context（上下文）</span>
             </div>
-            <p class="text-sm text-gray-400 mb-3">给AI提供完成任务所需的相关信息</p>
+            <p class="text-sm theme-text-muted mb-3">给AI提供完成任务所需的相关信息</p>
             <pre
-              class="text-xs text-gray-300 bg-black/30 p-3 rounded overflow-x-auto"><code>项目使用React 18 + TypeScript，组件位于src/components目录</code></pre>
+              class="text-xs theme-text-secondary bg-black/30 p-3 rounded overflow-x-auto"><code>项目使用React 18 + TypeScript，组件位于src/components目录</code></pre>
           </div>
           <div class="p-4 rounded-lg" style="background: var(--color-bg-surface)">
             <div class="flex items-center gap-2 mb-2">
               <span class="px-2 py-1 rounded bg-purple-500/20 text-purple-400 text-sm font-bold">R</span>
               <span class="text-purple-400 font-medium">Role（角色约束）</span>
             </div>
-            <p class="text-sm text-gray-400 mb-3">明确指定AI的技术栈版本和代码风格偏好</p>
+            <p class="text-sm theme-text-muted mb-3">明确指定AI的技术栈版本和代码风格偏好</p>
             <pre
-              class="text-xs text-gray-300 bg-black/30 p-3 rounded overflow-x-auto"><code>使用Python 3.10语法，遵循PEP 8规范，添加类型注解</code></pre>
+              class="text-xs theme-text-secondary bg-black/30 p-3 rounded overflow-x-auto"><code>使用Python 3.10语法，遵循PEP 8规范，添加类型注解</code></pre>
           </div>
           <div class="p-4 rounded-lg" style="background: var(--color-bg-surface)">
             <div class="flex items-center gap-2 mb-2">
               <span class="px-2 py-1 rounded bg-purple-500/20 text-purple-400 text-sm font-bold">I</span>
               <span class="text-purple-400 font-medium">Intent（意图明确）</span>
             </div>
-            <p class="text-sm text-gray-400 mb-3">清晰告诉AI你的核心需求，明确区分任务类型</p>
+            <p class="text-sm theme-text-muted mb-3">清晰告诉AI你的核心需求，明确区分任务类型</p>
             <pre
-              class="text-xs text-gray-300 bg-black/30 p-3 rounded overflow-x-auto"><code>生成一个用户认证组件，包含登录表单和错误处理</code></pre>
+              class="text-xs theme-text-secondary bg-black/30 p-3 rounded overflow-x-auto"><code>生成一个用户认证组件，包含登录表单和错误处理</code></pre>
           </div>
         </div>
       </div>
@@ -421,7 +424,7 @@
         <div class="p-4 rounded-lg mb-4" style="background: var(--color-bg-surface)">
           <p class="text-purple-400 font-medium mb-2">示例</p>
           <pre
-            class="text-sm text-gray-300 bg-black/30 p-3 rounded overflow-x-auto"><code>生成一个用户登录函数，不要引入新的第三方库，不要使用废弃的语法，不要在代码中硬编码密码</code></pre>
+            class="text-sm theme-text-secondary bg-black/30 p-3 rounded overflow-x-auto"><code>生成一个用户登录函数，不要引入新的第三方库，不要使用废弃的语法，不要在代码中硬编码密码</code></pre>
         </div>
         <div class="p-4 bg-green-500/5 border border-green-500/20 rounded-lg">
           <p class="text-green-400 font-medium mb-2">✓ 优势</p>
@@ -464,19 +467,19 @@
         </p>
         <div class="flex flex-wrap items-center justify-center gap-2 text-sm">
           <div class="px-4 py-2 bg-blue-500/20 rounded-lg text-blue-400">输入需求</div>
-          <svg class="w-6 h-6 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg class="w-6 h-6 theme-text-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
           </svg>
           <div class="px-4 py-2 bg-purple-500/20 rounded-lg text-purple-400">AI理解</div>
-          <svg class="w-6 h-6 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg class="w-6 h-6 theme-text-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
           </svg>
           <div class="px-4 py-2 bg-cyan-500/20 rounded-lg text-cyan-400">生成代码</div>
-          <svg class="w-6 h-6 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg class="w-6 h-6 theme-text-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
           </svg>
           <div class="px-4 py-2 bg-green-500/20 rounded-lg text-green-400">结果校验</div>
-          <svg class="w-6 h-6 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg class="w-6 h-6 theme-text-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
           </svg>
           <div class="px-4 py-2 bg-yellow-500/20 rounded-lg text-yellow-400">人工优化</div>
@@ -498,13 +501,13 @@
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div class="p-4 bg-red-500/5 border border-red-500/20 rounded-lg">
             <p class="text-red-400 font-medium mb-2">模糊提示词</p>
-            <pre class="text-xs text-gray-300 bg-black/30 p-3 rounded overflow-x-auto mb-2"><code>"生成一个接口"</code></pre>
+            <pre class="text-xs theme-text-secondary bg-black/30 p-3 rounded overflow-x-auto mb-2"><code>"生成一个接口"</code></pre>
             <p class="text-sm">AI可能生成各种类型的接口，需要你大量修改</p>
           </div>
           <div class="p-4 bg-green-500/5 border border-green-500/20 rounded-lg">
             <p class="text-green-400 font-medium mb-2">精准提示词</p>
             <pre
-              class="text-xs text-gray-300 bg-black/30 p-3 rounded overflow-x-auto mb-2"><code>"生成一个基于Go Gin的用户登录接口，返回JSON格式"</code></pre>
+              class="text-xs theme-text-secondary bg-black/30 p-3 rounded overflow-x-auto mb-2"><code>"生成一个基于Go Gin的用户登录接口，返回JSON格式"</code></pre>
             <p class="text-sm">AI直接生成符合需求的代码，减少修改成本</p>
           </div>
         </div>
@@ -521,7 +524,7 @@
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div class="p-4 bg-green-500/5 border border-green-500/20 rounded-lg">
             <p class="text-green-400 font-medium mb-2">✓ 优势</p>
-            <ul class="space-y-1 text-sm text-gray-300">
+            <ul class="space-y-1 text-sm theme-text-secondary">
               <li>• 高效、快速</li>
               <li>• 能轻松处理重复编程任务</li>
               <li>• 提供多种实现方案</li>
@@ -529,7 +532,7 @@
           </div>
           <div class="p-4 bg-red-500/5 border border-red-500/20 rounded-lg">
             <p class="text-red-400 font-medium mb-2">⚠️ 局限</p>
-            <ul class="space-y-1 text-sm text-gray-300">
+            <ul class="space-y-1 text-sm theme-text-secondary">
               <li>• 可能存在bug</li>
               <li>• 不贴合复杂业务需求</li>
               <li>• 缺乏业务逻辑考量</li>
@@ -755,15 +758,15 @@
         </p>
         <div class="flex flex-wrap items-center justify-center gap-2 text-sm">
           <div class="px-3 py-2 bg-blue-500/20 rounded-lg text-blue-400">编写结构化提示词</div>
-          <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg class="w-5 h-5 theme-text-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
           </svg>
           <div class="px-3 py-2 bg-purple-500/20 rounded-lg text-purple-400">AI生成代码</div>
-          <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg class="w-5 h-5 theme-text-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
           </svg>
           <div class="px-3 py-2 bg-cyan-500/20 rounded-lg text-cyan-400">AI重构优化</div>
-          <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg class="w-5 h-5 theme-text-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
           </svg>
           <div class="px-3 py-2 bg-green-500/20 rounded-lg text-green-400">人工校验结果</div>
@@ -904,7 +907,7 @@
         </p>
         <div class="p-4 rounded-lg" style="background: var(--color-bg-surface)">
           <p class="text-green-400 font-medium mb-2">关键要点</p>
-          <ul class="space-y-2 text-sm text-gray-300">
+          <ul class="space-y-2 text-sm theme-text-secondary">
             <li>• <strong>规范质量决定执行质量</strong>：AI会一字不差地执行你写的规范，规范写得越准确，执行越可靠</li>
             <li>• <strong>根据颗粒度选择策略</strong>：小颗粒直接对话，中颗粒用Rules/Skills，大颗粒用OpenSpec</li>
             <li>• <strong>识别失效模式</strong>：规范真空、信息孤岛、任务目标模糊，提前预防</li>
@@ -917,6 +920,14 @@
 </template>
 
 <script setup lang="ts">
+
+// 面包屑数据
+const breadcrumbItems = computed(() => [
+  { label: '首页', path: '/' },
+  { label: '概念入门', path: '/concepts' },
+  { label: '核心概念' }
+])
+
 import { ref, onMounted } from 'vue'
 
 // 当前激活的section
@@ -987,4 +998,19 @@ html {
 .scroll-mt-24 {
   scroll-margin-top: 6rem;
 }
+
+/* 主题适配：解决浅色模式下文字看不清的问题 */
+.theme-text-secondary {
+  color: var(--color-text-secondary);
+}
+.theme-text-muted {
+  color: var(--color-text-muted);
+}
+.theme-bg-surface {
+  background: var(--color-bg-surface);
+}
+.theme-border {
+  background: var(--color-border);
+}
+
 </style>
