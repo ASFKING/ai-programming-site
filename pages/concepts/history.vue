@@ -1,5 +1,8 @@
 <template>
   <div class="space-y-8 relative">
+    <!-- 面包屑导航 -->
+    <Breadcrumb :items="breadcrumbItems" />
+
     <!-- 浮动导航栏 - 桌面端右侧 -->
     <nav class="fixed right-6 top-1/2 -translate-y-1/2 z-50 hidden lg:flex flex-col gap-2">
       <!-- 阶段导航按钮 -->
