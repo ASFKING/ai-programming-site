@@ -1,26 +1,24 @@
 <template>
-  <Teleport to="body">
-    <!-- 搜索按钮触发器 -->
-    <button
-      v-if="!isOpen"
-      @click="open"
-      class="search-trigger"
-      title="搜索 (⌘K)"
-    >
-      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-          d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-      </svg>
-      <span class="hidden sm:inline">搜索</span>
-      <kbd class="search-kbd hidden sm:inline">⌘K</kbd>
-    </button>
+  <!-- 搜索按钮触发器（保持在父容器内，响应式生效） -->
+  <button
+    v-if="!isOpen"
+    @click="open"
+    class="search-trigger"
+    title="搜索 (⌘K)"
+  >
+    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+    </svg>
+    <span class="hidden sm:inline">搜索</span>
+    <kbd class="search-kbd hidden sm:inline">⌘K</kbd>
+  </button>
 
-    <!-- 遮罩 -->
-    <Teleport to="body">
-      <Transition name="fade">
-        <div v-if="isOpen" class="search-overlay" @click="close" />
-      </Transition>
-    </Teleport>
+  <!-- 遮罩 + 弹窗 Teleport 到 body -->
+  <Teleport to="body">
+    <Transition name="fade">
+      <div v-if="isOpen" class="search-overlay" @click="close" />
+    </Transition>
 
     <!-- 搜索弹窗 -->
     <Transition name="modal">
