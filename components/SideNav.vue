@@ -58,9 +58,14 @@ const navItems = computed(() => {
   if (path.startsWith('/tools')) {
     return [
       { name: '工具列表', path: '/tools', icon: '🛠️' },
-      { name: 'Trae', path: '/tools/trae', icon: '🔥' },
-      { name: 'Cursor', path: '/tools/cursor', icon: '💻' },
-      { name: 'Claude Code', path: '/tools/claude-code', icon: '🤖' }
+      { name: '🔥 Trae', path: '/tools/trae' },
+      { name: '💻 Cursor', path: '/tools/cursor' },
+      { name: '🤖 Claude Code', path: '/tools/claude-code' },
+      { name: '🐙 GitHub Copilot', path: '/tools/github-copilot' },
+      { name: '⚡ Codex', path: '/tools/codex' },
+      { name: '🚀 Antigravity', path: '/tools/antigravity' },
+      { name: '⚡ Qoder', path: '/tools/qoder' },
+      { name: '🦊 CodeBuddy', path: '/tools/codebuddy' }
     ]
   }
 

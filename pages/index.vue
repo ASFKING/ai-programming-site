@@ -213,6 +213,14 @@
 </template>
 
 <script setup lang="ts">
+// SEO
+useHead({
+  title: 'AI编程完全指南：从代码补全到智能体开发 | 工具对比 + 方法论',
+  meta: [
+    { name: 'description', content: '覆盖 8+ 主流 AI 编程工具对比（Trae, Cursor, Claude Code等），4 大编程范式详解（Vibe, Spec, Agentic），Spec 驱动开发方法论。2025 年最全 AI 编程学习资源。' }
+  ]
+})
+
 const activeAnchor = ref('hero')
 const anchors = [
   { id: 'hero', label: '首页', icon: '🏠' },

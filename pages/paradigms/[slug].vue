@@ -13,92 +13,89 @@
             <PageToc :toc="doc.body?.toc?.links || []" />
           </aside>
         </div>
-
-        <div class="mt-12"><InteractivePromptTool /></div>
-        <div class="mt-8"><CommunityLinks /></div>
-        <FeedbackWidget :page-path="`/paradigms/${slug}`" />
-      </template>
-
-      <!-- Markdown 内容不存在时：渲染硬编码 fallback -->
-      <template v-else>
-        <div class="space-y-8">
-          <div class="flex items-center gap-4">
-            <span class="text-5xl">{{ currentParadigm?.icon }}</span>
-            <div>
-              <h1 class="text-3xl font-bold" :class="titleColorClass">{{ currentParadigm?.name }}</h1>
-              <p style="color: var(--color-text-muted)">{{ currentParadigm?.enName }}</p>
-            </div>
-          </div>
-
-          <section class="card">
-            <h2 class="text-xl font-semibold mb-4" style="color: var(--color-text-primary)">定义</h2>
-            <p style="color: var(--color-text-secondary)">{{ currentParadigm?.definition }}</p>
-          </section>
-
-          <section class="card">
-            <h2 class="text-xl font-semibold mb-4" style="color: var(--color-text-primary)">核心理念</h2>
-            <ul class="space-y-3">
-              <li v-for="(item, index) in currentParadigm?.concepts" :key="index" class="flex items-start gap-3">
-                <span class="mt-1" :class="accentTextClass">•</span>
-                <span style="color: var(--color-text-secondary)">{{ item }}</span>
-              </li>
-            </ul>
-          </section>
-
-          <section v-if="currentParadigm?.codeExample" class="card">
-            <h2 class="text-xl font-semibold mb-4" style="color: var(--color-text-primary)">代码示例</h2>
-            <p class="text-sm mb-4" style="color: var(--color-text-muted)">{{ currentParadigm.codeExample.description }}</p>
-            <CodeCompare
-              :bad-code="currentParadigm.codeExample.bad"
-              :good-code="currentParadigm.codeExample.good"
-              :bad-label="currentParadigm.codeExample.badLabel"
-              :good-label="currentParadigm.codeExample.goodLabel"
-              :lang="currentParadigm.codeExample.lang"
-            />
-          </section>
-
-          <div class="grid md:grid-cols-2 gap-6">
-            <section class="card border-green-500/20">
-              <h2 class="text-xl font-semibold mb-4 text-green-400">✓ 适用场景</h2>
-              <ul class="space-y-2">
-                <li v-for="(scene, index) in currentParadigm?.scenes" :key="index" class="flex items-start gap-2">
-                  <span class="text-green-400 mt-0.5">✓</span>
-                  <span class="text-sm" style="color: var(--color-text-secondary)">{{ scene }}</span>
-                </li>
-              </ul>
-            </section>
-            <section class="card border-red-500/20">
-              <h2 class="text-xl font-semibold mb-4 text-red-400">✗ 不适用场景</h2>
-              <ul class="space-y-2">
-                <li v-for="(scene, index) in currentParadigm?.notSuitable" :key="index" class="flex items-start gap-2">
-                  <span class="text-red-400 mt-0.5">✗</span>
-                  <span class="text-sm" style="color: var(--color-text-secondary)">{{ scene }}</span>
-                </li>
-              </ul>
-            </section>
-          </div>
-
-          <section class="card">
-            <h2 class="text-xl font-semibold mb-4" style="color: var(--color-text-primary)">代表工具</h2>
-            <div class="flex flex-wrap gap-3">
-              <NuxtLink
-                v-for="tool in currentParadigm?.toolLinks"
-                :key="tool.slug"
-                :to="`/tools/${tool.slug}`"
-                class="px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 hover:-translate-y-0.5"
-                :class="`${accentBgClass} border border-current/20 hover:border-current/40`"
-              >
-                {{ tool.name }}
-              </NuxtLink>
-            </div>
-          </section>
-
-          <InteractivePromptTool />
-          <CommunityLinks />
-          <FeedbackWidget :page-path="`/paradigms/${slug}`" />
-        </div>
-      </template>
+      <div class="mt-12"><InteractivePromptTool /></div>
+      <div class="mt-8"><CommunityLinks /></div>
+      <ReadNext :items="nextItems" />
+      <FeedbackWidget :page-path="`/paradigms/${slug}`" />
     </ContentDoc>
+
+    <div v-if="!hasContent" class="space-y-8">
+      <div class="flex items-center gap-4">
+        <span class="text-5xl">{{ currentParadigm?.icon }}</span>
+        <div>
+          <h1 class="text-3xl font-bold" :class="titleColorClass">{{ currentParadigm?.name }}</h1>
+          <p style="color: var(--color-text-muted)">{{ currentParadigm?.enName }}</p>
+        </div>
+      </div>
+
+      <section class="card">
+        <h2 class="text-xl font-semibold mb-4" style="color: var(--color-text-primary)">定义</h2>
+        <p style="color: var(--color-text-secondary)">{{ currentParadigm?.definition }}</p>
+      </section>
+
+      <section class="card">
+        <h2 class="text-xl font-semibold mb-4" style="color: var(--color-text-primary)">核心理念</h2>
+        <ul class="space-y-3">
+          <li v-for="(item, index) in currentParadigm?.concepts" :key="index" class="flex items-start gap-3">
+            <span class="mt-1" :class="accentTextClass">•</span>
+            <span style="color: var(--color-text-secondary)">{{ item }}</span>
+          </li>
+        </ul>
+      </section>
+
+      <section v-if="currentParadigm?.codeExample" class="card">
+        <h2 class="text-xl font-semibold mb-4" style="color: var(--color-text-primary)">代码示例</h2>
+        <p class="text-sm mb-4" style="color: var(--color-text-muted)">{{ currentParadigm.codeExample.description }}</p>
+        <CodeCompare
+          :bad-code="currentParadigm.codeExample.bad"
+          :good-code="currentParadigm.codeExample.good"
+          :bad-label="currentParadigm.codeExample.badLabel"
+          :good-label="currentParadigm.codeExample.goodLabel"
+          :lang="currentParadigm.codeExample.lang"
+        />
+      </section>
+
+      <div class="grid md:grid-cols-2 gap-6">
+        <section class="card border-green-500/20">
+          <h2 class="text-xl font-semibold mb-4 text-green-400">✓ 适用场景</h2>
+          <ul class="space-y-2">
+            <li v-for="(scene, index) in currentParadigm?.scenes" :key="index" class="flex items-start gap-2">
+              <span class="text-green-400 mt-0.5">✓</span>
+              <span class="text-sm" style="color: var(--color-text-secondary)">{{ scene }}</span>
+            </li>
+          </ul>
+        </section>
+        <section class="card border-red-500/20">
+          <h2 class="text-xl font-semibold mb-4 text-red-400">✗ 不适用场景</h2>
+          <ul class="space-y-2">
+            <li v-for="(scene, index) in currentParadigm?.notSuitable" :key="index" class="flex items-start gap-2">
+              <span class="text-red-400 mt-0.5">✗</span>
+              <span class="text-sm" style="color: var(--color-text-secondary)">{{ scene }}</span>
+            </li>
+          </ul>
+        </section>
+      </div>
+
+      <section class="card">
+        <h2 class="text-xl font-semibold mb-4" style="color: var(--color-text-primary)">代表工具</h2>
+        <div class="flex flex-wrap gap-3">
+          <NuxtLink
+            v-for="tool in currentParadigm?.toolLinks"
+            :key="tool.slug"
+            :to="`/tools/${tool.slug}`"
+            class="px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 hover:-translate-y-0.5"
+            :class="`${accentBgClass} border border-current/20 hover:border-current/40`"
+          >
+            {{ tool.name }}
+          </NuxtLink>
+        </div>
+      </section>
+
+      <InteractivePromptTool />
+      <CommunityLinks />
+      <ReadNext :items="nextItems" />
+      <FeedbackWidget :page-path="`/paradigms/${slug}`" />
+    </div>
   </div>
 </template>
 
@@ -167,4 +164,25 @@ const accentBgClass = computed(() => {
   const map: Record<string, string> = { 'code-completion': 'bg-cyan-500/10 text-cyan-400', 'vibe-coding': 'bg-purple-500/10 text-purple-400', 'spec-coding': 'bg-amber-500/10 text-amber-400', 'agentic-coding': 'bg-red-500/10 text-red-400' }
   return map[slug] || 'bg-blue-500/10 text-blue-400'
 })
+
+const nextItemsMap: Record<string, any[]> = {
+  'code-completion': [
+    { title: 'Vibe Coding', path: '/paradigms/vibe-coding', icon: '🎵', description: '意图驱动的沉浸式编程范式' },
+    { title: '工具对比', path: '/tools', icon: '🛠️', description: '看看哪些工具支持代码补全' }
+  ],
+  'vibe-coding': [
+    { title: 'Spec Coding', path: '/paradigms/spec-coding', icon: '📋', description: '用规格约束AI的生成，解决质量问题' },
+    { title: 'Trae 工具详解', path: '/tools/trae', icon: '🔥', description: '国内首个支持 SOLO 模式的 AI IDE' }
+  ],
+  'spec-coding': [
+    { title: 'Agentic Coding', path: '/paradigms/agentic-coding', icon: '🧠', description: '让 AI 自主规划和执行复杂任务' },
+    { title: 'Spec 驱动开发方法论', path: '/methodology/spec-driven', icon: '📋', description: '深度解析 Spec 驱动开发的完整流程' }
+  ],
+  'agentic-coding': [
+    { title: '方法论概览', path: '/methodology', icon: '📖', description: '系统学习 AI 编程的各类工作流' },
+    { title: 'Claude Code 详解', path: '/tools/claude-code', icon: '🤖', description: '最强智能体工具实战' }
+  ]
+}
+
+const nextItems = computed(() => nextItemsMap[slug] || [])
 </script>

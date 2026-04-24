@@ -124,3 +124,13 @@
     </div>
   </div>
 </template>
+
+<script setup lang="ts">
+// SEO
+useHead({
+  title: 'AI编程概念入门 - 发展历程、核心原理与能力边界',
+  meta: [
+    { name: 'description', content: '从辅助补全到智能体自治，全面了解AI编程的三次能力跃迁。掌握AI的角色转变、能力边界框架，以及开发者在AI时代的重新定义。' }
+  ]
+})
+</script>

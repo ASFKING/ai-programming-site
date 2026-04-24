@@ -154,6 +154,14 @@
 </template>
 
 <script setup lang="ts">
+// SEO
+useHead({
+  title: 'AI编程方法论 - Chat / Plan / Spec / Rules 最佳实践',
+  meta: [
+    { name: 'description', content: '掌握从日常对话到工程化实践的AI编程工作方式。包含Chat模式、Plan模式、规则配置、以及核心的Spec驱动开发流程，提升AI协作效率和代码质量。' }
+  ]
+})
+
 const tier1 = [
   {
     id: 'chat-mode',

@@ -3,9 +3,21 @@
     <!-- 面包屑导航 -->
     <Breadcrumb :items="breadcrumbItems" />
 
-    <ContentDoc :path="`/tools/${slug}`" v-slot="{ doc }">
-      <!-- Markdown 内容存在时 -->
-      <template v-if="doc">
+    <!-- 统一页眉（始终显示） -->
+    <div class="flex items-center gap-4 mb-8">
+      <span class="text-5xl shrink-0">{{ currentTool?.icon }}</span>
+      <div>
+        <h1 class="text-3xl font-bold" style="color: var(--color-text-primary)">{{ currentTool?.name }}</h1>
+        <div class="flex items-center gap-3 mt-1 text-sm">
+          <span style="color: var(--color-text-muted)">{{ currentTool?.vendor }}</span>
+          <span class="px-2 py-0.5 rounded-full bg-blue-500/10 text-blue-400 text-xs">{{ currentTool?.pricing }}</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 详细内容：优先使用 Markdown -->
+    <ContentDoc :path="`/tools/${slug}`">
+      <template v-slot="{ doc }">
         <div class="flex gap-8">
           <article :class="[proseClass, 'max-w-none flex-1 min-w-0']">
             <ContentRenderer :value="doc" />
@@ -14,22 +26,12 @@
             <PageToc :toc="doc.body?.toc?.links || []" />
           </aside>
         </div>
-
-        <div class="mt-8"><CommunityLinks /></div>
-        <FeedbackWidget :page-path="`/tools/${slug}`" />
       </template>
 
-      <!-- Markdown 内容不存在时：渲染硬编码 fallback -->
-      <template v-else>
-        <div class="space-y-8">
-          <div class="flex items-center gap-4">
-            <span class="text-5xl">{{ currentTool?.icon }}</span>
-            <div>
-              <h1 class="text-3xl font-bold" style="color: var(--color-text-primary)">{{ currentTool?.name }}</h1>
-              <p style="color: var(--color-text-muted)">{{ currentTool?.vendor }}</p>
-            </div>
-          </div>
-
+      <!-- 如果没有详细 Markdown，显示结构化的卡片布局 -->
+      <template #not-found>
+        <div class="grid md:grid-cols-2 gap-6">
+          <!-- 左侧：核心功能 -->
           <section class="card">
             <h2 class="text-xl font-semibold mb-4">核心功能</h2>
             <ul class="space-y-2">
@@ -40,23 +42,26 @@
             </ul>
           </section>
 
-          <section class="card">
-            <h2 class="text-xl font-semibold mb-4">定价</h2>
-            <p style="color: var(--color-text-secondary)">{{ currentTool?.pricing }}</p>
-          </section>
+          <!-- 右侧：网络要求 + 适用场景 -->
+          <div class="space-y-6">
+            <section class="card">
+              <h2 class="text-xl font-semibold mb-4">网络要求</h2>
+              <p style="color: var(--color-text-secondary)">{{ currentTool?.network }}</p>
+            </section>
 
-          <section class="card">
-            <h2 class="text-xl font-semibold mb-4">网络要求</h2>
-            <p style="color: var(--color-text-secondary)">{{ currentTool?.network }}</p>
-          </section>
-
-          <section class="card">
-            <h2 class="text-xl font-semibold mb-4">适用场景</h2>
-            <p style="color: var(--color-text-secondary)">{{ currentTool?.useCases }}</p>
-          </section>
+            <section class="card">
+              <h2 class="text-xl font-semibold mb-4">适用场景</h2>
+              <p style="color: var(--color-text-secondary)">{{ currentTool?.useCases }}</p>
+            </section>
+          </div>
         </div>
       </template>
     </ContentDoc>
+
+    <!-- 推荐阅读 -->
+    <ReadNext :items="nextItems" />
+    <CommunityLinks class="mt-8" />
+    <FeedbackWidget :page-path="`/tools/${slug}`" />
   </div>
 </template>
 
@@ -148,6 +153,35 @@ const breadcrumbItems = computed(() => {
     { label: '首页', path: '/' },
     { label: 'AI工具', path: '/tools' },
     { label: name }
+  ]
+})
+
+const nextItemsMap: Record<string, any[]> = {
+  'trae': [
+    { title: 'Spec 驱动开发实战', path: '/methodology/spec-driven', icon: '📋', description: '学习如何在 Trae 中使用 Spec 模式' },
+    { title: 'Cursor 工具对比', path: '/tools/cursor', icon: '💻', description: '看看 Cursor 与 Trae 的异同' }
+  ],
+  'cursor': [
+    { title: 'Vibe Coding 范式', path: '/paradigms/vibe-coding', icon: '🎵', description: 'Cursor 是 Vibe Coding 的最佳载体' },
+    { title: 'Trae 工具对比', path: '/tools/trae', icon: '🔥', description: '字节跳动出品的 AI 原生 IDE' }
+  ],
+  'claude-code': [
+    { title: 'Agentic Coding', path: '/paradigms/agentic-coding', icon: '🧠', description: 'Claude Code 是最强的智能体编程工具' },
+    { title: 'AGENTS.md 指南', path: '/methodology/agents-claude-md', icon: '📄', description: '学习如何为 Claude 设置指令文件' }
+  ],
+  'github-copilot': [
+    { title: '代码补全范式', path: '/paradigms/code-completion', icon: '⌨️', description: '了解最基础的 AI 编程辅助方式' },
+    { title: 'Cursor 分流', path: '/tools/cursor', icon: '💻', description: '体验更智能的 AI 原生开发环境' }
+  ]
+}
+
+const nextItems = computed(() => {
+  // 如果当前工具有特定的推荐，使用它
+  if (nextItemsMap[slug]) return nextItemsMap[slug]
+  // 否则默认推荐工具列表或方法论
+  return [
+    { title: '工具选择指南', path: '/tools', icon: '🛠️', description: '回到工具库，对比更多 AI 编程利器' },
+    { title: '方法论概览', path: '/methodology', icon: '📖', description: '如何更好地使用这些工具？' }
   ]
 })
 </script>
