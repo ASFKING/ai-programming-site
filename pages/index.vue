@@ -29,7 +29,7 @@
       <div class="relative z-10">
         <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-medium mb-8" style="background: var(--color-bg-card); border: 1px solid var(--color-border); color: var(--color-text-muted)">
           <span class="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse"></span>
-          覆盖 8 款主流工具 · 4 种编程范式
+          覆盖 10 款主流工具 · 4 种编程范式
         </div>
         <h1 class="text-5xl md:text-6xl lg:text-7xl font-extrabold mb-8 bg-clip-text text-transparent bg-gradient-to-r from-blue-500 via-purple-500 to-cyan-500 leading-tight">
           AI编程：智能开发的未来
@@ -43,7 +43,7 @@
             了解AI编程 →
           </NuxtLink>
           <NuxtLink to="/tools" class="px-8 py-3.5 rounded-xl font-semibold transition-all hover:-translate-y-0.5" style="background: var(--color-bg-card); border: 1px solid var(--color-border); color: var(--color-text-primary)">
-            浏览工具对比
+            浏览工具选型
           </NuxtLink>
         </div>
       </div>
@@ -217,7 +217,7 @@
 useHead({
   title: 'AI编程完全指南：从代码补全到智能体开发 | 工具对比 + 方法论',
   meta: [
-    { name: 'description', content: '覆盖 8+ 主流 AI 编程工具对比（Trae, Cursor, Claude Code等），4 大编程范式详解（Vibe, Spec, Agentic），Spec 驱动开发方法论。2025 年最全 AI 编程学习资源。' }
+    { name: 'description', content: '覆盖 10+ 主流 AI 编程工具对比（Cursor, Trae, Claude Code, Windsurf, Aider等），4 大编程范式详解（Vibe, Spec, Agentic），Spec 驱动开发方法论。2026 年最全 AI 编程学习资源。' }
   ]
 })
 
@@ -258,7 +258,7 @@ onMounted(() => {
 
 const cards = [
   { icon: '📚', title: '概念入门', description: '了解AI编程的发展历程、核心概念和技术演进', path: '/concepts', cta: '从这里开始' },
-  { icon: '🛠️', title: 'AI工具', description: '全面了解国内外主流AI编程工具的特性和适用场景', path: '/tools', cta: '查看工具对比' },
+  { icon: '🛠️', title: 'AI工具', description: '10 款主流工具的能力光谱对比、智能选型器和详细评测', path: '/tools', cta: '开始选型' },
   { icon: '📋', title: '方法论', description: '学习Spec驱动开发等规范的AI编程方法', path: '/methodology', cta: '学习方法论' }
 ]
 

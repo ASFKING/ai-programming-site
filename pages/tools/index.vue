@@ -1,297 +1,238 @@
 <template>
   <div class="space-y-8">
-    <div>
-      <h1 class="text-3xl font-bold mb-4">AI编程工具</h1>
-      <p style="color: var(--color-text-muted)">了解国内外主流AI编程工具的特性和适用场景</p>
-    </div>
-
-    <!-- 工具卡片网格 -->
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-      <NuxtLink
-        v-for="tool in tools"
-        :key="tool.id"
-        :to="`/tools/${tool.id}`"
-        class="card group hover:-translate-y-1 transition-all duration-300"
-        :class="tool.category === '国内' ? 'hover:border-green-400/50 hover:shadow-green-500/10' : 'hover:border-blue-400/50 hover:shadow-blue-500/10'"
-      >
-        <div class="flex items-start justify-between mb-4">
-          <div class="text-3xl">{{ tool.icon }}</div>
-          <span
-            class="px-2 py-1 text-xs rounded-full"
-            :class="tool.category === '国内' ? 'bg-green-500/20 text-green-400' : 'bg-blue-500/20 text-blue-400'"
-          >
-            {{ tool.category }}
-          </span>
-        </div>
-        <h3 class="text-lg font-semibold mb-2 group-hover:text-blue-400 transition-colors">
-          {{ tool.name }}
-        </h3>
-        <p class="text-sm mb-4">{{ tool.description }}</p>
-        <div class="flex flex-wrap gap-2">
-          <span v-for="feature in tool.features.slice(0, 3)" :key="feature" class="px-2 py-1 rounded text-xs" style="background: var(--color-bg-surface); color: var(--color-text-muted)">
-            {{ feature }}
-          </span>
-        </div>
-      </NuxtLink>
-    </div>
-
-    <!-- 工具对比矩阵 -->
-    <section class="mt-8 p-6 rounded-xl glass" style="border: 1px solid var(--color-border)">
-      <h2 class="text-xl font-semibold mb-6">工具对比矩阵</h2>
-      <div class="overflow-x-auto">
-        <table class="w-full text-sm">
-          <thead>
-            <tr class="border-b" style="border-color: var(--color-border)">
-              <th class="text-left py-3 px-3 text-gray-400 font-medium whitespace-nowrap">工具</th>
-              <th class="text-left py-3 px-3 text-gray-400 font-medium whitespace-nowrap">开发商</th>
-              <th class="text-left py-3 px-3 text-gray-400 font-medium whitespace-nowrap">定价</th>
-              <th class="text-left py-3 px-3 text-gray-400 font-medium whitespace-nowrap">平台</th>
-              <th class="text-center py-3 px-3 text-gray-400 font-medium whitespace-nowrap">代码补全</th>
-              <th class="text-center py-3 px-3 text-gray-400 font-medium whitespace-nowrap">多文件编辑</th>
-              <th class="text-center py-3 px-3 text-gray-400 font-medium whitespace-nowrap">智能体</th>
-              <th class="text-center py-3 px-3 text-gray-400 font-medium whitespace-nowrap">中文支持</th>
-              <th class="text-left py-3 px-3 text-gray-400 font-medium whitespace-nowrap">适用场景</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="tool in comparisonData" :key="tool.id" class="border-b border-white/[0.04] hover:bg-black/5 transition-colors">
-              <td class="py-3 px-3">
-                <NuxtLink :to="`/tools/${tool.id}`" class="flex items-center gap-2 hover:text-blue-400 transition-colors">
-                  <span>{{ tool.icon }}</span>
-                  <span class="font-medium">{{ tool.name }}</span>
-                </NuxtLink>
-              </td>
-              <td class="py-3 px-3 text-gray-400">{{ tool.vendor }}</td>
-              <td class="py-3 px-3 text-gray-400">{{ tool.pricing }}</td>
-              <td class="py-3 px-3 text-gray-400">{{ tool.platform }}</td>
-              <td class="py-3 px-3 text-center">{{ tool.completion }}</td>
-              <td class="py-3 px-3 text-center">{{ tool.multiFile }}</td>
-              <td class="py-3 px-3 text-center">{{ tool.agent }}</td>
-              <td class="py-3 px-3 text-center">{{ tool.chinese }}</td>
-              <td class="py-3 px-3 text-xs">{{ tool.bestFor }}</td>
-            </tr>
-          </tbody>
-        </table>
+    <!-- Hero -->
+    <div class="text-center py-8">
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-medium mb-6" style="background: var(--color-bg-card); border: 1px solid var(--color-border); color: var(--color-text-muted)">
+        <span class="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse"></span>
+        覆盖 10 款主流工具 · 叠加结构分类
       </div>
-      <p class="text-xs mt-4">⭐ 评级为编辑评估，非严格 benchmark。数据基于各工具官方文档和公开信息，如有偏差欢迎反馈。定价和功能可能已更新，请以官网为准。</p>
+      <h1 class="text-3xl md:text-4xl font-bold mb-4" style="color: var(--color-text-primary)">
+        🧭 AI 编程工具选型系统
+      </h1>
+      <p class="text-lg max-w-xl mx-auto mb-8" style="color: var(--color-text-muted)">
+        不知道用什么工具？3 步找到最适合你的
+      </p>
+      <div class="flex flex-col sm:flex-row justify-center gap-3">
+        <NuxtLink to="/tools/picker" class="px-8 py-3.5 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white rounded-xl font-semibold transition-all shadow-lg shadow-blue-500/20 hover:-translate-y-0.5">
+          🧭 开始选型 →
+        </NuxtLink>
+        <NuxtLink to="/tools/compare" class="px-8 py-3.5 rounded-xl font-semibold transition-all hover:-translate-y-0.5" style="background: var(--color-bg-card); border: 1px solid var(--color-border); color: var(--color-text-primary)">
+          📊 查看对比
+        </NuxtLink>
+      </div>
+    </div>
+
+    <!-- 核心认知：叠加结构 -->
+    <section class="p-6 rounded-xl glass" style="border: 1px solid var(--color-border)">
+      <h2 class="text-lg font-semibold mb-4" style="color: var(--color-text-primary)">🧠 核心认知：AI 编程工具是叠加结构</h2>
+      <p class="text-sm mb-4" style="color: var(--color-text-muted)">
+        所有 AI 编程工具都可以用两层来理解——<strong style="color: var(--color-text-primary)">形态</strong>决定你在哪里用它，<strong style="color: var(--color-text-primary)">能力</strong>决定它能帮你做多少事。
+      </p>
+      <div class="grid md:grid-cols-2 gap-4 text-sm">
+        <div class="p-4 rounded-lg" style="background: var(--color-bg-surface); border: 1px solid var(--color-border)">
+          <div class="font-medium text-blue-400 mb-2">🖥️ 形态层（Form）</div>
+          <p style="color: var(--color-text-secondary)">我需要打开什么来用它？</p>
+          <div class="flex flex-wrap gap-2 mt-2">
+            <span class="px-2 py-0.5 rounded text-xs bg-blue-500/10 text-blue-400">IDE</span>
+            <span class="px-2 py-0.5 rounded text-xs bg-purple-500/10 text-purple-400">终端</span>
+            <span class="px-2 py-0.5 rounded text-xs bg-green-500/10 text-green-400">插件</span>
+            <span class="px-2 py-0.5 rounded text-xs bg-amber-500/10 text-amber-400">Web</span>
+          </div>
+        </div>
+        <div class="p-4 rounded-lg" style="background: var(--color-bg-surface); border: 1px solid var(--color-border)">
+          <div class="font-medium text-purple-400 mb-2">🤖 能力层（Capability）</div>
+          <p style="color: var(--color-text-secondary)">它能帮我做多少事？</p>
+          <div class="flex flex-wrap gap-2 mt-2">
+            <span class="px-2 py-0.5 rounded text-xs" style="background: rgba(34,211,238,0.1); color: #22d3ee">补全</span>
+            <span class="px-2 py-0.5 rounded text-xs" style="background: rgba(52,211,153,0.1); color: #34d399">辅助</span>
+            <span class="px-2 py-0.5 rounded text-xs" style="background: rgba(167,139,250,0.1); color: #a78bfa">协作</span>
+            <span class="px-2 py-0.5 rounded text-xs" style="background: rgba(96,165,250,0.1); color: #60a5fa">Agent</span>
+            <span class="px-2 py-0.5 rounded text-xs" style="background: rgba(248,113,113,0.1); color: #f87171">自主</span>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <!-- 如何选择 -->
-    <section class="mt-8 p-6 rounded-xl glass" style="border: 1px solid var(--color-border)">
-      <h2 class="text-xl font-semibold mb-4">如何选择合适的工具？</h2>
-      <p class="text-sm mb-6">根据你的实际需求做决策，而非按身份标签选择</p>
+    <!-- 能力光谱图 -->
+    <section class="p-6 rounded-xl glass" style="border: 1px solid var(--color-border)">
+      <h2 class="text-lg font-semibold mb-4" style="color: var(--color-text-primary)">📊 能力光谱</h2>
+      <p class="text-sm mb-4" style="color: var(--color-text-muted)">
+        从被动补全到完全自主，每个工具在光谱上都有自己的位置
+      </p>
+      <CapabilitySpectrum />
+    </section>
 
-      <!-- 决策维度 -->
-      <div class="space-y-4 mb-8">
-        <div class="p-4 rounded-lg" style="background: var(--color-bg-surface); border: 1px solid var(--color-border)">
-          <h3 class="font-medium mb-2 text-blue-400">💰 预算有限？</h3>
-          <p class="text-sm">优先考虑免费工具：Trae、CodeBuddy、Qoder 均提供免费版本。Cursor 和 Copilot 有免费额度但功能受限。</p>
-        </div>
-        <div class="p-4 rounded-lg" style="background: var(--color-bg-surface); border: 1px solid var(--color-border)">
-          <h3 class="font-medium mb-2 text-green-400">🌐 网络环境受限？</h3>
-          <p class="text-sm">国内直连：Trae、CodeBuddy、Qoder 无需科学上网。Cursor、Copilot、Claude Code 需要稳定的国际网络。</p>
-        </div>
-        <div class="p-4 rounded-lg" style="background: var(--color-bg-surface); border: 1px solid var(--color-border)">
-          <h3 class="font-medium mb-2 text-purple-400">🎯 需要深度推理？</h3>
-          <p class="text-sm">处理复杂架构、大型代码库理解：Claude Code 的 200K 上下文和深度推理能力是当前最强。Cursor 的多 Agent 并行也适合复杂项目。</p>
-        </div>
-        <div class="p-4 rounded-lg" style="background: var(--color-bg-surface); border: 1px solid var(--color-border)">
-          <h3 class="font-medium mb-2 text-amber-400">👥 团队协作？</h3>
-          <p class="text-sm">需要统一配置和管理：GitHub Copilot Business 和 Cursor Business 提供团队管理功能。也可通过项目规则文件（.cursorrules / CLAUDE.md）统一 AI 行为。</p>
-        </div>
+    <!-- 筛选器 -->
+    <section>
+      <div class="flex flex-wrap gap-2 mb-6">
+        <button
+          v-for="filter in filters"
+          :key="filter.value"
+          @click="activeFilter = filter.value"
+          class="px-3 py-1.5 rounded-lg text-xs font-medium transition-all"
+          :class="activeFilter === filter.value
+            ? 'bg-blue-500/20 text-blue-400 border border-blue-500/30'
+            : 'border border-white/10 hover:border-white/20'"
+          :style="activeFilter === filter.value ? '' : { color: 'var(--color-text-muted)' }"
+        >
+          {{ filter.icon }} {{ filter.label }}
+        </button>
       </div>
 
-      <!-- 建议 -->
-      <div class="p-4 rounded-lg bg-blue-500/5 border border-blue-500/20">
-        <p class="text-sm text-gray-300">
-          <strong class="text-blue-400">💡 实际建议：</strong>
-          没有"最好的工具"，只有"最适合你的工具"。建议先用免费版本体验 2-3 款，再根据实际感受选择付费版本。AI 编程工具迭代很快，定期重新评估是有必要的。
-        </p>
+      <!-- 工具卡片网格 -->
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <NuxtLink
+          v-for="tool in filteredTools"
+          :key="tool.id"
+          :to="`/tools/${tool.id}`"
+          class="card group hover:-translate-y-1 transition-all duration-300"
+          :class="tool.region === '国内' ? 'hover:border-green-400/50 hover:shadow-green-500/10' : 'hover:border-blue-400/50 hover:shadow-blue-500/10'"
+        >
+          <div class="flex items-start justify-between mb-3">
+            <div class="text-3xl">{{ tool.icon }}</div>
+            <div class="flex items-center gap-2">
+              <span
+                class="px-2 py-1 text-xs rounded-full"
+                :class="tool.region === '国内' ? 'bg-green-500/20 text-green-400' : 'bg-blue-500/20 text-blue-400'"
+              >
+                {{ tool.region }}
+              </span>
+              <span class="px-2 py-1 text-xs rounded-full" :style="{ background: `${getCapabilityColor(tool.capability.level)}20`, color: getCapabilityColor(tool.capability.level) }">
+                {{ tool.capability.label }}
+              </span>
+            </div>
+          </div>
+          <h3 class="text-lg font-semibold mb-1 group-hover:text-blue-400 transition-colors" style="color: var(--color-text-primary)">
+            {{ tool.name }}
+          </h3>
+          <p class="text-xs mb-2" style="color: var(--color-text-muted)">{{ tool.vendor }} · {{ tool.form }}</p>
+          <p class="text-sm mb-4" style="color: var(--color-text-secondary)">{{ tool.description }}</p>
+
+          <!-- 能力光谱迷你条 -->
+          <div class="w-full h-1.5 rounded-full overflow-hidden mb-3" style="background: rgba(255,255,255,0.08)">
+            <div
+              class="h-full rounded-full transition-all"
+              :style="{
+                width: `${tool.capability.position}%`,
+                background: `linear-gradient(90deg, #22d3ee, ${getCapabilityColor(tool.capability.level)})`
+              }"
+            ></div>
+          </div>
+
+          <!-- 标签 -->
+          <div class="flex flex-wrap gap-1.5">
+            <span v-for="tag in tool.tags" :key="tag" class="px-2 py-0.5 rounded text-xs" style="background: var(--color-bg-surface); color: var(--color-text-muted)">
+              {{ tag }}
+            </span>
+          </div>
+
+          <!-- 定价 -->
+          <div class="mt-3 text-xs" style="color: var(--color-text-muted)">
+            <span v-if="tool.pricing.free" class="text-green-400 font-medium">免费</span>
+            <span v-else>{{ tool.pricing.paid }}</span>
+            <span class="mx-1">·</span>
+            <span>{{ tool.platform }}</span>
+          </div>
+        </NuxtLink>
       </div>
+    </section>
+
+    <!-- 工具组合推荐 -->
+    <section class="p-6 rounded-xl glass" style="border: 1px solid var(--color-border)">
+      <h2 class="text-lg font-semibold mb-4" style="color: var(--color-text-primary)">🎯 推荐工具组合</h2>
+      <p class="text-sm mb-6" style="color: var(--color-text-muted)">很多开发者不只用一个工具——组合使用效果更好</p>
+      <div class="grid md:grid-cols-3 gap-4">
+        <div v-for="combo in combos" :key="combo.title" class="p-4 rounded-lg" style="background: var(--color-bg-surface); border: 1px solid var(--color-border)">
+          <div class="text-2xl mb-2">{{ combo.icon }}</div>
+          <h3 class="font-semibold mb-1" style="color: var(--color-text-primary)">{{ combo.title }}</h3>
+          <p class="text-xs mb-3" style="color: var(--color-text-muted)">{{ combo.desc }}</p>
+          <div class="space-y-1">
+            <div v-for="tool in combo.tools" :key="tool" class="text-xs flex items-center gap-2" style="color: var(--color-text-secondary)">
+              <span>{{ getToolById(tool)?.icon }}</span>
+              <span class="font-medium">{{ getToolById(tool)?.name }}</span>
+              <span class="opacity-60">— {{ combo.roles[tool] }}</span>
+            </div>
+          </div>
+          <div class="mt-3 text-xs" style="color: var(--color-text-muted)">
+            适合：{{ combo.audience }}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="text-center py-12 px-6 rounded-xl" style="background: linear-gradient(135deg, rgba(96,165,250,0.06), rgba(167,139,250,0.06))">
+      <h2 class="text-2xl font-bold mb-3" style="color: var(--color-text-primary)">不确定该用什么？</h2>
+      <p class="mb-6" style="color: var(--color-text-muted)">试试我们的智能选型器，3 步找到最适合你的工具</p>
+      <NuxtLink to="/tools/picker" class="px-8 py-3.5 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white rounded-xl font-semibold transition-all shadow-lg shadow-blue-500/20 inline-block hover:-translate-y-0.5">
+        🧭 开始选型
+      </NuxtLink>
     </section>
   </div>
 </template>
 
 <script setup lang="ts">
-const tools = [
-  {
-    id: 'trae',
-    name: 'Trae',
-    icon: '🔥',
-    category: '国内',
-    description: '字节跳动出品的AI原生IDE，国内首个AI编程工具，支持SOLO全流程开发模式',
-    features: ['SOLO智能体', '中文深度适配', '免费使用']
-  },
-  {
-    id: 'cursor',
-    name: 'Cursor',
-    icon: '💻',
-    category: '国外',
-    description: '基于VS Code fork的AI原生IDE，支持8个智能体并行工作',
-    features: ['Composer多文件', '自定义模型', '前端友好']
-  },
-  {
-    id: 'claude-code',
-    name: 'Claude Code',
-    icon: '🤖',
-    category: '国外',
-    description: 'Anthropic推出的终端原生智能体，200K tokens超长上下文',
-    features: ['深度推理', '多智能体并行', 'SWE-bench第一']
-  },
-  {
-    id: 'github-copilot',
-    name: 'GitHub Copilot',
-    icon: '🐙',
-    category: '国外',
-    description: '全球市场占有率第一的代码补全助手，集成于主流IDE',
-    features: ['代码补全', '单元测试生成', '企业版安全']
-  },
-  {
-    id: 'codex',
-    name: 'Codex',
-    icon: '⚡',
-    category: '国外',
-    description: 'OpenAI推出的AI编程智能体，端到端代码生成与自主执行',
-    features: ['自主执行', '复杂任务处理', 'GPT-5系列模型']
-  },
-  {
-    id: 'antigravity',
-    name: 'Antigravity',
-    icon: '🚀',
-    category: '国外',
-    description: '开源AI编程环境，支持本地模型接入，数据完全本地处理',
-    features: ['开源免费', '本地部署', '可自定义']
-  },
-  {
-    id: 'qoder',
-    name: 'Qoder',
-    icon: '⚡',
-    category: '国内',
-    description: '字节跳动旗下轻量级AI代码助手，与Trae互补',
-    features: ['快速补全', '免费使用', '国内网络直连']
-  },
-  {
-    id: 'codebuddy',
-    name: 'CodeBuddy',
-    icon: '🦊',
-    category: '国内',
-    description: '腾讯云AI编程助手，与腾讯云生态深度集成',
-    features: ['腾讯云生态', '混元大模型', '免费使用']
-  }
+import { tools, getToolById, getCapabilityColor } from '~/composables/useToolsData'
+import type { Tool } from '~/composables/useToolsData'
+
+const activeFilter = ref('all')
+
+const filters = [
+  { value: 'all', label: '全部', icon: '🛠️' },
+  { value: 'domestic', label: '国内', icon: '🇨🇳' },
+  { value: 'overseas', label: '国外', icon: '🌍' },
+  { value: 'ide', label: 'IDE', icon: '💻' },
+  { value: 'terminal', label: '终端', icon: '⌨️' },
+  { value: 'plugin', label: '插件', icon: '🔌' },
+  { value: 'free', label: '免费', icon: '💰' },
+  { value: 'agent', label: 'Agent+', icon: '🤖' }
 ]
 
-const comparisonData = [
+const filteredTools = computed(() => {
+  switch (activeFilter.value) {
+    case 'domestic': return tools.filter(t => t.region === '国内')
+    case 'overseas': return tools.filter(t => t.region === '国外')
+    case 'ide': return tools.filter(t => t.form === 'IDE')
+    case 'terminal': return tools.filter(t => t.form === '终端')
+    case 'plugin': return tools.filter(t => t.form === '插件')
+    case 'free': return tools.filter(t => t.pricing.free)
+    case 'agent': return tools.filter(t => t.capability.level >= 4)
+    default: return tools
+  }
+})
+
+const combos = [
   {
-    id: 'trae',
-    name: 'Trae',
-    icon: '🔥',
-    vendor: '字节跳动',
-    pricing: '免费',
-    platform: 'Mac / Win',
-    completion: '⭐⭐⭐⭐',
-    multiFile: '⭐⭐⭐⭐',
-    agent: '⭐⭐⭐⭐⭐',
-    chinese: '⭐⭐⭐⭐⭐',
-    bestFor: '国内开发者首选，全流程AI开发'
-  },
-  {
-    id: 'cursor',
-    name: 'Cursor',
-    icon: '💻',
-    vendor: 'Anysphere',
-    pricing: '$20/月起',
-    platform: 'Mac / Win / Linux',
-    completion: '⭐⭐⭐⭐⭐',
-    multiFile: '⭐⭐⭐⭐⭐',
-    agent: '⭐⭐⭐⭐',
-    chinese: '⭐⭐⭐',
-    bestFor: '前端/全栈，多Agent并行'
-  },
-  {
-    id: 'claude-code',
-    name: 'Claude Code',
-    icon: '🤖',
-    vendor: 'Anthropic',
-    pricing: '按token计费',
-    platform: '终端',
-    completion: '⭐⭐⭐',
-    multiFile: '⭐⭐⭐⭐',
-    agent: '⭐⭐⭐⭐⭐',
-    chinese: '⭐⭐⭐',
-    bestFor: '复杂推理，大型代码库'
-  },
-  {
-    id: 'github-copilot',
-    name: 'GitHub Copilot',
-    icon: '🐙',
-    vendor: 'GitHub',
-    pricing: '$10/月起',
-    platform: '全平台IDE',
-    completion: '⭐⭐⭐⭐⭐',
-    multiFile: '⭐⭐⭐',
-    agent: '⭐⭐⭐',
-    chinese: '⭐⭐⭐',
-    bestFor: '日常编码，企业团队'
-  },
-  {
-    id: 'codex',
-    name: 'Codex',
-    icon: '⚡',
-    vendor: 'OpenAI',
-    pricing: '按token计费',
-    platform: 'Web / 终端',
-    completion: '⭐⭐⭐⭐',
-    multiFile: '⭐⭐⭐⭐',
-    agent: '⭐⭐⭐⭐⭐',
-    chinese: '⭐⭐⭐',
-    bestFor: '端到端任务，复杂项目'
-  },
-  {
-    id: 'antigravity',
-    name: 'Antigravity',
     icon: '🚀',
-    vendor: '开源社区',
-    pricing: '免费',
-    platform: 'Mac / Win / Linux',
-    completion: '⭐⭐⭐',
-    multiFile: '⭐⭐⭐',
-    agent: '⭐⭐⭐',
-    chinese: '⭐⭐',
-    bestFor: '本地部署，隐私优先'
+    title: '日常开发组合',
+    desc: '覆盖补全到 Agent 的全场景',
+    tools: ['cursor', 'github-copilot'],
+    roles: { cursor: 'Agent 任务', 'github-copilot': '日常补全' },
+    audience: '有经验的开发者'
   },
   {
-    id: 'qoder',
-    name: 'Qoder',
-    icon: '⚡',
-    vendor: '字节跳动',
-    pricing: '免费',
-    platform: 'Mac / Win',
-    completion: '⭐⭐⭐⭐',
-    multiFile: '⭐⭐⭐',
-    agent: '⭐⭐',
-    chinese: '⭐⭐⭐⭐⭐',
-    bestFor: '轻量快速，国内直连'
+    icon: '🇨🇳',
+    title: '国内开发者组合',
+    desc: '免费 + 国内直连',
+    tools: ['trae', 'qoder'],
+    roles: { trae: '复杂任务', qoder: '轻量补全' },
+    audience: '国内开发者、预算有限'
   },
   {
-    id: 'codebuddy',
-    name: 'CodeBuddy',
-    icon: '🦊',
-    vendor: '腾讯云',
-    pricing: '免费',
-    platform: 'Mac / Win',
-    completion: '⭐⭐⭐⭐',
-    multiFile: '⭐⭐⭐',
-    agent: '⭐⭐⭐',
-    chinese: '⭐⭐⭐⭐⭐',
-    bestFor: '腾讯云生态项目'
+    icon: '🧠',
+    title: '深度工程组合',
+    desc: 'IDE + 终端双管齐下',
+    tools: ['cursor', 'claude-code'],
+    roles: { cursor: '日常开发', 'claude-code': '深度重构' },
+    audience: '追求代码质量的高级开发者'
   }
 ]
 
 // SEO
 useHead({
-  title: 'AI编程工具对比 - Trae / Cursor / Claude Code / Copilot 等主流工具评测',
+  title: 'AI编程工具选型系统 - 10 款主流工具对比 | Cursor / Trae / Claude Code',
   meta: [
-    { name: 'description', content: '全面对比国内外8款主流AI编程工具，包含功能、定价、平台、适用场景的详细对比矩阵，帮你选择最适合的AI编程工具。' }
+    { name: 'description', content: 'AI 编程工具选型系统：覆盖 Cursor、Trae、Claude Code、GitHub Copilot 等 10 款主流工具，提供能力光谱对比、智能选型器和详细评测。' }
   ]
 })
 </script>
