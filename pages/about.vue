@@ -39,6 +39,7 @@
 
     <!-- 本站诞生记 -->
     <ContentDoc path="/about/build-story" v-slot="{ doc }">
+      <LastUpdated :date="doc.lastUpdated" />
       <article class="prose max-w-none">
         <ContentRenderer :value="doc" />
       </article>
@@ -46,8 +47,7 @@
 
     <!-- 底部标注 -->
     <div class="text-center text-sm py-8" style="color: var(--color-text-muted); border-top: 1px solid var(--color-border)">
-      <p>📅 最后更新：2026-04-23</p>
-      <p class="mt-1">🛠️ 构建方式：Claude Code + Spec 驱动开发</p>
+      <p>🛠️ 构建方式：Claude Code + Spec 驱动开发</p>
     </div>
   </div>
 </template>

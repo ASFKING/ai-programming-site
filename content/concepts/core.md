@@ -1,6 +1,7 @@
 ---
 title: AI编程核心概念
 description: 掌握AI编程的关键术语和核心原理
+lastUpdated: '2026-04-21'
 ---
 
 # AI编程核心概念

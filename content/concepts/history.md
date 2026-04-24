@@ -1,6 +1,7 @@
 ---
 title: AI编程发展历程
 description: 从辅助时代到智能体时代的三次跃迁，2026年Agentic Engineering的变革意义
+lastUpdated: '2026-04-21'
 ---
 
 # AI编程发展历程：从辅助到自主的三次跃迁

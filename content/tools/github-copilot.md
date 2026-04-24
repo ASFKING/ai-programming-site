@@ -1,6 +1,7 @@
 ---
 title: GitHub Copilot
 description: 全球市场占有率第一的代码补全助手
+lastUpdated: '2026-04-24'
 icon: 🐙
 category: 国外
 vendor: GitHub + OpenAI

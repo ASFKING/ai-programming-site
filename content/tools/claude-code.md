@@ -1,6 +1,7 @@
 ---
 title: Claude Code
 description: Anthropic推出的终端原生智能体
+lastUpdated: '2026-04-23'
 ---
 
 # Claude Code 🤖

@@ -1,6 +1,7 @@
 ---
 title: Skills 自定义
 description: 创建自定义Skills封装常用工作流程
+lastUpdated: '2026-04-23'
 ---
 
 # Skills 自定义

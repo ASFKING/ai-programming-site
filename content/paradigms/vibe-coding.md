@@ -1,6 +1,7 @@
 ---
 title: Vibe Coding 氛围编程
 description: 意图驱动的沉浸式编程范式
+lastUpdated: '2026-04-23'
 ---
 
 # Vibe Coding（氛围编程）

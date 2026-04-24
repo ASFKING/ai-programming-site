@@ -1,6 +1,7 @@
 ---
 title: Aider
 description: 开源终端 AI 编程工具，与 Claude Code 直接竞争
+lastUpdated: '2026-04-24'
 ---
 
 # Aider 🛠️

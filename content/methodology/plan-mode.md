@@ -1,6 +1,7 @@
 ---
 title: Plan 模式
 description: 让AI先规划再执行，减少返工和修改
+lastUpdated: '2026-04-23'
 ---
 
 # Plan 模式（计划模式）

@@ -55,6 +55,11 @@
 
     <!-- 回到顶部 -->
     <BackToTop />
+
+    <!-- 全站数据时效声明 -->
+    <div class="text-center py-4 text-xs" style="color: var(--color-text-muted); border-top: 1px solid var(--color-border-subtle);">
+      🦞 本站内容基于 2026 年 4 月数据 · AI 工具迭代迅速，信息仅供参考，请以官方最新发布为准
+    </div>
   </div>
 </template>
 

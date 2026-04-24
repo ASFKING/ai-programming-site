@@ -1,6 +1,7 @@
 ---
 title: Spec 驱动开发
 description: 用结构化的Spec文档约束AI生成边界，含SpecKit与Trae实战
+lastUpdated: '2026-04-23'
 ---
 
 # Spec-Driven Development（规范驱动开发）

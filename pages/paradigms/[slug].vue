@@ -4,6 +4,7 @@
 
     <ContentDoc :path="`/paradigms/${slug}`">
       <template #default="{ doc }">
+        <LastUpdated :date="doc.lastUpdated" />
         <div class="flex gap-8">
           <article :class="[proseClass, 'max-w-none flex-1 min-w-0']">
             <ContentRenderer :value="doc" />

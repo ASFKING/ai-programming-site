@@ -1,6 +1,7 @@
 ---
 title: AGENTS.md 与 CLAUDE.md
 description: 理解和定义AI编程的项目指令文件
+lastUpdated: '2026-04-23'
 ---
 
 # AGENTS.md 与 CLAUDE.md 的理解与定义

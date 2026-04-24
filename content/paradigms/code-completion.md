@@ -1,6 +1,7 @@
 ---
 title: Code Completion 代码补全
 description: AI预测代码的智能输入法
+lastUpdated: '2026-04-23'
 ---
 
 # Code Completion（代码补全）

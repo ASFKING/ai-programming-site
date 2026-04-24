@@ -1,6 +1,7 @@
 ---
 title: Antigravity
 description: 开源 AI 编程环境，专注于本地运行
+lastUpdated: '2026-04-24'
 icon: 🚀
 category: 国外
 vendor: 开源项目

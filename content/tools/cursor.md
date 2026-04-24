@@ -1,6 +1,7 @@
 ---
 title: Cursor
 description: AI原生IDE，支持多智能体并行
+lastUpdated: '2026-04-23'
 ---
 
 # Cursor 💻

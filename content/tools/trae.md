@@ -1,6 +1,7 @@
 ---
 title: Trae
 description: 字节跳动出品的AI原生IDE
+lastUpdated: '2026-04-23'
 ---
 
 # Trae 🔥

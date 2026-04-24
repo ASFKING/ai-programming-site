@@ -1,6 +1,7 @@
 ---
 title: 项目规则配置
 description: 为项目设置专属规则，团队成员共享统一的编码规范
+lastUpdated: '2026-04-23'
 ---
 
 # 项目规则配置（Project Rules）

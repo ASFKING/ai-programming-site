@@ -1,6 +1,7 @@
 ---
 title: Qoder
 description: 字节跳动旗下的轻量级 AI 代码助手
+lastUpdated: '2026-04-24'
 icon: ⚡
 category: 国内
 vendor: 字节跳动

@@ -1,6 +1,7 @@
 ---
 title: 本站诞生记
 description: 用 Claude Code + Spec 驱动开发构建 AI 编程知识站的全过程记录
+lastUpdated: '2026-04-23'
 ---
 
 # 本站诞生记

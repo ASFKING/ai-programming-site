@@ -1,6 +1,7 @@
 ---
 title: Chat 模式
 description: 通过对话方式与AI协作，适合快速咨询和调试
+lastUpdated: '2026-04-23'
 ---
 
 # Chat 模式（对话模式）

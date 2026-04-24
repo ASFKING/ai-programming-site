@@ -1,6 +1,7 @@
 ---
 title: Agentic Coding 智能体编程
 description: AI自主执行的工程化编程范式
+lastUpdated: '2026-04-23'
 ---
 
 # Agentic Coding（智能体编程）

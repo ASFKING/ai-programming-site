@@ -1,6 +1,7 @@
 ---
 title: OpenAI Codex
 description: OpenAI推出的AI编程智能体原型
+lastUpdated: '2026-04-24'
 icon: ⚡
 category: 国外
 vendor: OpenAI

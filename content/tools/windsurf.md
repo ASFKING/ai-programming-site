@@ -1,6 +1,7 @@
 ---
 title: Windsurf
 description: Codeium 出品的 AI 原生 IDE，以 Flow 模式著称
+lastUpdated: '2026-04-24'
 ---
 
 # Windsurf 🏄

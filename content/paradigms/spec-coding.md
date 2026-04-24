@@ -1,6 +1,7 @@
 ---
 title: Spec Coding 规格编程
 description: 规格先行的契约式AI编程范式
+lastUpdated: '2026-04-23'
 ---
 
 # Spec Coding（规格编程）

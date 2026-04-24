@@ -5,6 +5,7 @@
 
     <ContentDoc :path="`/methodology/${slug}`" v-slot="{ doc }">
       <div v-if="doc" class="space-y-12">
+        <LastUpdated :date="doc.lastUpdated" />
         <div class="flex gap-8">
           <article :class="[proseClass, 'max-w-none flex-1 min-w-0']">
             <ContentRenderer :value="doc" />

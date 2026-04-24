@@ -1,6 +1,7 @@
 ---
 title: CodeBuddy
 description: 腾讯云推出的全能 AI 编程助手
+lastUpdated: '2026-04-24'
 icon: 🦊
 category: 国内
 vendor: 腾讯云

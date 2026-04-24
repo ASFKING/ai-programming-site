@@ -3,6 +3,9 @@
     <!-- 面包屑导航 -->
     <Breadcrumb :items="breadcrumbItems" />
 
+    <!-- 最后更新时间 -->
+    <LastUpdated :date="lastUpdated" />
+
     <!-- 统一页眉 -->
     <div class="flex items-start gap-4 mb-4">
       <span class="text-5xl shrink-0">{{ tool?.icon }}</span>
@@ -260,6 +263,12 @@ const slug = route.params.slug as string
 const { proseClass } = useTheme()
 
 const tool = computed(() => getToolById(slug))
+
+// Fetch lastUpdated from content frontmatter
+const { data: toolContent } = await useAsyncData(`tool-meta-${slug}`, () =>
+  queryContent(`tools/${slug}`).only(['lastUpdated']).findOne()
+)
+const lastUpdated = computed(() => toolContent.value?.lastUpdated)
 
 const breadcrumbItems = computed(() => [
   { label: '首页', path: '/' },
