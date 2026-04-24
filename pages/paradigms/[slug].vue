@@ -2,9 +2,8 @@
   <div class="space-y-8">
     <Breadcrumb :items="breadcrumbItems" />
 
-    <ContentDoc :path="`/paradigms/${slug}`" v-slot="{ doc }">
-      <!-- Markdown 内容存在时：渲染 Markdown -->
-      <template v-if="doc">
+    <ContentDoc :path="`/paradigms/${slug}`">
+      <template #default="{ doc }">
         <div class="flex gap-8">
           <article :class="[proseClass, 'max-w-none flex-1 min-w-0']">
             <ContentRenderer :value="doc" />
@@ -13,13 +12,14 @@
             <PageToc :toc="doc.body?.toc?.links || []" />
           </aside>
         </div>
-      <div class="mt-12"><InteractivePromptTool /></div>
-      <div class="mt-8"><CommunityLinks /></div>
-      <ReadNext :items="nextItems" />
-      <FeedbackWidget :page-path="`/paradigms/${slug}`" />
-    </ContentDoc>
+        <div class="mt-12"><InteractivePromptTool /></div>
+        <div class="mt-8"><CommunityLinks /></div>
+        <ReadNext :items="nextItems" />
+        <FeedbackWidget :page-path="`/paradigms/${slug}`" />
+      </template>
 
-    <div v-if="!hasContent" class="space-y-8">
+      <template #not-found>
+        <div class="space-y-8">
       <div class="flex items-center gap-4">
         <span class="text-5xl">{{ currentParadigm?.icon }}</span>
         <div>
@@ -96,6 +96,8 @@
       <ReadNext :items="nextItems" />
       <FeedbackWidget :page-path="`/paradigms/${slug}`" />
     </div>
+      </template>
+    </ContentDoc>
   </div>
 </template>
 
