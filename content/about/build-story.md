@@ -1,7 +1,7 @@
 ---
 title: 本站诞生记
 description: 用 Claude Code + Spec 驱动开发构建 AI 编程知识站的全过程记录
-lastUpdated: '2026-04-23'
+lastUpdated: '2026-04-24'
 ---
 
 # 本站诞生记
@@ -212,6 +212,79 @@ lastUpdated: '2026-04-23'
 
 ---
 
+### 第四轮迭代：工具信息核实 + 首页减负 + 交互增强
+
+**目标**：基于 Code Lobster（AI 编程导师）的专业评审，修正工具信息错误，优化首页体验
+
+> 本轮迭代由 AI 编程导师 Code Lobster 从专业性和用户体验两个维度对站点进行全面审查后驱动。
+
+#### 1. 工具信息核实与修正（关键修复）
+
+**问题**：3 款工具信息存在事实错误，可能误导用户。
+
+通过逐一访问各工具官网进行核实：
+
+| 工具 | 错误信息 | 核实结果 | 来源 |
+|------|----------|----------|------|
+| Codex | 标注为"GPT-5" | 实际使用 **codex-1**（基于 o3 优化的软件工程专用模型） | [OpenAI 官方博客](https://openai.com/index/introducing-codex/) |
+| Antigravity | 标注为"开源社区"产品 | 实际是 **Google** 产品，2025年11月随 Gemini 3.0 发布 | [CSDN / 博客园报道](https://blog.csdn.net/u014695938/article/details/155101528) |
+| Qoder | 标注为"字节跳动"产品 | 实际是 **阿里巴巴** 产品 | [InfoQ / 下载之家](https://xie.infoq.cn/article/40be5a321787e2cfcb78ba18b) |
+
+同步更新了 `composables/useToolsData.ts` 中的数据和 `content/tools/` 下的 Markdown 文件。
+
+#### 2. Windsurf 信息补充
+
+根据 [windsurf.com](https://windsurf.com) 官网，补充了 **Devin 云端智能体集成** 和 **Agent Command Center** 等新功能描述。
+
+#### 3. 首页信息密度优化
+
+**问题**：首页 7 个模块全部展开，用户需要滚动很久才能看完，容易疲劳。
+
+**改动**：
+- **发展历程** 和 **四大编程范式** 改为可折叠区块，默认收起
+- 使用 Vue `<Transition>` 组件实现平滑展开/收起动画
+- CTA 区域精简 padding，减少滚动压力
+- 折叠状态通过 `ref` 控制，用户点击标题即可展开
+
+```vue
+<button @click="showTimeline = !showTimeline">
+  <h2>发展历程</h2>
+  <span :class="showTimeline ? 'rotate-180' : ''">▼</span>
+</button>
+<Transition name="collapse">
+  <div v-show="showTimeline">...</div>
+</Transition>
+```
+
+#### 4. 工具页交互增强
+
+**问题**：能力光谱是静态的，工具卡片缺乏 hover 反馈。
+
+**改动**：
+- **能力光谱可交互**：点击工具高亮筛选，再次点击取消
+- 新增 `selectedId` prop 和 `@select` 事件，光谱与卡片联动
+- 工具卡片 hover 动效：图标缩放（`scale-110`）、能力条变高、阴影加深
+- 新增"✕ 清除筛选"按钮
+
+#### 5. 发展历程面包屑
+
+**问题**：`/concepts/history` 页面缺少面包屑导航，用户无法快速返回上级。
+
+**改动**：在页面顶部添加 `<Breadcrumb :items="breadcrumbItems" />`，路径：`首页 / 概念入门 / 发展历程`
+
+#### 6. 搜索窗口布局修复
+
+**问题**：搜索触发按钮使用 `position: fixed` 直接钉在视口右上角，与导航栏的"方法论"文字重叠。
+
+**根因**：按钮脱离了 NavBar 的 flex 布局流，导致位置计算错误。
+
+**改动**：
+- 新建 `SearchTrigger` 组件，作为 NavBar 的 flex 子元素参与布局
+- `SearchModal` 移除 fixed 定位的触发按钮
+- 两者通过 `CustomEvent('open-search')` 通信
+
+---
+
 ## 踩坑记录
 
 | 问题 | 原因 | 解决方案 |
@@ -223,6 +296,9 @@ lastUpdated: '2026-04-23'
 | 范式页箭头暗示递进 | 用 `→` 连接四个范式，隐含"从低到高" | 改为网格选择器 + 场景引导 + 常见误区板块 |
 | 浅色主题下相关推荐不可见 | `text-[10px]` + `text-muted` 对比度不够 | 改为 `text-xs` + `text-secondary` + 增加 emoji 引导 |
 | 移动端侧边栏不可用 | 桌面端 `fixed` 侧边栏在小屏无入口 | 新增浮动按钮 + 遮罩层 + 滑入动画 |
+| 3 款工具信息有误 | Codex/Antigravity/Qoder 的厂商、模型标注错误 | 逐一访问官网核实，更新数据源和内容文件 |
+| 搜索按钮与导航重叠 | 搜索触发器用 `position: fixed` 脱离布局流 | 改为 NavBar flex 子元素 + CustomEvent 通信 |
+| 首页信息过载 | 7 个模块全部展开，滚动疲劳 | 发展历程/范式改为可折叠区块，默认收起 |
 
 ## 经验总结
 
