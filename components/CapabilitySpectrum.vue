@@ -37,16 +37,18 @@
           transform: 'translateX(-50%)'
         }"
       >
-        <!-- 标记点 -->
-        <div
-          class="w-3 h-3 rounded-full border-2 transition-all shrink-0"
+        <!-- 标记点（可点击） -->
+        <button
+          @click="$emit('select', tool.id)"
+          class="w-3 h-3 rounded-full border-2 transition-all shrink-0 cursor-pointer hover:scale-150"
           :class="isHighlighted(tool.id) ? 'scale-150 shadow-lg' : 'opacity-60'"
           :style="{
             borderColor: getCapabilityColor(tool.capability.level),
             backgroundColor: isHighlighted(tool.id) ? getCapabilityColor(tool.capability.level) : 'transparent',
             boxShadow: isHighlighted(tool.id) ? `0 0 12px ${getCapabilityColor(tool.capability.level)}` : 'none'
           }"
-        ></div>
+          :title="tool.name"
+        ></button>
         <!-- 名称 -->
         <NuxtLink
           :to="`/tools/${tool.id}`"
@@ -70,6 +72,11 @@ import { tools, getCapabilityColor } from '~/composables/useToolsData'
 
 const props = defineProps<{
   highlightIds?: string[]
+  selectedId?: string
+}>()
+
+const emit = defineEmits<{
+  select: [toolId: string]
 }>()
 
 const sortedTools = computed(() => {
@@ -77,6 +84,8 @@ const sortedTools = computed(() => {
 })
 
 function isHighlighted(id: string): boolean {
+  // 如果有 selectedId，优先用 selectedId
+  if (props.selectedId) return props.selectedId === id
   if (!props.highlightIds || props.highlightIds.length === 0) return true
   return props.highlightIds.includes(id)
 }

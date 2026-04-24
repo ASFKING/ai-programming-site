@@ -450,3 +450,25 @@ pre code {
    ═══════════════════════════════════════════ */
 
 .anchor-nav { position: sticky; top: 4rem; z-index: 40; backdrop-filter: blur(12px); }
+
+/* ═══════════════════════════════════════════
+   Collapse Transition (Vue <Transition>)
+   ═══════════════════════════════════════════ */
+
+.collapse-enter-active,
+.collapse-leave-active {
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+}
+.collapse-enter-from,
+.collapse-leave-to {
+  opacity: 0;
+  max-height: 0;
+  transform: translateY(-8px);
+}
+.collapse-enter-to,
+.collapse-leave-from {
+  opacity: 1;
+  max-height: 2000px;
+  transform: translateY(0);
+}

@@ -368,10 +368,10 @@ export const tools: Tool[] = [
     vendor: 'OpenAI',
     region: '国外',
     form: 'Web',
-    description: 'OpenAI 推出的 AI 编程智能体，端到端代码生成与自主执行',
-    longDescription: 'Codex 是 OpenAI 推出的 AI 编程智能体，能在云端沙箱环境中自主执行编程任务。它接收自然语言描述的任务，自主规划、编码、测试、调试，直到交付可用的代码。适合端到端的复杂任务处理。',
+    description: 'OpenAI 推出的云端 AI 编程智能体，基于 codex-1（o3 优化版）驱动',
+    longDescription: 'Codex 是 OpenAI 推出的云端 AI 编程智能体，能在独立沙箱环境中自主执行编程任务。它由 codex-1 驱动——一个针对软件工程优化的 o3 版本，通过强化学习在真实编程任务上训练而成。支持并行处理多个任务，每个任务在独立的沙箱环境中运行，能自主规划、编码、测试、调试，直到交付可用的代码。',
     capability: { level: 5, label: '自主', position: 90 },
-    tags: ['自主执行', '端到端', 'GPT-5'],
+    tags: ['自主执行', '端到端', 'codex-1'],
     allTags: ['Web', 'Agent', '自主', '国外', '付费', '端到端', '沙箱', '自动化', '复杂任务'],
     platform: 'Web / 终端',
     pricing: {
@@ -389,11 +389,11 @@ export const tools: Tool[] = [
       costEfficiency: 3
     },
     features: [
-      '端到端代码生成',
+      'codex-1 驱动（基于 o3 的软件工程优化版）',
       '云端沙箱自主执行',
-      '复杂任务分解与规划',
+      '多任务并行处理',
       '自动测试与调试',
-      'GPT-5 系列模型驱动'
+      '支持 AGENTS.md 项目配置'
     ],
     useCases: [
       '端到端的编程任务交付',
@@ -404,8 +404,8 @@ export const tools: Tool[] = [
     pros: [
       '自主性最强，几乎不需要人工干预',
       '云端执行，不占用本地资源',
-      'GPT-5 系列模型推理能力强',
-      '任务分解和规划能力优秀'
+      'codex-1 针对软件工程深度优化',
+      '多任务并行，效率高'
     ],
     cons: [
       '按 token 计费，成本不可控',
@@ -425,8 +425,8 @@ export const tools: Tool[] = [
       '配合 Codex CLI 在本地终端使用，体验更好'
     ],
     competitors: ['claude-code', 'cursor'],
-    models: 'GPT-5 / GPT-5-mini',
-    website: 'https://openai.com/index/codex',
+    models: 'codex-1（基于 o3 优化的软件工程专用模型）',
+    website: 'https://openai.com/index/introducing-codex/',
     learningResources: [
       { title: 'OpenAI Codex 文档', url: 'https://platform.openai.com/docs' }
     ]
@@ -435,127 +435,127 @@ export const tools: Tool[] = [
     id: 'antigravity',
     name: 'Antigravity',
     icon: '🚀',
-    vendor: '开源社区',
+    vendor: 'Google',
     region: '国外',
     form: 'IDE',
-    description: '开源 AI 编程环境，支持本地模型接入，数据完全本地处理',
-    longDescription: 'Antigravity 是一个开源的 AI 编程环境，最大的特点是支持本地模型接入和数据完全本地处理。适合对数据隐私有要求的开发者或企业。可以接入 Ollama、LM Studio 等本地模型，也可以配置远程 API。',
-    capability: { level: 3, label: '协作', position: 55 },
-    tags: ['开源免费', '本地部署', '隐私优先'],
-    allTags: ['IDE', '开源', '免费', '国外', '本地', '隐私', '自定义模型', 'Ollama'],
+    description: 'Google 推出的 AI 原生 IDE，随 Gemini 3.0 一同发布',
+    longDescription: 'Antigravity 是 Google 于 2025 年 11 月随 Gemini 3.0 一同发布的全新 AI 原生集成开发环境。它不是传统编辑器的插件扩展，而是将 AI 深度融入开发流程的全新 IDE。定位为 AI 主动构建系统的协作平台，开发者角色从编码者转变为任务定义者和质量守门人。',
+    capability: { level: 4, label: 'Agent', position: 78 },
+    tags: ['Google出品', 'Gemini驱动', 'AI原生'],
+    allTags: ['IDE', 'Agent', '国外', '免费', 'Google', 'Gemini', 'AI原生', '全栈'],
     platform: 'Mac / Win / Linux',
     pricing: {
       free: true,
-      freeDetails: '完全开源免费'
+      freeDetails: '免费使用（需 Google 账号）'
     },
-    network: '可选本地部署，无需科学上网',
+    network: '需要科学上网',
     scores: {
-      autonomy: 3,
-      contextDepth: 3,
-      engineering: 3,
-      easeOfUse: 3,
-      costEfficiency: 5
+      autonomy: 4,
+      contextDepth: 4,
+      engineering: 4,
+      easeOfUse: 4,
+      costEfficiency: 4
     },
     features: [
-      '本地模型接入（Ollama / LM Studio）',
-      '多模型切换',
-      '数据完全本地处理',
-      '可自定义 UI 和工作流'
+      'Gemini 3.0 深度集成',
+      'AI 主动构建系统',
+      '全流程智能体协作',
+      '代码生成与自主执行'
     ],
     useCases: [
-      '对数据隐私有要求的开发场景',
-      '本地模型测试与开发',
-      '不想依赖第三方云服务的开发者',
-      '开源爱好者'
+      'Google 生态开发者',
+      '全流程 AI 辅助开发',
+      '需要深度 AI 集成的项目',
+      '探索 AI 原生 IDE 体验'
     ],
     pros: [
-      '完全开源免费',
-      '数据隐私有保障',
-      '可深度自定义',
-      '支持本地模型'
+      'Google 出品，模型能力强',
+      '免费使用',
+      'AI 原生设计，非插件改造',
+      '与 Google 生态深度集成'
     ],
     cons: [
-      'AI 能力取决于本地模型质量',
-      '社区规模小，文档不够完善',
-      '配置门槛较高',
-      '功能不如商业产品丰富'
+      '需要科学上网',
+      '生态相对较新',
+      '社区和文档仍在完善中',
+      '仅支持在线使用'
     ],
     pitfalls: [
-      '本地模型的代码生成质量远不如云端模型——要有心理准备',
-      '首次配置需要一定技术基础',
-      '本地模型推理速度受硬件限制'
+      '作为较新的 IDE，部分功能可能不如 Cursor 成熟',
+      '需要 Google 账号，对国内用户有门槛'
     ],
     tips: [
-      '建议用 Ollama + CodeLlama 或 DeepSeek Coder 作为本地模型',
-      '8GB 以上显存才能流畅运行较大的代码模型',
-      '可以混合使用：日常用云端 API，敏感项目用本地模型'
+      '适合想体验 Google AI 开发生态的开发者',
+      '可以与 Gemini API 配合使用',
+      '关注 Google I/O 大会获取最新功能更新'
     ],
-    competitors: ['cursor', 'trae'],
-    models: '支持任意本地/云端模型（Ollama、OpenAI API 兼容）',
-    website: 'https://github.com/nicepkg/antigravity',
+    competitors: ['cursor', 'trae', 'windsurf'],
+    models: 'Gemini 3.0',
+    website: 'https://antigravity.dev',
     learningResources: [
-      { title: 'GitHub 仓库', url: 'https://github.com/nicepkg/antigravity' }
+      { title: 'Google Antigravity 官方文档', url: 'https://developers.google.com/antigravity' }
     ]
   },
   {
     id: 'qoder',
     name: 'Qoder',
     icon: '⚡',
-    vendor: '字节跳动',
+    vendor: '阿里巴巴',
     region: '国内',
     form: 'IDE',
-    description: '字节跳动旗下轻量级 AI 代码助手，与 Trae 互补',
-    longDescription: 'Qoder 是字节跳动旗下的另一款 AI 编程工具，定位为轻量级的 AI 代码助手。与 Trae 的全流程开发不同，Qoder 更专注于快速代码补全和轻量级的 AI 辅助。免费使用且国内直连，适合作为日常编码的辅助工具。',
-    capability: { level: 3, label: '协作', position: 55 },
-    tags: ['快速补全', '免费使用', '国内直连'],
-    allTags: ['IDE', '补全', '协作', '国内', '免费', '轻量', '中文', '快速'],
-    platform: 'Mac / Win',
+    description: '阿里巴巴推出的 AI 编程平台，支持多模式协作开发',
+    longDescription: 'Qoder 是阿里巴巴推出的 AI 编程平台，定位为 Agentic Coding 平台。支持编辑器模式（Tab 补全 + Agent 对话）和 Experts 模式（自动组建 AI 专家团队并行工作）。同时提供 IDE、CLI 和 JetBrains 插件三种形态，覆盖不同开发者的使用习惯。',
+    capability: { level: 4, label: 'Agent', position: 75 },
+    tags: ['多模式', '免费使用', '国内直连'],
+    allTags: ['IDE', 'Agent', '国内', '免费', '中文', 'CLI', 'JetBrains', 'Spec驱动'],
+    platform: 'Mac / Win / Linux',
     pricing: {
       free: true,
       freeDetails: '基础功能免费'
     },
     network: '无需科学上网，国内网络直连',
     scores: {
-      autonomy: 2,
-      contextDepth: 3,
-      engineering: 2,
-      easeOfUse: 5,
+      autonomy: 4,
+      contextDepth: 4,
+      engineering: 4,
+      easeOfUse: 4,
       costEfficiency: 5
     },
     features: [
-      '快速代码补全',
-      '轻量级 AI 辅助',
-      '免费使用',
-      '国内网络直连'
+      'Experts 模式（AI 专家团队并行）',
+      'Tab 补全 + Agent 对话',
+      'RepoWiki 自动文档生成',
+      'Spec 驱动开发支持',
+      'CLI + IDE + JetBrains 三形态'
     ],
     useCases: [
-      '日常编码的轻量辅助',
-      '快速原型开发',
-      '国内开发者的补全工具',
-      '与 Trae 配合使用'
+      '全流程 AI 开发',
+      '需要多专家协作的复杂项目',
+      '国内开发者的 Agent 编程',
+      'Spec 驱动的工程化开发'
     ],
     pros: [
-      '完全免费',
+      '免费使用',
       '国内直连，速度快',
-      '轻量不占资源',
-      '中文支持好'
+      'Experts 模式创新性强',
+      '支持多形态（IDE/CLI/JetBrains）'
     ],
     cons: [
-      'Agent 能力较弱',
-      '功能不如 Trae 丰富',
-      '生态较新',
-      '高级功能有限'
+      '生态相对较新',
+      '社区规模较小',
+      '高级功能仍在迭代中'
     ],
     pitfalls: [
-      '不要期望它能处理复杂的多文件任务——那是 Trae 的活',
-      '补全质量在复杂项目中可能不够用'
+      'Experts 模式适合复杂任务，日常补全用普通模式即可',
+      '作为较新的工具，部分功能可能不够稳定'
     ],
     tips: [
-      '适合作为 Trae 的补充——日常补全用 Qoder，复杂任务用 Trae',
-      '写好注释再触发补全，效果更好'
+      'Experts 模式适合从零搭建项目，自动组建专家团队',
+      '用 Spec 驱动开发可以提高代码质量',
+      'CLI 版本适合终端重度用户'
     ],
-    competitors: ['trae', 'github-copilot', 'codebuddy'],
-    models: '字节跳动自研模型',
+    competitors: ['trae', 'cursor', 'github-copilot'],
+    models: '支持多种主流大模型',
     website: 'https://qoder.com',
     learningResources: []
   },

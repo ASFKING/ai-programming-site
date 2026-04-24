@@ -1,30 +1,29 @@
 ---
 title: Antigravity
-description: 开源 AI 编程环境，专注于本地运行
+description: Google推出的AI原生IDE，随Gemini 3.0一同发布
 lastUpdated: '2026-04-24'
 icon: 🚀
 category: 国外
-vendor: 开源项目
+vendor: Google
 features:
-  - 本地模型接入 (Ollama)
-  - 多模型切换
-  - 开源免费
-  - 数据本地处理
-pricing: 完全开源免费
-network: 可选本地部署，无需科学上网
-useCases: 私有化部署，本地开发，隐私敏感项目
+  - Gemini 3.0 深度集成
+  - AI 主动构建系统
+  - 全流程智能体协作
+pricing: 免费使用（需Google账号）
+network: 需要科学上网
+useCases: Google生态开发，AI原生IDE体验
 ---
 
 # Antigravity
 
-Antigravity 是一款基于 VS Code fork 的开源 AI 编程环境，它最大的特点是**隐私优先**和**高度自定义**。
+Antigravity 是 Google 于 2025 年 11 月随 Gemini 3.0 一同发布的全新 AI 原生集成开发环境。
 
 ## 核心特性
 
-- **本地模型支持**：无缝对接 Ollama 等本地大模型运行框架，代码无需上传至云端。
-- **完全开源**：开发者可以完全审计工具的行为，甚至根据自己的需求修改 IDE 源码。
-- **自定义工作流**：支持配置不同的模型端点，适配从轻量级补全到深度对话的各种场景。
+- **AI 原生设计**：不是传统编辑器的插件扩展，而是将 AI 深度融入开发流程的全新 IDE。
+- **智能体协作**：开发者角色从编码者（Coder）转变为任务定义者和质量守门人（Manager）。
+- **Gemini 3.0 驱动**：搭载 Google 最新的 Gemini 3.0 大模型，推理能力强。
 
 ## 适用场景
 
-适合对**代码安全性**要求极其严格，或者希望在**离线环境**下利用 AI 辅助编程的场景。由于是开源项目，它也是开发者研究 AI 原生 IDE 实现机制的绝佳样板。
+适合想体验 **Google AI 开发生态**的开发者，以及需要 AI 原生 IDE 体验的全栈开发场景。

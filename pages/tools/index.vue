@@ -53,13 +53,29 @@
       </div>
     </section>
 
-    <!-- 能力光谱图 -->
+    <!-- 能力光谱图（可交互） -->
     <section class="p-6 rounded-xl glass" style="border: 1px solid var(--color-border)">
-      <h2 class="text-lg font-semibold mb-4" style="color: var(--color-text-primary)">📊 能力光谱</h2>
-      <p class="text-sm mb-4" style="color: var(--color-text-muted)">
-        从被动补全到完全自主，每个工具在光谱上都有自己的位置
-      </p>
-      <CapabilitySpectrum />
+      <div class="flex items-center justify-between mb-4">
+        <div>
+          <h2 class="text-lg font-semibold" style="color: var(--color-text-primary)">📊 能力光谱</h2>
+          <p class="text-sm mt-1" style="color: var(--color-text-muted)">
+            点击工具高亮筛选，再次点击取消
+          </p>
+        </div>
+        <button
+          v-if="highlightedTool"
+          @click="highlightedTool = ''"
+          class="text-xs px-3 py-1.5 rounded-lg border transition-all hover:border-red-400/50 hover:text-red-400"
+          style="color: var(--color-text-muted); border-color: var(--color-border)"
+        >
+          ✕ 清除筛选
+        </button>
+      </div>
+      <CapabilitySpectrum
+        :highlight-ids="highlightedTool ? [highlightedTool] : []"
+        :selected-id="highlightedTool"
+        @select="handleSpectrumSelect"
+      />
     </section>
 
     <!-- 筛选器 -->
@@ -85,11 +101,11 @@
           v-for="tool in filteredTools"
           :key="tool.id"
           :to="`/tools/${tool.id}`"
-          class="card group hover:-translate-y-1 transition-all duration-300"
+          class="card group hover:-translate-y-1 transition-all duration-300 hover:shadow-xl"
           :class="tool.region === '国内' ? 'hover:border-green-400/50 hover:shadow-green-500/10' : 'hover:border-blue-400/50 hover:shadow-blue-500/10'"
         >
           <div class="flex items-start justify-between mb-3">
-            <div class="text-3xl">{{ tool.icon }}</div>
+            <div class="text-3xl group-hover:scale-110 transition-transform duration-300">{{ tool.icon }}</div>
             <div class="flex items-center gap-2">
               <span
                 class="px-2 py-1 text-xs rounded-full"
@@ -111,7 +127,7 @@
           <!-- 能力光谱迷你条 -->
           <div class="w-full h-1.5 rounded-full overflow-hidden mb-3" style="background: rgba(255,255,255,0.08)">
             <div
-              class="h-full rounded-full transition-all"
+              class="h-full rounded-full transition-all duration-500 group-hover:h-2"
               :style="{
                 width: `${tool.capability.position}%`,
                 background: `linear-gradient(90deg, #22d3ee, ${getCapabilityColor(tool.capability.level)})`
@@ -176,6 +192,11 @@ import { tools, getToolById, getCapabilityColor } from '~/composables/useToolsDa
 import type { Tool } from '~/composables/useToolsData'
 
 const activeFilter = ref('all')
+const highlightedTool = ref('')
+
+function handleSpectrumSelect(toolId: string) {
+  highlightedTool.value = highlightedTool.value === toolId ? '' : toolId
+}
 
 const filters = [
   { value: 'all', label: '全部', icon: '🛠️' },
@@ -189,16 +210,22 @@ const filters = [
 ]
 
 const filteredTools = computed(() => {
+  let result = tools
+  // 先按筛选器过滤
   switch (activeFilter.value) {
-    case 'domestic': return tools.filter(t => t.region === '国内')
-    case 'overseas': return tools.filter(t => t.region === '国外')
-    case 'ide': return tools.filter(t => t.form === 'IDE')
-    case 'terminal': return tools.filter(t => t.form === '终端')
-    case 'plugin': return tools.filter(t => t.form === '插件')
-    case 'free': return tools.filter(t => t.pricing.free)
-    case 'agent': return tools.filter(t => t.capability.level >= 4)
-    default: return tools
+    case 'domestic': result = result.filter(t => t.region === '国内'); break
+    case 'overseas': result = result.filter(t => t.region === '国外'); break
+    case 'ide': result = result.filter(t => t.form === 'IDE'); break
+    case 'terminal': result = result.filter(t => t.form === '终端'); break
+    case 'plugin': result = result.filter(t => t.form === '插件'); break
+    case 'free': result = result.filter(t => t.pricing.free); break
+    case 'agent': result = result.filter(t => t.capability.level >= 4); break
   }
+  // 再按光谱高亮过滤
+  if (highlightedTool.value) {
+    result = result.filter(t => t.id === highlightedTool.value)
+  }
+  return result
 })
 
 const combos = [
