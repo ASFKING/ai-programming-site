@@ -57,12 +57,16 @@ const navItems = computed(() => {
 
   if (path.startsWith('/tools')) {
     return [
-      { name: '工具列表', path: '/tools', icon: '🛠️' },
+      { name: '🧭 工具选型', path: '/tools', icon: '🧭' },
+      { name: '🗺️ 工具选型器', path: '/tools/picker', icon: '🗺️' },
+      { name: '📊 工具对比', path: '/tools/compare', icon: '📊' },
       { name: '🔥 Trae', path: '/tools/trae' },
       { name: '💻 Cursor', path: '/tools/cursor' },
       { name: '🤖 Claude Code', path: '/tools/claude-code' },
       { name: '🐙 GitHub Copilot', path: '/tools/github-copilot' },
       { name: '⚡ Codex', path: '/tools/codex' },
+      { name: '🏄 Windsurf', path: '/tools/windsurf' },
+      { name: '🛠️ Aider', path: '/tools/aider' },
       { name: '🚀 Antigravity', path: '/tools/antigravity' },
       { name: '⚡ Qoder', path: '/tools/qoder' },
       { name: '🦊 CodeBuddy', path: '/tools/codebuddy' }
