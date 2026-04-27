@@ -640,17 +640,17 @@ export const tools: Tool[] = [
     vendor: 'Codeium',
     region: '国外',
     form: 'IDE',
-    description: 'Codeium 出品的 AI 原生 IDE，以 Flow 模式著称',
-    longDescription: 'Windsurf（原 Codeium IDE）是 Codeium 推出的 AI 原生 IDE，核心特点是 Flow 模式——AI 能像 pair programmer 一样与开发者实时协作，自动理解项目上下文并提供建议。在 2025-2026 年获得了大量关注，是 Cursor 的有力竞争者。',
-    capability: { level: 4, label: 'Agent', position: 75 },
-    tags: ['Flow模式', '实时协作', '性价比高'],
-    allTags: ['IDE', 'Agent', '协作', '国外', '付费', 'Flow', '实时', '全栈', '性价比'],
+    description: 'Codeium 出品的 AI 原生 IDE，以 Cascade 智能代理系统著称',
+    longDescription: 'Windsurf（原 Codeium IDE）是 Codeium 推出的 AI 原生 IDE，核心是 Cascade 智能代理系统。Cascade 在 VS Code 中提供 Code/Plan/Ask 三种模式：Code 模式为全自动智能代理，可自主创建/编辑/删除文件、运行终端命令；Plan 模式先生成详细的 Markdown 实现计划再执行；Ask 模式为只读探索。支持语音输入、Turbo 自动执行模式、Fast Context 快速代码检索（20x 加速）、MCP 协议扩展、以及实时协作感知。在 JetBrains 中提供 Write/Chat 两种模式。',
+    capability: { level: 4, label: 'Agent', position: 78 },
+    tags: ['Cascade三模式', 'Plan模式', 'Turbo模式'],
+    allTags: ['IDE', 'Agent', '协作', '自主', '国外', '付费', 'Cascade', 'Plan', 'Turbo', 'MCP', '语音输入', '全栈'],
     platform: 'Mac / Win / Linux',
     pricing: {
       free: true,
-      freeDetails: '基础版免费',
-      paid: 'Pro $15/月',
-      enterprise: 'Enterprise 按需定价'
+      freeDetails: 'Free 版可用',
+      paid: 'Pro $15/月，Max 按需定价',
+      enterprise: 'Teams / Enterprise 按需定价'
     },
     network: '需要科学上网',
     scores: {
@@ -661,44 +661,54 @@ export const tools: Tool[] = [
       costEfficiency: 4
     },
     features: [
-      'Flow 模式（实时 pair programming）',
-      'Cascade 多步推理',
-      '上下文感知的代码建议',
-      '终端集成',
-      '多模型支持'
+      'Cascade 三模式（Code 全自动 / Plan 规划 / Ask 只读）',
+      'Plan 模式生成 Markdown 计划文件，点击 Implement 一键执行',
+      'Turbo 自动执行模式（自动运行终端命令）',
+      'Fast Context 快速代码检索（20x 加速）',
+      '语音输入与 Cascade 交互',
+      'MCP 协议扩展外部工具',
+      'Autocomplete 单行/多行代码补全',
+      '实时协作感知（Cascade 自动感知你的手动编辑）'
     ],
     useCases: [
-      '实时 pair programming',
+      '复杂功能开发与重构（Code 模式）',
+      '需要先规划再实现的复杂任务（Plan 模式）',
+      '代码库学习与探索（Ask 模式）',
       '全栈开发',
-      '需要流畅 AI 协作体验的开发者',
-      '预算敏感的开发者（比 Cursor 便宜）'
+      '需要流畅 AI 协作体验的开发者'
     ],
     pros: [
-      'Flow 模式体验流畅',
-      '价格比 Cursor 便宜（$15 vs $20）',
-      '上下文理解能力强',
-      '界面简洁'
+      'Cascade 三模式覆盖从探索到自主执行的全场景',
+      'Plan 模式先规划后执行，减少返工',
+      'Turbo 模式自动执行，效率极高',
+      'Fast Context 20x 加速代码检索',
+      '支持 VS Code + JetBrains 双平台'
     ],
     cons: [
       '需要科学上网',
       '社区规模不如 Cursor',
       '部分功能仍在迭代中',
-      '插件生态不如 VS Code 原版'
+      'VS Code 和 JetBrains 版本功能有差异（JetBrains 为 Write/Chat 两模式）'
     ],
     pitfalls: [
-      'Flow 模式有时会"过于主动"——学会适时关闭自动建议',
-      '与 Cursor 相比，Agent 模式的自主性稍弱'
+      'Turbo 模式会自动执行终端命令——务必配置好 deny list，避免危险操作',
+      'Plan 模式生成的计划文件存在 ~/.windsurf/plans，记得定期清理旧计划',
+      'VS Code 版（Code/Plan/Ask）和 JetBrains 版（Write/Chat）模式不同，别搞混'
     ],
     tips: [
-      'Flow 模式适合 pair programming 场景，Agent 模式适合独立任务',
-      '用 Cascade 功能处理多步骤的复杂任务',
-      '价格比 Cursor 低 25%，适合预算敏感的开发者'
+      '日常开发用 Code 模式作为默认，复杂任务切 Plan 模式先规划',
+      '用 ⌘+. 快速切换 Cascade 模式',
+      'Plan 模式生成的计划文件可以通过 @mentions 在新会话中复用',
+      '用 Ask 模式安全地探索不熟悉的代码库，不会修改任何文件',
+      'Turbo 模式配合 allow/deny list 使用，兼顾效率和安全'
     ],
     competitors: ['cursor', 'trae', 'github-copilot'],
-    models: '支持多种模型（GPT-4o、Claude 等）',
+    models: 'Base Model / Windsurf Premier / GPT-4o / Claude 3.5 Sonnet',
     website: 'https://windsurf.com',
     learningResources: [
-      { title: 'Windsurf 官方文档', url: 'https://docs.windsurf.com' }
+      { title: 'Windsurf 官方文档', url: 'https://docs.windsurf.com' },
+      { title: 'Cascade 模式文档', url: 'https://docs.windsurf.com/zh/windsurf/cascade/modes' },
+      { title: '定价说明', url: 'https://windsurf.com/pricing' }
     ]
   },
   {
