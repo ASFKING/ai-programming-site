@@ -503,61 +503,77 @@ export const tools: Tool[] = [
     vendor: '阿里巴巴',
     region: '国内',
     form: 'IDE',
-    description: '阿里巴巴推出的 AI 编程平台，支持多模式协作开发',
-    longDescription: 'Qoder 是阿里巴巴推出的 AI 编程平台，定位为 Agentic Coding 平台。支持编辑器模式（Tab 补全 + Agent 对话）和 Experts 模式（自动组建 AI 专家团队并行工作）。同时提供 IDE、CLI 和 JetBrains 插件三种形态，覆盖不同开发者的使用习惯。',
-    capability: { level: 4, label: 'Agent', position: 75 },
-    tags: ['多模式', '免费使用', '国内直连'],
-    allTags: ['IDE', 'Agent', '国内', '免费', '中文', 'CLI', 'JetBrains', 'Spec驱动'],
+    description: '阿里巴巴推出的新一代 Agentic 编程平台，支持 Ask/Agent/Experts/Quest 四种模式',
+    longDescription: 'Qoder 是阿里巴巴于 2025 年 8 月正式发布的新一代 Agentic 编程平台，基于 VSCode 开源代码深度定制并内置 AI 能力。核心是四种对话模式：Ask（只读问答）、Agent（自主编码）、Experts（多智能体协作）、Quest（全自主编程——描述目标即可端到端交付）。上下文引擎结合代码仓库分析与自适应记忆机制，最多支持约 10 万文件规模的代码库分析。同时提供 IDE、CLI 和 JetBrains 插件三种形态。已接入阿里云百炼 Coding Plan，支持 Qwen 3.5、GLM-5、Kimi-K2.5 等多款模型。',
+    capability: { level: 4, label: 'Agent', position: 80 },
+    tags: ['Quest自主编程', 'Experts多智能体', '免费使用'],
+    allTags: ['IDE', 'CLI', 'JetBrains', 'Agent', '自主', '国内', '免费', '中文', 'Quest', 'Experts', 'Spec驱动', 'MCP', '多模型'],
     platform: 'Mac / Win / Linux',
     pricing: {
       free: true,
-      freeDetails: '基础功能免费'
+      freeDetails: '个人版免费试用（Pro Trial 赠 300 Credits）',
+      paid: 'Pro / Pro+ / Ultra 多档付费',
+      enterprise: 'Teams 版按需定价'
     },
     network: '无需科学上网，国内网络直连',
     scores: {
-      autonomy: 4,
-      contextDepth: 4,
+      autonomy: 5,
+      contextDepth: 5,
       engineering: 4,
       easeOfUse: 4,
       costEfficiency: 5
     },
     features: [
-      'Experts 模式（AI 专家团队并行）',
-      'Tab 补全 + Agent 对话',
-      'RepoWiki 自动文档生成',
-      'Spec 驱动开发支持',
-      'CLI + IDE + JetBrains 三形态'
+      'Quest 全自主编程（描述目标 → 自主澄清需求 → 规划方案 → 执行代码 → 验证结果）',
+      'Experts 多智能体协作（Team Lead 自动拆解任务、组建专家团队并行执行）',
+      'Ask / Agent / Experts / Quest 四种对话模式自由切换',
+      'NEXT 智能代码预测（基于上下文预测下一步编辑）',
+      '上下文引擎（支持约 10 万文件规模代码库分析）',
+      'Repo Wiki 自动生成代码库架构文档',
+      'Browser Agent / Code Review Agent 专项智能体',
+      'MCP 协议 + Skills 扩展 + Hooks 自定义',
+      'IDE + CLI + JetBrains 三形态'
     ],
     useCases: [
-      '全流程 AI 开发',
-      '需要多专家协作的复杂项目',
-      '国内开发者的 Agent 编程',
-      'Spec 驱动的工程化开发'
+      'Quest 模式端到端自主开发（复杂功能、原型验证、工具构建）',
+      'Experts 模式多专家协作（全栈开发、复杂调试、技术调研）',
+      'Spec 驱动的工程化开发（Code with Spec 场景）',
+      '快速原型验证（Prototype Demos 场景）',
+      '国内开发者的 Agentic 编程首选'
     ],
     pros: [
-      '免费使用',
-      '国内直连，速度快',
-      'Experts 模式创新性强',
-      '支持多形态（IDE/CLI/JetBrains）'
+      'Quest 模式全自主编程，真正「定义目标、审查结果」',
+      '上下文引擎支持 10 万文件级代码库，理解能力强',
+      '免费使用，国内直连',
+      '四种模式覆盖从问答到全自主的全场景',
+      '阿里云百炼 Coding Plan 接入，多模型调用不消耗 Credits'
     ],
     cons: [
-      '生态相对较新',
-      '社区规模较小',
-      '高级功能仍在迭代中'
+      '生态相对较新，社区规模较小',
+      'Quest 模式长时间运行可能消耗大量 Credits',
+      'JetBrains 插件和团队版部分功能仍在接入中',
+      '基于 VSCode，对非 VSCode 用户有切换成本'
     ],
     pitfalls: [
-      'Experts 模式适合复杂任务，日常补全用普通模式即可',
-      '作为较新的工具，部分功能可能不够稳定'
+      'Quest 模式虽然自主性强，但长时间并行任务会消耗大量 Credits——注意监控用量',
+      'Experts 模式适合复杂任务，日常补全用 Ask 或 Agent 模式即可',
+      'Quest 的「Code with Spec」场景会先生成 Spec 文档再执行，适合需要可追溯性的项目；快速验证用 Prototype Demos 场景跳过 Spec'
     ],
     tips: [
-      'Experts 模式适合从零搭建项目，自动组建专家团队',
-      '用 Spec 驱动开发可以提高代码质量',
-      'CLI 版本适合终端重度用户'
+      '日常编码用 Agent 模式，复杂任务切 Experts 或 Quest 模式',
+      'Quest 模式的三种场景要选对：Code with Spec（复杂功能）、Prototype Demos（快速原型）、Create Tools（构建工具）',
+      '用 Repo Wiki 功能自动生成代码库架构文档，帮助 AI 更好理解项目',
+      '接入阿里云百炼 Coding Plan 后，调用 Qwen/GLM/Kimi 等模型不消耗 Credits',
+      'CLI 版本用 `qoder .` 命令直接打开当前目录'
     ],
     competitors: ['trae', 'cursor', 'github-copilot'],
-    models: '支持多种主流大模型',
+    models: 'Qwen 3.5 / GLM-5 / Kimi-K2.5 及多种主流大模型（通过百炼 Coding Plan 接入）',
     website: 'https://qoder.com',
-    learningResources: []
+    learningResources: [
+      { title: 'Qoder 官方文档', url: 'https://docs.qoder.com/zh/quick-start' },
+      { title: 'Qoder CLI 文档', url: 'https://docs.qoder.com/cli/quick-start' },
+      { title: 'Quest 模式文档', url: 'https://docs.qoder.com/user-guide/quest-mode' }
+    ]
   },
   {
     id: 'codebuddy',
