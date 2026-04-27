@@ -369,16 +369,16 @@ export const tools: Tool[] = [
     region: '国外',
     form: 'Web',
     description: 'OpenAI 推出的云端 AI 编程智能体，基于 codex-1（o3 优化版）驱动',
-    longDescription: 'Codex 是 OpenAI 推出的云端 AI 编程智能体，能在独立沙箱环境中自主执行编程任务。它由 codex-1 驱动——一个针对软件工程优化的 o3 版本，通过强化学习在真实编程任务上训练而成。支持并行处理多个任务，每个任务在独立的沙箱环境中运行，能自主规划、编码、测试、调试，直到交付可用的代码。',
+    longDescription: 'Codex 是 OpenAI 推出的云端 AI 编程智能体，能在独立沙箱环境中自主执行编程任务。它由 codex-1 驱动——一个针对软件工程优化的 o3 版本，通过强化学习在真实编程任务上训练而成。支持并行处理多个任务，每个任务在独立的沙箱环境中运行，能自主规划、编码、测试、调试，直到交付可用的代码。通过 Skills 功能，Codex 不仅能写代码，还能参与 PR 审查、代码理解、原型构建和文档编写。2025年6月起支持任务执行期间的互联网访问，并支持后台自动化处理问题分流、告警监控和 CI/CD 等日常工作。',
     capability: { level: 5, label: '自主', position: 90 },
-    tags: ['自主执行', '端到端', 'codex-1'],
-    allTags: ['Web', 'Agent', '自主', '国外', '付费', '端到端', '沙箱', '自动化', '复杂任务'],
-    platform: 'Web / 终端',
+    tags: ['自主执行', '端到端', 'codex-1', 'Skills', '多智能体'],
+    allTags: ['Web', 'Agent', '自主', '国外', '付费', '端到端', '沙箱', '自动化', '复杂任务', 'Skills', 'CLI', '多智能体', '后台运行'],
+    platform: 'Web / 终端 / 编辑器',
     pricing: {
       free: false,
-      freeDetails: 'ChatGPT Plus 用户有使用额度',
-      paid: 'ChatGPT Plus $20/月起',
-      enterprise: 'API 按量计费'
+      freeDetails: 'ChatGPT Plus 用户有基础使用额度',
+      paid: 'Plus $20/月 | Pro $100/月（额度约 Plus 的 10 倍）',
+      enterprise: 'Team $25/人/月 | Enterprise 定制价格'
     },
     network: '需要科学上网',
     scores: {
@@ -393,19 +393,26 @@ export const tools: Tool[] = [
       '云端沙箱自主执行',
       '多任务并行处理',
       '自动测试与调试',
-      '支持 AGENTS.md 项目配置'
+      '支持 AGENTS.md 项目配置',
+      'Skills 扩展（PR 审查、文档编写、原型构建等）',
+      '支持任务执行期间互联网访问（可选）',
+      '后台自动化（问题分流、告警监控、CI/CD）',
+      '多智能体工作流设计'
     ],
     useCases: [
       '端到端的编程任务交付',
       '复杂项目的自动化开发',
       '需要自主执行的批处理任务',
-      '快速验证技术方案'
+      '快速验证技术方案',
+      '后台自动化处理日常工程任务'
     ],
     pros: [
       '自主性最强，几乎不需要人工干预',
       '云端执行，不占用本地资源',
       'codex-1 针对软件工程深度优化',
-      '多任务并行，效率高'
+      '多任务并行，效率高',
+      'Skills 扩展能力，不只是写代码',
+      '后台自动化，可无人值守运行'
     ],
     cons: [
       '按 token 计费，成本不可控',
@@ -421,14 +428,17 @@ export const tools: Tool[] = [
     tips: [
       '把任务描述得越具体越好——模糊的需求会导致模糊的输出',
       '先让它做小任务验证效果，再给大任务',
-      '用 API 调用比 Web 界面更灵活',
-      '配合 Codex CLI 在本地终端使用，体验更好'
+      '配合 Codex CLI 在本地终端使用，体验更好',
+      '善用 Skills 功能扩展 Codex 的能力边界（PR 审查、文档等）',
+      'Pro 套餐（$100/月）适合重度 Codex 用户，额度约 Plus 的 10 倍'
     ],
     competitors: ['claude-code', 'cursor'],
     models: 'codex-1（基于 o3 优化的软件工程专用模型）',
-    website: 'https://openai.com/index/introducing-codex/',
+    website: 'https://openai.com/zh-Hans-CN/codex/',
     learningResources: [
-      { title: 'OpenAI Codex 文档', url: 'https://platform.openai.com/docs' }
+      { title: 'OpenAI Codex 官网', url: 'https://openai.com/zh-Hans-CN/codex/' },
+      { title: 'Codex 技术文档', url: 'https://platform.openai.com/docs/codex' },
+      { title: 'Codex Changelog', url: 'https://help.openai.com/en/articles/11428266-codex-changelog' }
     ]
   },
   {
