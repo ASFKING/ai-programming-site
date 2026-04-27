@@ -799,6 +799,32 @@ pre code {
   color: #7c3aed !important;
 }
 
+/* ═══════════════════════════════════════════
+   浅色模式修复 — Shiki 代码高亮主题
+   Nuxt Content 使用 Shiki，代码块通过内联 --shiki-default
+   CSS 变量着色。浅色模式下需要覆盖这些变量为深色值。
+   ═══════════════════════════════════════════ */
+
+/* 覆盖 Shiki 的 CSS 变量，让所有使用 --shiki-default 的 span 变为深色 */
+.light pre.shiki,
+.light pre[class*="shiki"] {
+  --shiki-default: #24292e !important;
+  --shiki-default-font-weight: inherit !important;
+  background-color: #f6f8fa !important;
+}
+
+/* Shiki 代码块内所有 span 的颜色覆盖 */
+.light pre.shiki span[style*="--shiki-default"],
+.light pre[class*="shiki"] span[style*="--shiki-default"] {
+  color: #24292e !important;
+}
+
+/* Shiki 内联 code 标签 */
+.light pre.shiki code,
+.light pre[class*="shiki"] code {
+  color: #24292e !important;
+}
+
 /* 行内 code（非 pre 块内） */
 .light :not(pre) > code {
   color: #1e293b !important;
