@@ -734,12 +734,12 @@ export const tools: Tool[] = [
     vendor: '开源社区',
     region: '国外',
     form: '终端',
-    description: '开源终端 AI 编程工具，与 Claude Code 直接竞争',
-    longDescription: 'Aider 是一个开源的终端 AI 编程工具，能直接在 Git 仓库中工作，自动提交代码变更。它支持多种 LLM 后端，可以使用 Claude、GPT、本地模型等。与 Claude Code 的定位类似，但完全开源免费，且对 Git 工作流的支持更深入。',
+    description: '开源终端 AI pair programming 工具，支持 20+ LLM 后端',
+    longDescription: 'Aider 是一个开源的终端 AI pair programming 工具，能直接在 Git 仓库中工作，自动提交代码变更。支持四种聊天模式：code（默认编辑模式）、ask（只读问答）、architect（双模型架构——主模型规划 + 编辑模型执行）、help（工具使用帮助）。支持语音输入、图片/网页上下文、IDE 文件监听、浏览器运行、Prompt 缓存加速等能力。通过 Repository Map 自动分析代码库结构，支持 Linting/Testing 自动修复。在 aider.chat 提供 LLM 代码编辑与重构排行榜。',
     capability: { level: 4, label: 'Agent', position: 80 },
-    tags: ['开源免费', 'Git原生', '多模型'],
-    allTags: ['终端', 'Agent', '开源', '免费', '国外', 'Git', '多模型', '后端', '重构'],
-    platform: '终端（Mac / Win / Linux）',
+    tags: ['开源免费', 'Architect模式', '20+LLM'],
+    allTags: ['终端', 'Agent', '开源', '免费', '国外', 'Git', '多模型', 'Architect', '语音输入', 'IDE监听', '浏览器', '重构', '后端'],
+    platform: '终端（Mac / Win / Linux）+ 浏览器 + IDE 监听',
     pricing: {
       free: true,
       freeDetails: '完全开源免费（需自备 LLM API Key）'
@@ -753,47 +753,57 @@ export const tools: Tool[] = [
       costEfficiency: 4
     },
     features: [
-      'Git 原生集成（自动 commit）',
-      '支持多种 LLM 后端',
-      '终端原生',
-      '多文件协同编辑',
-      '代码审查模式'
+      '四种聊天模式（code / ask / architect / help）',
+      'Architect 双模型模式（规划模型 + 编辑模型分离）',
+      'Git 原生集成（自动 commit，/undo 回退）',
+      '支持 20+ LLM 后端（OpenAI/Anthropic/Gemini/DeepSeek/Ollama 等）',
+      'Repository Map 自动分析代码库结构',
+      '语音输入（Voice-to-Code）',
+      'IDE 文件监听模式（watch files，响应 AI 注释）',
+      '浏览器运行模式',
+      'Prompt 缓存加速',
+      'Linting / Testing 自动修复'
     ],
     useCases: [
-      '终端 AI 编程（Claude Code 的开源替代）',
-      'Git 工作流深度集成',
-      '需要自定义模型的开发者',
-      '预算有限但想用 Agent 编程'
+      '终端 AI pair programming',
+      'Architect 模式处理复杂重构（o1 规划 + GPT-4o 执行）',
+      '需要灵活切换 LLM 后端的开发者',
+      '预算有限但想用 Agent 编程',
+      '在 IDE 中通过 AI 注释驱动代码修改'
     ],
     pros: [
-      '完全开源免费',
-      'Git 集成最深入',
-      '支持几乎所有主流 LLM',
-      '社区活跃'
+      '完全开源免费，代码透明',
+      '支持几乎所有主流 LLM（20+ 后端）',
+      'Git 集成最深入（自动 commit + /undo）',
+      'Architect 模式让弱编辑模型也能高质量输出',
+      '社区活跃，提供 LLM 排行榜'
     ],
     cons: [
-      '需要自备 LLM API Key',
-      '配置有一定门槛',
-      '没有 GUI',
-      '依赖终端环境'
+      '需要自备 LLM API Key，成本取决于模型选择',
+      '终端操作对新手有门槛',
+      '没有原生 GUI（但支持浏览器模式）',
+      '不同模型的代码编辑质量差异大'
     ],
     pitfalls: [
-      '虽然工具免费，但 LLM API 调用还是要花钱的',
-      '不同模型的代码生成质量差异很大——推荐用 Claude Sonnet',
-      '首次配置需要了解 API Key 管理'
+      '虽然工具免费，但 LLM API 调用还是要花钱——用 Prompt 缓存可降低成本',
+      'Architect 模式用两个模型会消耗两倍 token，但质量更好——权衡成本与效果',
+      '不要添加太多文件到上下文——LLM 会被淹没，只加需要编辑的文件，aider 会通过 Repo Map 自动补充上下文'
     ],
     tips: [
-      '用 --model claude-3.5-sonnet 指定模型效果最好',
-      '用 /add 命令添加文件到上下文，比自动检测更精准',
-      'aider 的 auto-commit 功能很方便，但记得 Review 后再 push',
-      '配合 .aider.conf.yml 做项目级配置'
+      '推荐模型：Claude 3.5 Sonnet、DeepSeek R1、o3-mini、GPT-4o',
+      '用 /ask 先讨论方案，再切 /code 执行——比直接 /code 效果更好',
+      'Architect 模式特别适合 o1/o3 系列模型（推理强但编辑弱）',
+      '用 --watch 参数在 IDE 中监听文件，通过添加 AI 注释触发修改',
+      '配合 .aider.conf.yml 做项目级配置，统一团队使用规范'
     ],
     competitors: ['claude-code', 'codex'],
-    models: '支持 Claude、GPT-4o、Gemini、本地模型等',
+    models: 'OpenAI (GPT-4o/o1/o3-mini) / Anthropic (Claude 3.5/3.7 Sonnet) / Gemini / DeepSeek / Ollama / GROQ / xAI / Azure / Cohere / OpenRouter / GitHub Copilot / Vertex AI / Amazon Bedrock 等 20+ 后端',
     website: 'https://aider.chat',
     learningResources: [
       { title: 'Aider 官方文档', url: 'https://aider.chat/docs' },
-      { title: 'GitHub 仓库', url: 'https://github.com/Aider-AI/aider' }
+      { title: 'GitHub 仓库', url: 'https://github.com/Aider-AI/aider' },
+      { title: 'LLM 代码编辑排行榜', url: 'https://aider.chat/docs/leaderboards/edit.html' },
+      { title: 'LLM 重构排行榜', url: 'https://aider.chat/docs/leaderboards/refactor.html' }
     ]
   }
 ]
