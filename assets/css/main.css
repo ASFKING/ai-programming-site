@@ -805,3 +805,12 @@ pre code {
   background-color: #f1f5f9 !important;
   border-color: rgba(0, 0, 0, 0.08) !important;
 }
+
+/* ═══════════════════════════════════════════
+   修复：prose max-width 覆盖 max-w-none
+   提升选择器优先级，确保 max-w-none 生效
+   ═══════════════════════════════════════════ */
+
+.prose.max-w-none {
+  max-width: none !important;
+}
