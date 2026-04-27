@@ -565,64 +565,72 @@ export const tools: Tool[] = [
     icon: '🦊',
     vendor: '腾讯云',
     region: '国内',
-    form: '插件',
-    description: '腾讯云 AI 编程助手，与腾讯云生态深度集成',
-    longDescription: 'CodeBuddy 是腾讯云推出的 AI 编程助手，与腾讯云生态深度集成。支持混元大模型，提供代码补全、对话、Agent 等功能。特别适合使用腾讯云服务的开发者，能直接在 IDE 中操作腾讯云资源。',
-    capability: { level: 3, label: '协作', position: 60 },
-    tags: ['腾讯云生态', '混元大模型', '免费使用'],
-    allTags: ['插件', '补全', '协作', 'Agent', '国内', '免费', '腾讯云', '中文', '企业'],
-    platform: 'Mac / Win',
+    form: 'IDE',
+    description: '腾讯云推出的全流程智能编程工具，支持 IDE / 插件 / CLI 三种形态',
+    longDescription: 'CodeBuddy 是腾讯云推出的 AI 全流程智能编程工具，致力于构建产品、设计、研发、部署无缝协作的共生环境。支持 IDE、插件和 CLI 三种形态，覆盖从专业开发者到零基础用户的全场景需求。核心亮点包括：智能需求分析（自然语言转 PRD）、设计稿智能生成（手绘草图/自然语言转高保真设计稿）、Figma 设计稿一键转代码、以及内置 Supabase 和腾讯 CloudBase 的 BaaS 服务集成，支持一键部署至 CloudStudio、EdgeOne Pages 等平台。',
+    capability: { level: 4, label: 'Agent', position: 72 },
+    tags: ['产设研一体', '多形态', '免费使用'],
+    allTags: ['IDE', '插件', 'CLI', 'Agent', '国内', '免费', '腾讯云', '中文', 'Figma', '全流程', '设计转代码'],
+    platform: 'Mac / Win / Linux',
     pricing: {
       free: true,
-      freeDetails: '个人版免费',
+      freeDetails: '个人版免费使用',
       paid: '企业版按需定价'
     },
     network: '无需科学上网',
     scores: {
-      autonomy: 3,
+      autonomy: 4,
       contextDepth: 3,
-      engineering: 3,
+      engineering: 4,
       easeOfUse: 5,
       costEfficiency: 5
     },
     features: [
-      '腾讯云生态集成',
-      '混元大模型驱动',
-      '代码补全与对话',
-      'MCP 协议支持',
-      'Agent 模式'
+      '产设研一体全流程（需求→设计→研发→部署）',
+      'Figma 设计稿一键转代码',
+      '智能需求分析（自然语言转 PRD）',
+      '多形态支持（IDE / 插件 / CLI）',
+      'BaaS 服务集成（Supabase / CloudBase）',
+      '多模型支持（混元 / DeepSeek 等）',
+      'MCP 协议支持'
     ],
     useCases: [
-      '腾讯云生态项目',
-      '全栈开发',
-      '国内开发者的 AI 辅助',
-      '企业团队协作'
+      '产设研一体化开发（产品/设计/开发协同）',
+      '设计稿转代码（Figma 集成）',
+      '腾讯云生态项目的全流程开发',
+      '零基础用户的「对话即编程」体验',
+      'DevOps / 运维场景（CLI 形态）'
     ],
     pros: [
       '免费使用',
-      '与腾讯云生态深度集成',
-      '中文支持好',
-      'MCP 协议支持'
+      '三种形态覆盖全场景（IDE / 插件 / CLI）',
+      '设计稿转代码能力独特（内置 Figma）',
+      'BaaS 服务开箱即用（Supabase / CloudBase）',
+      '中文支持好，国内直连'
     ],
     cons: [
-      '强绑定腾讯云生态',
-      '独立能力不如 Cursor',
+      'IDE 版本仍在快速迭代，部分功能不够稳定',
+      '独立编码能力不如 Cursor / Claude Code',
       '社区规模较小',
-      '模型能力有提升空间'
+      '强绑定腾讯云生态，非腾讯云用户体验优势不明显'
     ],
     pitfalls: [
-      '如果你不用腾讯云，它的核心优势就发挥不出来',
-      'Agent 模式还在迭代中，不要期望太高'
+      'IDE 版本和插件版功能差异较大——IDE 版主打「对话即编程」全流程，插件版更偏传统补全',
+      '设计稿转代码功能对复杂交互原型的还原度有限，仍需人工调整',
+      '如果你不用腾讯云生态，核心差异化优势会大打折扣'
     ],
     tips: [
-      '如果你的项目部署在腾讯云上，CodeBuddy 是最佳选择',
-      '用 MCP 协议可以接入更多工具和能力'
+      '如果你是产品/设计/开发一体的全栈角色，优先试 IDE 版——它能从 PRD 到部署一站式完成',
+      '插件版适合已有 VS Code / JetBrains 工作流的开发者，零切换成本',
+      '用 CLI 版做 DevOps 自动化和批量任务处理',
+      '配合 MCP 协议可以接入更多外部工具和知识库'
     ],
     competitors: ['trae', 'qoder', 'github-copilot'],
-    models: '混元大模型',
-    website: 'https://cloud.tencent.com/product/codebuddy',
+    models: '混元大模型 / DeepSeek 等多种对话大模型',
+    website: 'https://www.codebuddy.cn',
     learningResources: [
-      { title: 'CodeBuddy 官方文档', url: 'https://cloud.tencent.com/document/product/2509' }
+      { title: 'CodeBuddy 官方文档', url: 'https://www.codebuddy.cn/docs/ide/Introduction' },
+      { title: 'CodeBuddy IDE 下载', url: 'https://copilot.tencent.com/ide/' }
     ]
   },
   {
