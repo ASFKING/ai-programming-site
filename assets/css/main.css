@@ -472,3 +472,114 @@ pre code {
   max-height: 2000px;
   transform: translateY(0);
 }
+
+/* ═══════════════════════════════════════════
+   浅色模式修复 — 覆盖硬编码的暗色 Tailwind 类
+   ═══════════════════════════════════════════ */
+
+/* bg-white/5 → 浅色模式用黑色微透明 */
+.light .bg-white\/5,
+.light [class*="bg-white/5"] {
+  background-color: rgba(0, 0, 0, 0.03) !important;
+}
+
+/* bg-white/10 */
+.light .bg-white\/10,
+.light [class*="bg-white/10"] {
+  background-color: rgba(0, 0, 0, 0.05) !important;
+}
+
+/* border-white/10 → 浅色模式用黑色边框 */
+.light .border-white\/10,
+.light [class*="border-white/10"] {
+  border-color: rgba(0, 0, 0, 0.08) !important;
+}
+
+.light .border-white\/20,
+.light [class*="border-white/20"] {
+  border-color: rgba(0, 0, 0, 0.12) !important;
+}
+
+.light .border-white\/30,
+.light [class*="border-white/30"] {
+  border-color: rgba(0, 0, 0, 0.15) !important;
+}
+
+.light .border-white\/40,
+.light [class*="border-white/40"] {
+  border-color: rgba(0, 0, 0, 0.2) !important;
+}
+
+/* hover:bg-white/5 → 浅色模式 */
+.light .hover\:bg-white\/5:hover,
+.light [class*="hover:bg-white/5"]:hover {
+  background-color: rgba(0, 0, 0, 0.04) !important;
+}
+
+/* hover:border-white/20 → 浅色模式 */
+.light .hover\:border-white\/20:hover,
+.light [class*="hover:border-white/20"]:hover {
+  border-color: rgba(0, 0, 0, 0.12) !important;
+}
+
+/* bg-gray-700 → 浅色模式用浅灰 */
+.light .bg-gray-700 {
+  background-color: #e2e8f0 !important;
+}
+
+/* text-gray-400 → 浅色模式用更深的灰 */
+.light .text-gray-400 {
+  color: #64748b !important;
+}
+
+/* bg-[#111827] → 浅色模式用白色 */
+.light .bg-\[\#111827\],
+.light [class*="bg-[#111827]"] {
+  background-color: #ffffff !important;
+  border-color: rgba(0, 0, 0, 0.08) !important;
+}
+
+/* bg-[#111827]/95 */
+.light .bg-\[\#111827\]\/95,
+.light [class*="bg-[#111827]/95"] {
+  background-color: rgba(255, 255, 255, 0.95) !important;
+  border-color: rgba(0, 0, 0, 0.08) !important;
+}
+
+/* hover:text-white → 浅色模式用深色 */
+.light .hover\:text-white:hover {
+  color: var(--color-text-primary) !important;
+}
+
+/* text-white 在非按钮场景 → 浅色模式用深色 */
+.light .text-white:not(button *):not(.bg-gradient-to-r *):not(.bg-gradient-to-br *):not([class*="from-"] *) {
+  color: var(--color-text-primary) !important;
+}
+
+/* 确保按钮内的 text-white 保持白色（有蓝色/渐变背景） */
+.light button .text-white,
+.light .bg-gradient-to-r .text-white,
+.light .bg-gradient-to-br .text-white,
+.light [class*="from-blue"] .text-white,
+.light [class*="from-purple"] .text-white,
+.light [class*="from-cyan"] .text-white {
+  color: #ffffff !important;
+}
+
+/* hover:bg-blue-500/10 等彩色 hover 在浅色模式下加深 */
+.light .hover\:bg-blue-500\/10:hover { background-color: rgba(59, 130, 246, 0.12) !important; }
+.light .hover\:bg-purple-500\/10:hover { background-color: rgba(139, 92, 246, 0.12) !important; }
+.light .hover\:bg-cyan-500\/10:hover { background-color: rgba(6, 182, 212, 0.12) !important; }
+
+/* 浅色模式下的 glass 效果 */
+.light .glass {
+  background: rgba(255, 255, 255, 0.8) !important;
+  backdrop-filter: blur(12px);
+}
+
+/* 浅色模式下的 card 类 */
+.light .card {
+  background: #ffffff !important;
+  border-color: rgba(0, 0, 0, 0.06) !important;
+  color: var(--color-text-primary);
+}

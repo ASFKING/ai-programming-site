@@ -15,7 +15,7 @@
           class="text-4xl font-bold bg-gradient-to-r from-blue-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent mb-4">
           AI编程概念入门
         </h1>
-        <p class="text-xl text-gray-400 max-w-3xl">
+        <p class="text-xl max-w-3xl" style="color: var(--color-text-muted)">
           从发展历程到核心概念，全面了解AI编程的演进和关键原理
         </p>
         <div class="mt-6 p-4 rounded-xl" style="background: var(--color-bg-surface); border: 1px solid var(--color-border)">
