@@ -438,62 +438,76 @@ export const tools: Tool[] = [
     vendor: 'Google',
     region: '国外',
     form: 'IDE',
-    description: 'Google 推出的 AI 原生 IDE，随 Gemini 3.0 一同发布',
-    longDescription: 'Antigravity 是 Google 于 2025 年 11 月随 Gemini 3.0 一同发布的全新 AI 原生集成开发环境。它不是传统编辑器的插件扩展，而是将 AI 深度融入开发流程的全新 IDE。定位为 AI 主动构建系统的协作平台，开发者角色从编码者转变为任务定义者和质量守门人。',
-    capability: { level: 4, label: 'Agent', position: 78 },
-    tags: ['Google出品', 'Gemini驱动', 'AI原生'],
-    allTags: ['IDE', 'Agent', '国外', '免费', 'Google', 'Gemini', 'AI原生', '全栈'],
+    description: 'Google 推出的 Agent-First AI 原生 IDE，随 Gemini 3 一同发布',
+    longDescription: 'Antigravity 是 Google 于 2025 年 11 月 19 日随 Gemini 3 一同发布的全新 AI 原生 IDE，定位为 Agent-First（智能体优先）架构。它不是传统编辑器加 AI 插件，而是从底层构建以智能体为中心的开发环境，深度融合编辑器、终端和浏览器三大界面。核心亮点包括：Agent Manager（任务指挥中心，支持多智能体并行）、内置浏览器（AI 可自主操控进行端到端测试和 UI 验证）、Artifacts 机制（自动生成任务列表、实施计划、演练报告）、以及 Planning Mode（三段式状态机：规划→执行→验证）和 Fast Prompt（知识发现系统）两种 Prompt 模式。',
+    capability: { level: 4, label: 'Agent', position: 82 },
+    tags: ['Agent-First', '浏览器集成', '免费使用'],
+    allTags: ['IDE', 'Agent', '自主', '国外', '免费', 'Google', 'Gemini', '浏览器集成', 'Artifacts', '多模型', '全栈'],
     platform: 'Mac / Win / Linux',
     pricing: {
       free: true,
-      freeDetails: '免费使用（需 Google 账号）'
+      freeDetails: '个人计划免费（Gemini 3 Pro + Claude Sonnet 4.5 等高级模型，无限 Tab 补全）',
+      enterprise: '团队/企业计划待发布'
     },
-    network: '需要科学上网',
+    network: '需要科学上网（需 Google 账号，建议美国网络注册新账号）',
     scores: {
-      autonomy: 4,
+      autonomy: 5,
       contextDepth: 4,
-      engineering: 4,
-      easeOfUse: 4,
-      costEfficiency: 4
+      engineering: 5,
+      easeOfUse: 3,
+      costEfficiency: 5
     },
     features: [
-      'Gemini 3.0 深度集成',
-      'AI 主动构建系统',
-      '全流程智能体协作',
-      '代码生成与自主执行'
+      'Agent-First 架构（AI 拥有编辑器/终端/浏览器控制权）',
+      'Agent Manager 任务指挥中心（多智能体并行管理）',
+      '内置浏览器（AI 自主操控，端到端测试 + UI 验证 + 截图/录屏）',
+      'Artifacts 机制（自动生成任务列表、实施计划、演练报告）',
+      'Planning Mode（三段式状态机：规划→执行→验证）',
+      'Fast Prompt（知识发现系统 + 智能上下文管理）',
+      '多模型支持（Gemini 3 Pro / Claude Sonnet 4.5 / GPT-OSS）',
+      '上下文感知自动补全 + AI 侧边栏',
+      '自动生成 Commit Message'
     ],
     useCases: [
-      'Google 生态开发者',
-      '全流程 AI 辅助开发',
-      '需要深度 AI 集成的项目',
-      '探索 AI 原生 IDE 体验'
+      'Agent-First 全流程开发（需求→规划→编码→测试→部署）',
+      '多智能体并行处理复杂项目',
+      '自动化端到端测试与 UI 验证',
+      '需要 Artifacts 可追溯性的工程化开发',
+      'Google 生态开发者'
     ],
     pros: [
-      'Google 出品，模型能力强',
-      '免费使用',
-      'AI 原生设计，非插件改造',
-      '与 Google 生态深度集成'
+      'Google 出品，Gemini 3 Pro 模型能力强',
+      '个人计划完全免费，含高级模型',
+      'Agent-First 架构，AI 真正拥有环境控制权',
+      '内置浏览器集成，AI 可自主测试验证',
+      'Artifacts 机制让 AI 过程可追溯、可验证'
     ],
     cons: [
-      '需要科学上网',
-      '生态相对较新',
-      '社区和文档仍在完善中',
-      '仅支持在线使用'
+      '需要科学上网 + Google 账号（建议美国网络注册）',
+      '生态较新，社区和文档仍在完善中',
+      '团队/企业计划尚未发布',
+      '对国内用户门槛较高（网络 + 账号双重限制）'
     ],
     pitfalls: [
-      '作为较新的 IDE，部分功能可能不如 Cursor 成熟',
-      '需要 Google 账号，对国内用户有门槛'
+      '需要美国网络环境才能正常注册和使用——国内直连无法访问',
+      '建议注册全新 Google 账号，老账号可能被标识为锁区限制',
+      'Planning Mode 虽然更可靠，但速度较慢——日常简单任务用 Fast Prompt 更高效'
     ],
     tips: [
-      '适合想体验 Google AI 开发生态的开发者',
-      '可以与 Gemini API 配合使用',
-      '关注 Google I/O 大会获取最新功能更新'
+      '用 Ctrl+I 快速召唤智能体，Ctrl+Shift+A 创建新任务，Ctrl+M 切换模型',
+      '大型代码库优先用 Gemini 3 Pro（更大上下文窗口）',
+      '长时任务启用异步模式，智能体后台运行，完成后自动通知',
+      '用 Artifacts 中的实施计划作为「合同」，审查后再让 AI 执行',
+      '前端开发后让 AI 用内置浏览器自动截图验证 UI 效果'
     ],
     competitors: ['cursor', 'trae', 'windsurf'],
-    models: 'Gemini 3.0',
-    website: 'https://antigravity.dev',
+    models: 'Gemini 3 Pro（默认）/ Claude Sonnet 4.5 / GPT-OSS',
+    website: 'https://antigravity.google',
     learningResources: [
-      { title: 'Google Antigravity 官方文档', url: 'https://developers.google.com/antigravity' }
+      { title: 'Antigravity 官方文档', url: 'https://antigravity.google/docs/get-started' },
+      { title: 'Antigravity 官方博客', url: 'https://antigravity.google/blog/introducing-google-antigravity' },
+      { title: '浏览器集成文档', url: 'https://antigravity.google/docs/browser' },
+      { title: '定价页面', url: 'https://antigravity.google/pricing' }
     ]
   },
   {
