@@ -20,6 +20,45 @@ export default defineNuxtConfig({
       failOnError: false,
       ignore: [
         '/api/**'
+      ],
+      // 显式声明所有动态路由，确保 SSG 能生成所有页面
+      // Nuxt Content 的 [slug].vue 动态路由可能无法被爬虫完全发现
+      routes: [
+        // === 概念入门 ===
+        '/concepts/history',
+        '/concepts/core',
+
+        // === 工具详情 ===
+        '/tools/cursor',
+        '/tools/trae',
+        '/tools/claude-code',
+        '/tools/github-copilot',
+        '/tools/codex',
+        '/tools/antigravity',
+        '/tools/qoder',
+        '/tools/codebuddy',
+        '/tools/windsurf',
+        '/tools/aider',
+        '/tools/compare',
+        '/tools/picker',
+
+        // === 编程范式 ===
+        '/paradigms/vibe-coding',
+        '/paradigms/code-completion',
+        '/paradigms/spec-coding',
+        '/paradigms/agentic-coding',
+
+        // === 方法论 ===
+        '/methodology/spec-driven',
+        '/methodology/chat-mode',
+        '/methodology/plan-mode',
+        '/methodology/agents-claude-md',
+        '/methodology/personal-rules',
+        '/methodology/project-rules',
+        '/methodology/skills',
+
+        // === 关于 ===
+        '/about'
       ]
     }
   },
