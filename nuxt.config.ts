@@ -57,6 +57,13 @@ export default defineNuxtConfig({
         '/methodology/project-rules',
         '/methodology/skills',
 
+        // === 工具箱 ===
+        '/toolbox',
+        '/toolbox/context-lost',
+        '/toolbox/token-estimator',
+        '/toolbox/prompt-bloat',
+        '/toolbox/paradigm-picker',
+
         // === 关于 ===
         '/about'
       ]
@@ -74,7 +81,7 @@ export default defineNuxtConfig({
         { charset: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
         { name: 'description', content: 'AI编程完全指南：覆盖 Cursor、Claude Code、GitHub Copilot 等 10+ 主流工具对比，Code Completion / Vibe Coding / Spec Coding / Agentic Coding 四大范式详解，Spec 驱动开发方法论。2026 年最全 AI 编程学习资源。' },
-        { name: 'keywords', content: 'AI编程, AI编程工具, 代码补全, Vibe Coding, Spec Coding, Agentic Coding, Cursor, Trae, Claude Code, GitHub Copilot, Codex, Windsurf, Aider, AI开发工具, AI编程方法论, Spec驱动开发, 工具选型' },
+        { name: 'keywords', content: 'AI编程, AI编程工具, 代码补全, Vibe Coding, Spec Coding, Agentic Coding, Cursor, Trae, Claude Code, GitHub Copilot, Codex, Windsurf, Aider, AI开发工具, AI编程方法论, Spec驱动开发, 工具选型, Token估算器, 上下文可视化, Prompt优化' },
 
         // Open Graph
         { property: 'og:title', content: 'AI编程完全指南：从代码补全到智能体开发 | 10+ 工具对比 + 方法论' },

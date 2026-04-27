@@ -71,7 +71,8 @@ const showSidebar = computed(() => {
   return route.path.startsWith('/concepts') ||
     route.path.startsWith('/tools') ||
     route.path.startsWith('/paradigms') ||
-    route.path.startsWith('/methodology')
+    route.path.startsWith('/methodology') ||
+    route.path.startsWith('/toolbox')
 })
 
 const hasToc = computed(() => {

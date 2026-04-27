@@ -94,6 +94,15 @@ const navItems = computed(() => {
     ]
   }
 
+  if (path.startsWith('/toolbox')) {
+    return [
+      { name: '🧠 上下文丢失可视化', path: '/toolbox/context-lost' },
+      { name: '🔢 Token 估算器', path: '/toolbox/token-estimator' },
+      { name: '📏 Prompt 膨胀计算器', path: '/toolbox/prompt-bloat' },
+      { name: '🎯 范式推荐器', path: '/toolbox/paradigm-picker' }
+    ]
+  }
+
   if (path.startsWith('/trends')) {
     return [
       { name: '未来趋势', path: '/trends', icon: '🔮' }
@@ -129,6 +138,12 @@ const relatedItems = computed(() => {
       { name: '概念入门', path: '/concepts', icon: '📚' }
     ]
   }
+  if (path.startsWith('/toolbox')) {
+    return [
+      { name: '概念入门', path: '/concepts', icon: '📚' },
+      { name: '编程范式', path: '/paradigms', icon: '🧩' }
+    ]
+  }
   return []
 })
 
@@ -138,6 +153,7 @@ const sectionTitle = computed(() => {
   if (path.startsWith('/tools')) return 'AI工具'
   if (path.startsWith('/paradigms')) return '编程范式'
   if (path.startsWith('/methodology')) return '方法论'
+  if (path.startsWith('/toolbox')) return '工具箱'
   if (path.startsWith('/trends')) return '未来趋势'
   return '导航'
 })

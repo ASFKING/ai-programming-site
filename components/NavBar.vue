@@ -84,6 +84,7 @@ const navItems = [
   { name: '工具', path: '/tools' },
   { name: '范式', path: '/paradigms' },
   { name: '方法论', path: '/methodology' },
+  { name: '工具箱', path: '/toolbox' },
   { name: '关于', path: '/about' }
 ]
 
