@@ -1,29 +1,63 @@
 ---
 title: Antigravity
-description: Google推出的AI原生IDE，随Gemini 3.0一同发布
-lastUpdated: '2026-04-24'
+description: Google 推出的 Agent-First AI 原生 IDE，随 Gemini 3 一同发布
+lastUpdated: '2026-04-27'
 icon: 🚀
 category: 国外
 vendor: Google
 features:
-  - Gemini 3.0 深度集成
-  - AI 主动构建系统
-  - 全流程智能体协作
-pricing: 免费使用（需Google账号）
-network: 需要科学上网
-useCases: Google生态开发，AI原生IDE体验
+  - Agent-First 架构
+  - 内置浏览器集成（AI 自主测试验证）
+  - Artifacts 可追溯机制
+  - 多模型支持（Gemini 3 Pro / Claude Sonnet 4.5 / GPT-OSS）
+  - Planning Mode / Fast Prompt 双模式
+pricing: 个人计划免费（含高级模型），团队/企业待发布
+network: 需要科学上网（需 Google 账号，建议美国网络注册）
+useCases: Agent-First 全流程开发，多智能体并行，自动化测试验证
 ---
 
-# Antigravity
+# Antigravity 🚀
 
-Antigravity 是 Google 于 2025 年 11 月随 Gemini 3.0 一同发布的全新 AI 原生集成开发环境。
+> Google 于 2025 年 11 月 19 日随 Gemini 3 一同发布的 Agent-First AI 原生 IDE
 
-## 核心特性
+## Agent-First 架构
 
-- **AI 原生设计**：不是传统编辑器的插件扩展，而是将 AI 深度融入开发流程的全新 IDE。
-- **智能体协作**：开发者角色从编码者（Coder）转变为任务定义者和质量守门人（Manager）。
-- **Gemini 3.0 驱动**：搭载 Google 最新的 Gemini 3.0 大模型，推理能力强。
+Antigravity 不是传统编辑器加 AI 插件，而是从底层构建以智能体为中心的开发环境，深度融合三大界面：
+
+- **Agent Manager**：任务指挥中心，支持自然语言下达任务、多智能体并行管理、实时监控进度
+- **Editor**：AI 深度赋能的代码编辑器，上下文感知补全、AI 侧边栏、自动生成 Commit Message
+- **Browser**：AI 可直接操控的内置浏览器，自动打开 localhost、点击、填表、截图、录屏验证
+
+## Artifacts 机制（核心亮点）
+
+AI 开发过程不再是黑盒，每个步骤都生成可验证的中间产物：
+
+- **Task List**：AI 自动生成步骤清单，动态更新进度
+- **Implementation Plan**：编码前提交详细计划，用户审查批准后执行
+- **Walkthrough Report**：任务完成后提交总结报告，附截图/录屏证据
+
+## 两种 Prompt 模式
+
+| 模式 | 特点 | 适用场景 |
+|------|------|----------|
+| **Planning Mode** | 三段式状态机（规划→执行→验证），外化思维链 | 复杂功能、需要可追溯性 |
+| **Fast Prompt** | 知识发现系统，先查知识库再行动 | 日常任务、快速迭代 |
+
+## 多模型支持
+
+- **Gemini 3 Pro**（默认）— 大上下文窗口，适合大型代码库
+- **Claude Sonnet 4.5** — 代码质量高
+- **GPT-OSS** — OpenAI 开源模型
 
 ## 适用场景
 
-适合想体验 **Google AI 开发生态**的开发者，以及需要 AI 原生 IDE 体验的全栈开发场景。
+- ✅ Agent-First 全流程开发（需求→规划→编码→测试→部署）
+- ✅ 多智能体并行处理复杂项目
+- ✅ 自动化端到端测试与 UI 验证
+- ✅ 需要 Artifacts 可追溯性的工程化开发
+
+## 局限性
+
+- 需要科学上网 + Google 账号（建议美国网络注册新账号）
+- 生态较新，社区和文档仍在完善中
+- 团队/企业计划尚未发布
