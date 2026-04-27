@@ -10,7 +10,7 @@
           <article :class="[proseClass, 'max-w-none flex-1 min-w-0']">
             <ContentRenderer :value="doc" />
           </article>
-          <aside class="hidden xl:block w-56 shrink-0">
+          <aside class="hidden lg:block w-56 shrink-0">
             <PageToc :toc="doc.body?.toc?.links || []" />
           </aside>
         </div>
