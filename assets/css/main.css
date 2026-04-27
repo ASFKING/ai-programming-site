@@ -733,3 +733,75 @@ pre code {
 .light .hover\:shadow-red-500\/5:hover {
   --tw-shadow-color: rgba(220, 38, 38, 0.08) !important;
 }
+
+/* ═══════════════════════════════════════════
+   浅色模式修复 — 代码块高亮主题
+   Nuxt Content 使用 highlight.js github-dark 主题，
+   代码块文字颜色在浅色模式下需要覆盖
+   ═══════════════════════════════════════════ */
+
+/* 代码块基础文字颜色覆盖 */
+.light pre,
+.light pre code,
+.light .prose pre,
+.light .prose pre code {
+  color: #1e293b !important;  /* slate-800 */
+}
+
+/* 代码高亮 token 颜色覆盖（highlight.js） */
+.light pre .hljs-keyword,
+.light pre .hljs-selector-tag,
+.light pre .hljs-title,
+.light pre .hljs-section,
+.light pre .hljs-doctag,
+.light pre .hljs-name,
+.light pre .hljs-strong {
+  color: #7c3aed !important;  /* purple-600 */
+}
+
+.light pre .hljs-string,
+.light pre .hljs-title.class_,
+.light pre .hljs-template-variable,
+.light pre .hljs-addition {
+  color: #059669 !important;  /* green-600 */
+}
+
+.light pre .hljs-comment,
+.light pre .hljs-quote,
+.light pre .hljs-deletion,
+.light pre .hljs-meta {
+  color: #64748b !important;  /* slate-500 */
+  font-style: italic;
+}
+
+.light pre .hljs-number,
+.light pre .hljs-regexp,
+.light pre .hljs-literal,
+.light pre .hljs-bullet,
+.light pre .hljs-link {
+  color: #d97706 !important;  /* amber-600 */
+}
+
+.light pre .hljs-attr,
+.light pre .hljs-variable,
+.light pre .hljs-template-tag,
+.light pre .hljs-symbol {
+  color: #0891b2 !important;  /* cyan-600 */
+}
+
+.light pre .hljs-built_in,
+.light pre .hljs-type,
+.light pre .hljs-params {
+  color: #2563eb !important;  /* blue-600 */
+}
+
+.light pre .hljs-attribute {
+  color: #7c3aed !important;
+}
+
+/* 行内 code（非 pre 块内） */
+.light :not(pre) > code {
+  color: #1e293b !important;
+  background-color: #f1f5f9 !important;
+  border-color: rgba(0, 0, 0, 0.08) !important;
+}
